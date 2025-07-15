@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   // For Static Export - temporariamente comentado para desenvolvimento
   // output: 'export',
   // trailingSlash: true,
+  
   images: {
     unoptimized: true,
   },
