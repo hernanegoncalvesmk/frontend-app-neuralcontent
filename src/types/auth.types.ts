@@ -87,47 +87,8 @@ export interface AuthState {
   lastActivity: Date | null;
 }
 
-// Tipos para usuário (re-exportado de user.types.ts)
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  avatar?: string;
-  role: UserRole;
-  status: UserStatus;
-  credits: number;
-  plan: UserPlan;
-  preferences: UserPreferences;
-  isEmailVerified: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  lastLoginAt?: Date;
-}
-
-export type UserRole = 'user' | 'admin' | 'moderator';
-export type UserStatus = 'active' | 'inactive' | 'suspended' | 'pending_verification';
-
-export interface UserPlan {
-  id: string;
-  name: string;
-  type: 'free' | 'basic' | 'premium' | 'enterprise';
-  creditsPerMonth: number;
-  features: string[];
-  price: number;
-  isActive: boolean;
-  renewsAt?: Date;
-}
-
-export interface UserPreferences {
-  language: string;
-  timezone: string;
-  theme: 'light' | 'dark' | 'auto';
-  notifications: {
-    email: boolean;
-    push: boolean;
-    marketing: boolean;
-  };
-}
+// Tipos para usuário (importado de user.types.ts)
+import type { User, UserRole } from './user.types';
 
 // Tipos para sessão
 export interface Session {
