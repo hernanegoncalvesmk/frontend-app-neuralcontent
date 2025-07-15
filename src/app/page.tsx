@@ -1,41 +1,25 @@
-import ContactUs from "@/components/FrontPage/ContactUs";
-import Cta from "@/components/FrontPage/Cta";
-import Faq from "@/components/FrontPage/Faq";
-import Features from "@/components/FrontPage/Features";
-import Footer from "@/components/FrontPage/Footer";
-import HeroBanner from "@/components/FrontPage/HeroBanner";
-import LightDarkModeButton from "@/components/FrontPage/LightDarkModeButton";
-import Navbar from "@/components/FrontPage/Navbar";
-import OurTeam from "@/components/FrontPage/OurTeam";
-import Testimonials from "@/components/FrontPage/Testimonials";
-import Widgets from "@/components/FrontPage/Widgets";
-
 export default function Home() {
   return (
-    <>
-      <div className="front-page-body overflow-hidden">
-        <LightDarkModeButton />
-
-        <Navbar />
-
-        <HeroBanner />
-
-        <Features />
-
-        <Widgets />
-
-        <Testimonials />
-
-        <OurTeam />
-
-        <Faq />
-
-        <ContactUs />
-
-        <Cta />
-
-        <Footer />
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Neural Content
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            Frontend em desenvolvimento - Estrutura limpa e pronta para implementação
+          </p>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-2xl font-semibold mb-4">🎯 Status do Projeto</h2>
+            <div className="space-y-2 text-left">
+              <p className="text-green-600">✅ Estrutura base configurada</p>
+              <p className="text-green-600">✅ Páginas desnecessárias removidas</p>
+              <p className="text-green-600">✅ Componentes essenciais mantidos</p>
+              <p className="text-yellow-600">🔄 Próximo: Configurar estrutura Neural Content</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -2,9 +2,9 @@ import type { NextConfig } from "next";
 import path from 'path';
 
 const nextConfig: NextConfig = {
-  // For Static Export
-  output: 'export',
-  trailingSlash: true,
+  // For Static Export - temporariamente comentado para desenvolvimento
+  // output: 'export',
+  // trailingSlash: true,
   images: {
     unoptimized: true,
   },
