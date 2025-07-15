@@ -51,120 +51,139 @@ export default function PlanCard({
     return null;
   };
 
-  const getCardStyle = () => {
-    if (plan.isPopular) {
-      return 'border-2 border-orange-400 relative transform scale-105 shadow-xl';
-    }
-    return 'border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600';
-  };
-
   return (
     <div className={`
-      relative bg-white dark:bg-gray-800 rounded-xl p-8 transition-all duration-300 hover:shadow-lg
-      ${getCardStyle()}
+      relative bg-white dark:bg-gray-800 rounded-2xl shadow-sm border 
+      transition-all duration-300 hover:shadow-lg h-full flex flex-col
+      ${plan.isPopular 
+        ? 'border-blue-500 ring-2 ring-blue-500 ring-opacity-20' 
+        : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600'
+      }
     `}>
-      {/* Badge "Mais Popular" */}
+      {/* Badge "Mais Popular" - Melhorado com contraste e visual Trezo */}
       {plan.isPopular && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-          <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Mais Popular
-          </span>
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg border-2 border-white dark:border-gray-800">
+            ⭐ Mais Popular
+          </div>
         </div>
       )}
 
-      {/* Header do Plano */}
-      <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          {plan.name}
-        </h3>
-        <p className="text-blue-600 dark:text-blue-400 font-semibold mb-4">
-          {plan.description}
-        </p>
-        
-        {/* Preço */}
-        <div className="mb-4">
-          <div className="flex items-center justify-center mb-2">
-            <span className="text-4xl font-bold text-gray-900 dark:text-white">
-              {formatPrice(getCurrentPrice())}
-            </span>
-            <span className="text-gray-600 dark:text-gray-400 ml-1">
-              {getPeriodLabel()}
-            </span>
-          </div>
-          
-          {/* Preço original e desconto */}
-          {getOriginalPrice() && getDiscount() && (
-            <div className="text-center">
-              <span className="text-gray-500 line-through text-lg mr-2">
-                {formatPrice(getOriginalPrice()!)}
-              </span>
-              <span className="text-green-600 font-semibold">
-                -{getDiscount()}% OFF
-              </span>
-            </div>
-          )}
-          
-          {/* Texto de economia */}
-          {getSavingsText() && (
-            <p className="text-green-600 font-medium mt-2">
-              {getSavingsText()}
-            </p>
-          )}
-        </div>
-
-        {/* Créditos */}
-        <div className="text-center mb-6">
-          <p className="text-gray-600 dark:text-gray-400">
-            <span className="font-semibold">{plan.credits}</span> créditos mensais
+      <div className="p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
+        {/* Header do Plano */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            {plan.name}
+          </h3>
+          <p className="text-blue-600 dark:text-blue-400 font-semibold mb-6 leading-relaxed">
+            {plan.description}
           </p>
-          {plan.bonusCredits > 0 && (
-            <p className="text-green-600 font-medium">
-              +{plan.bonusCredits} créditos bônus
-            </p>
+          
+          {/* Preço */}
+          <div className="mb-6">
+            <div className="flex items-center justify-center mb-3">
+              <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                {formatPrice(getCurrentPrice())}
+              </span>
+              <span className="text-lg text-gray-600 dark:text-gray-400 ml-1">
+                {getPeriodLabel()}
+              </span>
+            </div>
+            
+            {/* Preço original e desconto */}
+            {getOriginalPrice() && getDiscount() && (
+              <div className="text-center mb-2">
+                <span className="text-gray-500 dark:text-gray-400 line-through text-lg mr-2">
+                  {formatPrice(getOriginalPrice()!)}
+                </span>
+                <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-semibold px-2 py-1 rounded-full">
+                  -{getDiscount()}% OFF
+                </span>
+              </div>
+            )}
+            
+            {/* Texto de economia */}
+            {getSavingsText() && (
+              <p className="text-green-600 dark:text-green-400 font-medium">
+                {getSavingsText()}
+              </p>
+            )}
+          </div>
+
+          {/* Créditos */}
+          <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 mb-6">
+            <div className="flex justify-center items-center">
+              <span className="material-icons text-blue-600 mr-2">auto_awesome</span>
+              <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                {plan.credits} créditos mensais
+              </span>
+            </div>
+            {plan.bonusCredits > 0 && (
+              <div className="text-center mt-2">
+                <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                  +{plan.bonusCredits} créditos bônus
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Lista de Features */}
+        <div className="flex-1 mb-8">
+          <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-center">
+            Recursos incluídos:
+          </h4>
+          <ul className="space-y-3">
+            {plan.features.map((feature) => (
+              <li key={feature.id} className="flex items-start">
+                <div className="flex-shrink-0 mt-0.5">
+                  {feature.included ? (
+                    <span className="material-icons text-green-500 text-lg">check_circle</span>
+                  ) : (
+                    <span className="material-icons text-gray-400 text-lg">cancel</span>
+                  )}
+                </div>
+                <span className={`
+                  ml-3 text-sm leading-relaxed
+                  ${feature.included 
+                    ? 'text-gray-600 dark:text-gray-400' 
+                    : 'text-gray-400 dark:text-gray-500 line-through'
+                  }
+                `}>
+                  {feature.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Botão de Seleção - Padronizado com outros botões do sistema */}
+        <div className="mt-auto">
+          {isCurrentPlan ? (
+            <button
+              disabled
+              className="w-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-6 py-4 rounded-xl font-semibold text-base transition-colors cursor-not-allowed border border-gray-200 dark:border-gray-600"
+            >
+              <span className="material-icons mr-2 text-lg">check</span>
+              Plano Atual
+            </button>
+          ) : (
+            <button
+              onClick={() => onSelectPlan(plan, billingPeriod)}
+              className={`
+                w-full px-6 py-4 rounded-xl font-semibold text-base transition-all duration-200 transform hover:scale-105 active:scale-95
+                ${plan.isPopular
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg'
+                }
+              `}
+            >
+              <span className="material-icons mr-2 text-lg">rocket_launch</span>
+              Escolher {plan.name}
+            </button>
           )}
         </div>
       </div>
-
-      {/* Lista de Features */}
-      <div className="space-y-4 mb-8">
-        {plan.features.map((feature) => (
-          <div key={feature.id} className="flex items-start">
-            <div className="flex-shrink-0 mt-1">
-              {feature.included ? (
-                <span className="material-icons text-green-500 text-lg">check_circle</span>
-              ) : (
-                <span className="material-icons text-gray-400 text-lg">cancel</span>
-              )}
-            </div>
-            <span className={`
-              ml-3 text-sm
-              ${feature.included 
-                ? 'text-gray-700 dark:text-gray-300' 
-                : 'text-gray-400 dark:text-gray-500 line-through'
-              }
-            `}>
-              {feature.name}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Botão de Seleção */}
-      <button
-        onClick={() => onSelectPlan(plan, billingPeriod)}
-        disabled={isCurrentPlan}
-        className={`
-          w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200
-          ${isCurrentPlan
-            ? 'bg-gray-100 dark:bg-gray-700 text-gray-500 cursor-not-allowed'
-            : plan.isPopular
-              ? 'bg-orange-500 hover:bg-orange-600 text-white shadow-lg hover:shadow-xl'
-              : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg'
-          }
-        `}
-      >
-        {isCurrentPlan ? 'Plano Atual' : 'Selecionar'}
-      </button>
     </div>
   );
 }
