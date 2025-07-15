@@ -24,7 +24,7 @@ interface AuthContextType {
 }
 
 // Criar contexto
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Props do provider
 interface AuthProviderProps {

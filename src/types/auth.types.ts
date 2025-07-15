@@ -6,11 +6,14 @@ export interface LoginRequest {
 }
 
 export interface RegisterRequest {
-  name: string;
+  fullName: string;
   email: string;
   password: string;
-  confirmPassword: string;
-  acceptTerms: boolean;
+  confirmPassword?: string;
+  phone: string;
+  birthDate: string;
+  country: string;
+  acceptTerms?: boolean;
 }
 
 export interface ForgotPasswordRequest {
