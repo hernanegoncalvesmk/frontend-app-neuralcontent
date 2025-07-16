@@ -22,11 +22,10 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 #### Componentes já traduzidos:
 - ✅ `components/landing/HeroBanner.tsx`
 - ✅ `components/landing/Navbar.tsx`
-
-#### Componentes pendentes:
-- [ ] `components/landing/Footer.tsx` (se existir)
-- [ ] `components/landing/Features.tsx` (se existir)
-- [ ] `components/landing/Testimonials.tsx` (se existir)
+- ✅ `components/landing/Footer.tsx`
+- ✅ `components/landing/Features.tsx`
+- ✅ `components/landing/Cta.tsx`
+- ✅ `components/landing/LightDarkModeButton.tsx` (não precisa tradução)
 
 **Namespace:** `landing`
 

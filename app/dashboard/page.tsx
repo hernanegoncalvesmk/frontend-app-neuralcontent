@@ -103,29 +103,29 @@ export default function Dashboard() {
     {
       id: '1',
       type: 'content',
-      title: 'Post para Instagram criado',
-      time: 'há 2 horas',
+      title: tDashboard('activities.items.instagramPost'),
+      time: tDashboard('activities.time.twoHours'),
       status: 'success'
     },
     {
       id: '2',
       type: 'product',
-      title: 'Produto "Curso Online" atualizado',
-      time: 'há 4 horas',
+      title: tDashboard('activities.items.productUpdated'),
+      time: tDashboard('activities.time.fourHours'),
       status: 'success'
     },
     {
       id: '3',
       type: 'persona',
-      title: 'Nova persona "Empreendedor Digital"',
-      time: 'há 1 dia',
+      title: tDashboard('activities.items.newPersona'),
+      time: tDashboard('activities.time.oneDay'),
       status: 'success'
     },
     {
       id: '4',
       type: 'content',
-      title: 'E-mail marketing em processamento',
-      time: 'há 2 dias',
+      title: tDashboard('activities.items.emailProcessing'),
+      time: tDashboard('activities.time.twoDays'),
       status: 'pending'
     }
   ]);
@@ -133,7 +133,7 @@ export default function Dashboard() {
   // Dados para o gráfico de consumo ao longo do tempo
   const [consumptionChartData] = useState({
     series: [{
-      name: 'Créditos Utilizados',
+      name: tDashboard('charts.consumption.seriesName'),
       data: [45, 52, 38, 67, 89, 125, 156, 178, 203, 234, 267, 289]
     }],
     options: {
@@ -149,7 +149,20 @@ export default function Dashboard() {
       },
       colors: ['#3b82f6'],
       xaxis: {
-        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        categories: [
+          tDashboard('charts.months.jan'), 
+          tDashboard('charts.months.feb'), 
+          tDashboard('charts.months.mar'), 
+          tDashboard('charts.months.apr'), 
+          tDashboard('charts.months.may'), 
+          tDashboard('charts.months.jun'),
+          tDashboard('charts.months.jul'), 
+          tDashboard('charts.months.aug'), 
+          tDashboard('charts.months.sep'), 
+          tDashboard('charts.months.oct'), 
+          tDashboard('charts.months.nov'), 
+          tDashboard('charts.months.dec')
+        ],
         labels: {
           style: {
             colors: '#6b7280'
@@ -181,7 +194,12 @@ export default function Dashboard() {
         type: 'pie' as const,
         height: 350
       },
-      labels: ['Posts Sociais', 'E-mails', 'Artigos Blog', 'Outros'],
+      labels: [
+        tDashboard('charts.distribution.labels.socialPosts'),
+        tDashboard('charts.distribution.labels.emails'),
+        tDashboard('charts.distribution.labels.blogArticles'),
+        tDashboard('charts.distribution.labels.others')
+      ],
       colors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
       legend: {
         position: 'bottom' as const,
@@ -243,10 +261,10 @@ export default function Dashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Dashboard
+            {tDashboard('page.title')}
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-1">
-            Visão geral da sua conta e atividades
+            {tDashboard('page.subtitle')}
           </p>
         </div>
         <div className="flex space-x-3">
@@ -255,11 +273,11 @@ export default function Dashboard() {
             className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
           >
             <span className="material-icons mr-2 text-sm">settings</span>
-            Personalizar
+            {tDashboard('actions.customize')}
           </button>
           <button className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-700">
             <span className="material-icons mr-2 text-sm">refresh</span>
-            Atualizar
+            {tDashboard('actions.refresh')}
           </button>
         </div>
       </div>
@@ -316,8 +334,8 @@ export default function Dashboard() {
           <div className="flex items-center">
             <span className="material-icons text-3xl mr-4">add_business</span>
             <div>
-              <h3 className="text-lg font-semibold">Criar Produto</h3>
-              <p className="text-blue-100">Adicionar novo produto</p>
+              <h3 className="text-lg font-semibold">{tDashboard('quickActions.createProduct.title')}</h3>
+              <p className="text-blue-100">{tDashboard('quickActions.createProduct.subtitle')}</p>
             </div>
           </div>
         </div>
@@ -329,8 +347,8 @@ export default function Dashboard() {
           <div className="flex items-center">
             <span className="material-icons text-3xl mr-4">person_add</span>
             <div>
-              <h3 className="text-lg font-semibold">Criar Persona</h3>
-              <p className="text-green-100">Nova persona de cliente</p>
+              <h3 className="text-lg font-semibold">{tDashboard('quickActions.createPersona.title')}</h3>
+              <p className="text-green-100">{tDashboard('quickActions.createPersona.subtitle')}</p>
             </div>
           </div>
         </div>
@@ -342,8 +360,8 @@ export default function Dashboard() {
           <div className="flex items-center">
             <span className="material-icons text-3xl mr-4">auto_awesome</span>
             <div>
-              <h3 className="text-lg font-semibold">Gerar Conteúdo</h3>
-              <p className="text-purple-100">Criar novo conteúdo</p>
+              <h3 className="text-lg font-semibold">{tDashboard('quickActions.generateContent.title')}</h3>
+              <p className="text-purple-100">{tDashboard('quickActions.generateContent.subtitle')}</p>
             </div>
           </div>
         </div>
@@ -353,7 +371,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            Consumo de Créditos ao Longo do Tempo
+            {tDashboard('charts.consumption.title')}
           </h3>
           <Chart
             options={consumptionChartData.options}
@@ -365,7 +383,7 @@ export default function Dashboard() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            Distribuição por Tipo de Conteúdo
+            {tDashboard('charts.distribution.title')}
           </h3>
           <Chart
             options={contentDistributionData.options}
@@ -380,7 +398,7 @@ export default function Dashboard() {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Atividades Recentes
+            {tDashboard('activities.title')}
           </h3>
         </div>
         <div className="p-6">
@@ -402,9 +420,9 @@ export default function Dashboard() {
                 </div>
                 <div className="flex-shrink-0">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getActivityColor(activity.status)}`}>
-                    {activity.status === 'success' && 'Concluído'}
-                    {activity.status === 'pending' && 'Pendente'}
-                    {activity.status === 'error' && 'Erro'}
+                    {activity.status === 'success' && tDashboard('activities.status.completed')}
+                    {activity.status === 'pending' && tDashboard('activities.status.pending')}
+                    {activity.status === 'error' && tDashboard('activities.status.error')}
                   </span>
                 </div>
               </div>

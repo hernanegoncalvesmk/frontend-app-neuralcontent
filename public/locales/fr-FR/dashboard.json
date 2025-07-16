@@ -1,0 +1,96 @@
+{
+  "page": {
+    "title": "Tableau de Bord",
+    "subtitle": "Aperçu de vos activités et performances"
+  },
+  "actions": {
+    "customize": "Personnaliser",
+    "refresh": "Actualiser"
+  },
+  "quickActions": {
+    "title": "Actions Rapides",
+    "createProduct": {
+      "title": "Créer Produit",
+      "subtitle": "Ajoutez un nouveau produit à votre catalogue"
+    },
+    "createPersona": {
+      "title": "Créer Persona",
+      "subtitle": "Définissez une nouvelle persona pour votre audience"
+    },
+    "createContent": {
+      "title": "Créer Contenu",
+      "subtitle": "Générez du nouveau contenu pour vos campagnes"
+    }
+  },
+  "widgets": {
+    "credits": {
+      "title": "Crédits Disponibles",
+      "subtitle": "Solde actuel du compte",
+      "change": "+12% ce mois"
+    },
+    "extraCredits": {
+      "title": "Crédits Extra",
+      "subtitle": "Bonus accumulés",
+      "change": "+5% cette semaine"
+    },
+    "plan": {
+      "title": "Plan Actuel",
+      "subtitle": "Renouvellement dans 15 jours",
+      "change": ""
+    },
+    "usage": {
+      "title": "Utilisation du Mois",
+      "subtitle": "Crédits utilisés",
+      "change": "75% de la limite"
+    }
+  },
+  "charts": {
+    "consumption": {
+      "title": "Consommation de Crédits",
+      "seriesName": "Crédits Utilisés"
+    },
+    "distribution": {
+      "title": "Distribution du Contenu",
+      "labels": {
+        "socialPosts": "Posts Sociaux",
+        "emails": "E-mails",
+        "blogArticles": "Articles de Blog",
+        "others": "Autres"
+      }
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Fév",
+      "mar": "Mar",
+      "apr": "Avr",
+      "may": "Mai",
+      "jun": "Juin",
+      "jul": "Juil",
+      "aug": "Août",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Déc"
+    }
+  },
+  "activities": {
+    "title": "Activités Récentes",
+    "status": {
+      "completed": "Terminé",
+      "pending": "En attente",
+      "error": "Erreur"
+    },
+    "items": {
+      "instagramPost": "Post Instagram créé",
+      "productUpdated": "Produit mis à jour",
+      "newPersona": "Nouvelle persona créée",
+      "emailProcessing": "E-mail en traitement"
+    },
+    "time": {
+      "twoHours": "il y a 2 heures",
+      "fourHours": "il y a 4 heures",
+      "oneDay": "il y a 1 jour",
+      "twoDays": "il y a 2 jours"
+    }
+  }
+}

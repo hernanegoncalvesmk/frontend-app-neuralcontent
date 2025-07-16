@@ -1,0 +1,96 @@
+{
+  "page": {
+    "title": "Dashboard",
+    "subtitle": "Visão geral das suas atividades e desempenho"
+  },
+  "actions": {
+    "customize": "Personalizar",
+    "refresh": "Atualizar"
+  },
+  "quickActions": {
+    "title": "Ações Rápidas",
+    "createProduct": {
+      "title": "Criar Produto",
+      "subtitle": "Adicione um novo produto ao seu catálogo"
+    },
+    "createPersona": {
+      "title": "Criar Persona",
+      "subtitle": "Defina uma nova persona para seu público"
+    },
+    "createContent": {
+      "title": "Criar Conteúdo",
+      "subtitle": "Gere novo conteúdo para suas campanhas"
+    }
+  },
+  "widgets": {
+    "credits": {
+      "title": "Créditos Disponíveis",
+      "subtitle": "Saldo atual na conta",
+      "change": "+12% este mês"
+    },
+    "extraCredits": {
+      "title": "Créditos Extras",
+      "subtitle": "Bônus acumulados",
+      "change": "+5% esta semana"
+    },
+    "plan": {
+      "title": "Plano Atual",
+      "subtitle": "Renovação em 15 dias",
+      "change": ""
+    },
+    "usage": {
+      "title": "Uso do Mês",
+      "subtitle": "Créditos utilizados",
+      "change": "75% do limite"
+    }
+  },
+  "charts": {
+    "consumption": {
+      "title": "Consumo de Créditos",
+      "seriesName": "Créditos Utilizados"
+    },
+    "distribution": {
+      "title": "Distribuição de Conteúdo",
+      "labels": {
+        "socialPosts": "Posts Sociais",
+        "emails": "E-mails",
+        "blogArticles": "Artigos Blog",
+        "others": "Outros"
+      }
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Fev",
+      "mar": "Mar",
+      "apr": "Abr",
+      "may": "Mai",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Ago",
+      "sep": "Set",
+      "oct": "Out",
+      "nov": "Nov",
+      "dec": "Dez"
+    }
+  },
+  "activities": {
+    "title": "Atividades Recentes",
+    "status": {
+      "completed": "Concluído",
+      "pending": "Pendente",
+      "error": "Erro"
+    },
+    "items": {
+      "instagramPost": "Post do Instagram criado",
+      "productUpdated": "Produto atualizado",
+      "newPersona": "Nova persona criada",
+      "emailProcessing": "E-mail em processamento"
+    },
+    "time": {
+      "twoHours": "há 2 horas",
+      "fourHours": "há 4 horas",
+      "oneDay": "há 1 dia",
+      "twoDays": "há 2 dias"
+    }
+  }
+}
