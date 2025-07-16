@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Plan, BillingPeriod } from '@/types/plans.types';
 import { plansService } from '@/services/plans.service';
 import BillingToggle from '@/components/billing/plans/BillingToggle';
 import PlanCard from '@/components/billing/plans/PlanCard';
 
 export default function PlansPage() {
+  const { t: tBilling } = useTranslation('billing');
   const [plans, setPlans] = useState<Plan[]>([]);
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>('monthly');
   const [currentPlanId, setCurrentPlanId] = useState<string | undefined>();
@@ -26,7 +28,7 @@ export default function PlansPage() {
       const plansData = plansService.getMockPlans();
       setPlans(plansData);
     } catch (err) {
-      setError('Erro ao carregar planos');
+      setError(tBilling('error.loadPlans'));
       console.error('Erro ao carregar planos:', err);
     } finally {
       setLoading(false);
@@ -84,14 +86,14 @@ export default function PlansPage() {
             <span className="material-icons text-6xl">error_outline</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-            Erro ao carregar planos
+            {tBilling('error.title')}
           </h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">{error}</p>
           <button
             onClick={loadPlans}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
           >
-            Tentar novamente
+            {tBilling('error.tryAgain')}
           </button>
         </div>
       </div>
@@ -111,11 +113,11 @@ export default function PlansPage() {
           </div>
           
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 px-4">
-            Escolha o Melhor Plano para Você
+            {tBilling('page.title')}
           </h2>
           
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 leading-relaxed">
-            Planos flexíveis e econômicos, pensados exclusivamente para você
+            {tBilling('page.subtitle')}
           </p>
         </div>
 
@@ -145,12 +147,10 @@ export default function PlansPage() {
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Por que atualizar?
+              {tBilling('whyUpgrade.title')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              Valorizamos nossos clientes e nosso objetivo é ajudá-los a realizar seus sonhos de todas as maneiras possíveis. 
-              Trabalhamos duro para economizar seu tempo e colocá-lo em funcionamento o mais rápido possível. Ao atualizar, 
-              você obterá vários recursos novos que podem ajudar a expandir seus negócios.
+              {tBilling('whyUpgrade.description')}
             </p>
           </div>
           
@@ -159,9 +159,11 @@ export default function PlansPage() {
               <div className="bg-blue-100 dark:bg-blue-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="material-icons text-blue-600 dark:text-blue-400 text-2xl">speed</span>
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Maior Produtividade</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                {tBilling('whyUpgrade.benefits.productivity.title')}
+              </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Gere mais conteúdo em menos tempo com recursos avançados
+                {tBilling('whyUpgrade.benefits.productivity.description')}
               </p>
             </div>
             
@@ -169,9 +171,11 @@ export default function PlansPage() {
               <div className="bg-green-100 dark:bg-green-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="material-icons text-green-600 dark:text-green-400 text-2xl">savings</span>
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Economia Garantida</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                {tBilling('whyUpgrade.benefits.savings.title')}
+              </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Melhores preços por crédito e créditos bônus exclusivos
+                {tBilling('whyUpgrade.benefits.savings.description')}
               </p>
             </div>
             
@@ -179,9 +183,11 @@ export default function PlansPage() {
               <div className="bg-purple-100 dark:bg-purple-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="material-icons text-purple-600 dark:text-purple-400 text-2xl">auto_awesome</span>
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Recursos Exclusivos</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                {tBilling('whyUpgrade.benefits.features.title')}
+              </h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Acesso a funcionalidades premium e ferramentas avançadas
+                {tBilling('whyUpgrade.benefits.features.description')}
               </p>
             </div>
           </div>

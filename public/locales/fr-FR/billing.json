@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Choisissez le Meilleur Plan pour Vous",
+    "subtitle": "Plans flexibles et abordables, conçus exclusivement pour vous"
+  },
+  "periods": {
+    "monthly": "Mensuel",
+    "quarterly": "Trimestriel", 
+    "annual": "Annuel"
+  },
+  "periodLabels": {
+    "monthly": "/Mois",
+    "quarterly": "/Trimestre",
+    "annual": "/An"
+  },
+  "popular": "Plus Populaire",
+  "savings": {
+    "label": "Économisez"
+  },
+  "buttons": {
+    "currentPlan": "Plan Actuel",
+    "choose": "Choisir"
+  },
+  "whyUpgrade": {
+    "title": "Pourquoi mettre à niveau?",
+    "description": "Nous valorisons nos clients et notre objectif est de les aider à réaliser leurs rêves de toutes les manières possibles. Nous travaillons dur pour économiser votre temps et vous mettre en marche le plus rapidement possible. En mettant à niveau, vous obtiendrez plusieurs nouvelles fonctionnalités qui peuvent aider à développer votre entreprise.",
+    "benefits": {
+      "productivity": {
+        "title": "Productivité Plus Élevée",
+        "description": "Générez plus de contenu en moins de temps avec des fonctionnalités avancées"
+      },
+      "savings": {
+        "title": "Économies Garanties",
+        "description": "Meilleurs prix par crédit et crédits bonus exclusifs"
+      },
+      "features": {
+        "title": "Fonctionnalités Exclusives",
+        "description": "Accès aux fonctionnalités premium et outils avancés"
+      }
+    }
+  },
+  "error": {
+    "title": "Erreur lors du chargement des plans",
+    "loadPlans": "Erreur lors du chargement des plans",
+    "tryAgain": "Réessayer"
+  }
+}

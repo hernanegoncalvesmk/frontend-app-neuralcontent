@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Elige el Mejor Plan para Ti",
+    "subtitle": "Planes flexibles y económicos, pensados exclusivamente para ti"
+  },
+  "periods": {
+    "monthly": "Mensual",
+    "quarterly": "Trimestral", 
+    "annual": "Anual"
+  },
+  "periodLabels": {
+    "monthly": "/Mes",
+    "quarterly": "/Trimestre",
+    "annual": "/Año"
+  },
+  "popular": "Más Popular",
+  "savings": {
+    "label": "Ahorra"
+  },
+  "buttons": {
+    "currentPlan": "Plan Actual",
+    "choose": "Elegir"
+  },
+  "whyUpgrade": {
+    "title": "¿Por qué actualizar?",
+    "description": "Valoramos a nuestros clientes y nuestro objetivo es ayudarles a realizar sus sueños de todas las maneras posibles. Trabajamos duro para ahorrar tu tiempo y ponerte en funcionamiento lo más rápido posible. Al actualizar, obtendrás varias características nuevas que pueden ayudar a expandir tu negocio.",
+    "benefits": {
+      "productivity": {
+        "title": "Mayor Productividad",
+        "description": "Genera más contenido en menos tiempo con características avanzadas"
+      },
+      "savings": {
+        "title": "Ahorro Garantizado",
+        "description": "Mejores precios por crédito y créditos bonus exclusivos"
+      },
+      "features": {
+        "title": "Características Exclusivas",
+        "description": "Acceso a funcionalidades premium y herramientas avanzadas"
+      }
+    }
+  },
+  "error": {
+    "title": "Error al cargar planes",
+    "loadPlans": "Error al cargar planes",
+    "tryAgain": "Intentar de nuevo"
+  }
+}

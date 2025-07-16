@@ -33,17 +33,17 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 
 ### **TAREFA 1.2: Completar Dashboard Principal**
 **Duração estimada:** 45 min
-**Status:** 🔄 EM ANDAMENTO
+**Status:** ✅ CONCLUÍDO
 
-#### Já implementado:
-- ✅ Widgets básicos traduzidos
-
-#### Pendente:
-- [ ] `app/dashboard/page.tsx` - Seções restantes
-  - [ ] Gráficos e estatísticas
-  - [ ] Ações rápidas
-  - [ ] Breadcrumbs
-  - [ ] Cabeçalhos de seção
+#### Implementado:
+- ✅ `app/dashboard/page.tsx` - Todas as seções traduzidas
+- ✅ Título e subtítulo da página
+- ✅ Botões de ação (personalizar, atualizar)
+- ✅ Seção de ações rápidas
+- ✅ Todos os widgets (créditos, plano, uso)
+- ✅ Gráficos e estatísticas
+- ✅ Seção de atividades
+- ✅ Arquivos de tradução criados para 4 idiomas
 
 **Namespace:** `dashboard`
 
@@ -51,7 +51,7 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 
 ### **TAREFA 1.3: Página de Planos (Billing)**
 **Duração estimada:** 60 min
-**Status:** ❌ PENDENTE
+**Status:** 🔄 EM ANDAMENTO
 
 #### Arquivos para traduzir:
 - [ ] `app/billing/page.tsx`
