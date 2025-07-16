@@ -3,9 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useT } from "@/providers/TranslationProvider";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const t = useT();
 
   return (
     <>
@@ -31,8 +33,7 @@ const Footer: React.FC = () => {
                   </div>
                 </Link>
                 <p className="text-gray-400 leading-relaxed mb-[20px] text-[14px] md:text-[15px]">
-                  Plataforma de IA avançada para criação de conteúdo automatizada. 
-                  Transforme suas ideias em conteúdo profissional em segundos.
+                  {t('landing.footer.description')}
                 </p>
                 <div className="flex gap-[15px]">
                   <a
@@ -65,27 +66,27 @@ const Footer: React.FC = () => {
               {/* Product Links */}
               <div>
                 <h3 className="text-white font-semibold mb-[20px] text-[16px] md:text-[17px]">
-                  Produto
+                  {t('landing.footer.product')}
                 </h3>
                 <ul className="space-y-[12px]">
                   <li>
                     <Link href="/billing/plans" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Planos e Preços
+                      {t('landing.footer.plansAndPricing')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#features" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Recursos
+                      {t('landing.footer.features')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/auth/register" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Teste Grátis
+                      {t('landing.footer.freeTrial')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Integrações
+                      {t('landing.footer.integrations')}
                     </Link>
                   </li>
                 </ul>
@@ -94,27 +95,27 @@ const Footer: React.FC = () => {
               {/* Company Links */}
               <div>
                 <h3 className="text-white font-semibold mb-[20px] text-[16px] md:text-[17px]">
-                  Empresa
+                  {t('landing.footer.company')}
                 </h3>
                 <ul className="space-y-[12px]">
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Sobre Nós
+                      {t('landing.footer.aboutUs')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Blog
+                      {t('landing.footer.blog')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Carreiras
+                      {t('landing.footer.careers')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#contact" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Contato
+                      {t('landing.footer.contact')}
                     </Link>
                   </li>
                 </ul>
@@ -123,27 +124,27 @@ const Footer: React.FC = () => {
               {/* Support Links */}
               <div>
                 <h3 className="text-white font-semibold mb-[20px] text-[16px] md:text-[17px]">
-                  Suporte
+                  {t('landing.footer.support')}
                 </h3>
                 <ul className="space-y-[12px]">
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Central de Ajuda
+                      {t('landing.footer.helpCenter')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Documentação
+                      {t('landing.footer.documentation')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Status do Sistema
+                      {t('landing.footer.systemStatus')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#" className="hover:text-primary-400 transition-all text-[14px] md:text-[15px]">
-                      Comunidade
+                      {t('landing.footer.community')}
                     </Link>
                   </li>
                 </ul>
@@ -155,18 +156,18 @@ const Footer: React.FC = () => {
           <div className="py-[25px] md:py-[30px]">
             <div className="flex flex-col md:flex-row justify-between items-center gap-[15px]">
               <p className="text-gray-400 text-[13px] md:text-[14px] text-center md:text-left">
-                © {currentYear} Neural Content. Todos os direitos reservados.
+                © {currentYear} Neural Content. {t('landing.footer.allRightsReserved')}
               </p>
               
               <div className="flex flex-wrap justify-center md:justify-end gap-[20px] md:gap-[30px]">
                 <Link href="#" className="text-gray-400 hover:text-primary-400 transition-all text-[13px] md:text-[14px]">
-                  Política de Privacidade
+                  {t('landing.footer.privacyPolicy')}
                 </Link>
                 <Link href="#" className="text-gray-400 hover:text-primary-400 transition-all text-[13px] md:text-[14px]">
-                  Termos de Uso
+                  {t('landing.footer.termsOfUse')}
                 </Link>
                 <Link href="#" className="text-gray-400 hover:text-primary-400 transition-all text-[13px] md:text-[14px]">
-                  Cookies
+                  {t('landing.footer.cookies')}
                 </Link>
               </div>
             </div>

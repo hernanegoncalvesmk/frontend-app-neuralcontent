@@ -172,6 +172,72 @@
         "startFree": "Start Free",
         "viewPlans": "View Plans"
       }
+    },
+    "features": {
+      "title": "Powerful",
+      "titleHighlight": "Features",
+      "subtitle": "Discover the features that make Neural Content the best choice for automated content creation",
+      "ai": {
+        "title": "Advanced AI",
+        "description": "Cutting-edge technology for professional quality content generation with relevant context."
+      },
+      "speed": {
+        "title": "Fast Generation",
+        "description": "Create content in seconds, not hours. Boost your productivity exponentially."
+      },
+      "languages": {
+        "title": "Multiple Languages",
+        "description": "Full support for Portuguese, English, Spanish and many other languages."
+      },
+      "formats": {
+        "title": "Various Formats",
+        "description": "Articles, posts, emails, product descriptions, captions and much more."
+      },
+      "editor": {
+        "title": "Smart Editor",
+        "description": "Refine and customize your content with advanced editing tools."
+      },
+      "sync": {
+        "title": "Synchronization",
+        "description": "Access your content from any device with automatic synchronization."
+      },
+      "stats": {
+        "contentGenerated": "Content Generated",
+        "activeUsers": "Active Users",
+        "satisfaction": "Satisfaction",
+        "availability": "Availability"
+      }
+    },
+    "cta": {
+      "title": "Ready to Revolutionize your Content Creation?",
+      "subtitle": "Join thousands of content creators who are already using our AI to accelerate their productivity and create high-quality content.",
+      "startFree": "Start for Free",
+      "viewPlans": "View All Plans",
+      "freeTrial": "7-day free trial",
+      "noCommitment": "No commitment",
+      "support24x7": "24/7 Support"
+    },
+    "footer": {
+      "description": "Advanced AI platform for automated content creation. Transform your ideas into professional content in seconds.",
+      "product": "Product",
+      "plansAndPricing": "Plans & Pricing",
+      "features": "Features",
+      "freeTrial": "Free Trial",
+      "integrations": "Integrations",
+      "company": "Company",
+      "aboutUs": "About Us",
+      "blog": "Blog",
+      "careers": "Careers",
+      "contact": "Contact",
+      "support": "Support",
+      "helpCenter": "Help Center",
+      "documentation": "Documentation",
+      "systemStatus": "System Status",
+      "community": "Community",
+      "allRightsReserved": "All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfUse": "Terms of Use",
+      "cookies": "Cookies"
     }
   }
 }

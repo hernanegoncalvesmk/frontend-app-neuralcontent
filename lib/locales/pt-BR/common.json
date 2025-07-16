@@ -172,6 +172,72 @@
         "startFree": "Começar Grátis",
         "viewPlans": "Ver Planos"
       }
+    },
+    "features": {
+      "title": "Recursos",
+      "titleHighlight": "Poderosos",
+      "subtitle": "Descubra as funcionalidades que tornam o Neural Content a melhor escolha para criação de conteúdo automatizado",
+      "ai": {
+        "title": "IA Avançada",
+        "description": "Tecnologia de ponta para geração de conteúdo com qualidade profissional e contexto relevante."
+      },
+      "speed": {
+        "title": "Geração Rápida",
+        "description": "Crie conteúdo em segundos, não em horas. Aumente sua produtividade exponencialmente."
+      },
+      "languages": {
+        "title": "Múltiplos Idiomas",
+        "description": "Suporte completo para português, inglês, espanhol e diversos outros idiomas."
+      },
+      "formats": {
+        "title": "Diversos Formatos",
+        "description": "Artigos, posts, emails, descrições de produtos, legendas e muito mais."
+      },
+      "editor": {
+        "title": "Editor Inteligente",
+        "description": "Refine e personalize seu conteúdo com ferramentas de edição avançadas."
+      },
+      "sync": {
+        "title": "Sincronização",
+        "description": "Acesse seus conteúdos de qualquer dispositivo com sincronização automática."
+      },
+      "stats": {
+        "contentGenerated": "Conteúdos Gerados",
+        "activeUsers": "Usuários Ativos",
+        "satisfaction": "Satisfação",
+        "availability": "Disponibilidade"
+      }
+    },
+    "cta": {
+      "title": "Pronto para Revolucionar sua Criação de Conteúdo?",
+      "subtitle": "Junte-se a milhares de criadores de conteúdo que já estão usando nossa IA para acelerar sua produtividade e criar conteúdo de alta qualidade.",
+      "startFree": "Começar Gratuitamente",
+      "viewPlans": "Ver Todos os Planos",
+      "freeTrial": "Teste grátis por 7 dias",
+      "noCommitment": "Sem compromisso",
+      "support24x7": "Suporte 24/7"
+    },
+    "footer": {
+      "description": "Plataforma de IA avançada para criação de conteúdo automatizada. Transforme suas ideias em conteúdo profissional em segundos.",
+      "product": "Produto",
+      "plansAndPricing": "Planos e Preços",
+      "features": "Recursos",
+      "freeTrial": "Teste Grátis",
+      "integrations": "Integrações",
+      "company": "Empresa",
+      "aboutUs": "Sobre Nós",
+      "blog": "Blog",
+      "careers": "Carreiras",
+      "contact": "Contato",
+      "support": "Suporte",
+      "helpCenter": "Central de Ajuda",
+      "documentation": "Documentação",
+      "systemStatus": "Status do Sistema",
+      "community": "Comunidade",
+      "allRightsReserved": "Todos os direitos reservados.",
+      "privacyPolicy": "Política de Privacidade",
+      "termsOfUse": "Termos de Uso",
+      "cookies": "Cookies"
     }
   }
 }

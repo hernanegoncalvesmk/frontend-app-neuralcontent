@@ -1,60 +1,62 @@
 "use client";
 
 import React from "react";
-
-const FEATURES = [
-  {
-    icon: "auto_awesome",
-    title: "IA Avançada",
-    description: "Tecnologia de ponta para geração de conteúdo com qualidade profissional e contexto relevante.",
-    color: "text-primary-600"
-  },
-  {
-    icon: "speed",
-    title: "Geração Rápida",
-    description: "Crie conteúdo em segundos, não em horas. Aumente sua produtividade exponencialmente.",
-    color: "text-green-600"
-  },
-  {
-    icon: "language",
-    title: "Múltiplos Idiomas",
-    description: "Suporte completo para português, inglês, espanhol e diversos outros idiomas.",
-    color: "text-blue-600"
-  },
-  {
-    icon: "palette",
-    title: "Diversos Formatos",
-    description: "Artigos, posts, emails, descrições de produtos, legendas e muito mais.",
-    color: "text-purple-600"
-  },
-  {
-    icon: "edit_note",
-    title: "Editor Inteligente",
-    description: "Refine e personalize seu conteúdo com ferramentas de edição avançadas.",
-    color: "text-orange-600"
-  },
-  {
-    icon: "cloud_sync",
-    title: "Sincronização",
-    description: "Acesse seus conteúdos de qualquer dispositivo com sincronização automática.",
-    color: "text-cyan-600"
-  }
-];
+import { useT } from "@/providers/TranslationProvider";
 
 const Features: React.FC = () => {
+  const t = useT();
+  
+  const FEATURES = [
+    {
+      icon: "auto_awesome",
+      title: t('landing.features.ai.title'),
+      description: t('landing.features.ai.description'),
+      color: "text-primary-600"
+    },
+    {
+      icon: "speed",
+      title: t('landing.features.speed.title'),
+      description: t('landing.features.speed.description'),
+      color: "text-green-600"
+    },
+    {
+      icon: "language",
+      title: t('landing.features.languages.title'),
+      description: t('landing.features.languages.description'),
+      color: "text-blue-600"
+    },
+    {
+      icon: "palette",
+      title: t('landing.features.formats.title'),
+      description: t('landing.features.formats.description'),
+      color: "text-purple-600"
+    },
+    {
+      icon: "edit_note",
+      title: t('landing.features.editor.title'),
+      description: t('landing.features.editor.description'),
+      color: "text-orange-600"
+    },
+    {
+      icon: "cloud_sync",
+      title: t('landing.features.sync.title'),
+      description: t('landing.features.sync.description'),
+      color: "text-cyan-600"
+    }
+  ];
   return (
     <>
       <div id="features" className="py-[80px] md:py-[100px] lg:py-[120px] bg-gray-50 dark:bg-gray-900/50">
         <div className="container 2xl:max-w-[1320px] mx-auto px-[12px]">
           <div className="text-center mb-[50px] md:mb-[70px] lg:mb-[90px]">
             <h2 className="text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-bold mb-[15px] md:mb-[20px] text-gray-900 dark:text-white">
-              Recursos 
+              {t('landing.features.title')}{" "}
               <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
-                {" "}Poderosos
+                {t('landing.features.titleHighlight')}
               </span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-[600px] mx-auto text-[15px] md:text-[16px] lg:text-[17px] leading-relaxed">
-              Descubra as funcionalidades que tornam o Neural Content a melhor escolha para criação de conteúdo automatizado
+              {t('landing.features.subtitle')}
             </p>
           </div>
 
@@ -89,7 +91,7 @@ const Features: React.FC = () => {
                   10K+
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-[14px] md:text-[15px]">
-                  Conteúdos Gerados
+                  {t('landing.features.stats.contentGenerated')}
                 </p>
               </div>
               
@@ -98,7 +100,7 @@ const Features: React.FC = () => {
                   500+
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-[14px] md:text-[15px]">
-                  Usuários Ativos
+                  {t('landing.features.stats.activeUsers')}
                 </p>
               </div>
               
@@ -107,7 +109,7 @@ const Features: React.FC = () => {
                   98%
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-[14px] md:text-[15px]">
-                  Satisfação
+                  {t('landing.features.stats.satisfaction')}
                 </p>
               </div>
               
@@ -116,7 +118,7 @@ const Features: React.FC = () => {
                   24/7
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-[14px] md:text-[15px]">
-                  Disponibilidade
+                  {t('landing.features.stats.availability')}
                 </p>
               </div>
             </div>

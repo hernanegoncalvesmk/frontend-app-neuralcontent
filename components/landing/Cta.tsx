@@ -2,19 +2,21 @@
 
 import React from "react";
 import Link from "next/link";
+import { useT } from "@/providers/TranslationProvider";
 
 const Cta: React.FC = () => {
+  const t = useT();
   return (
     <>
       <div className="py-[80px] md:py-[100px] lg:py-[120px] bg-gradient-to-r from-primary-600 to-purple-600 relative overflow-hidden">
         <div className="container 2xl:max-w-[1320px] mx-auto px-[12px] relative z-[1]">
           <div className="text-center max-w-[800px] mx-auto">
             <h2 className="text-[28px] md:text-[32px] lg:text-[36px] xl:text-[42px] font-bold mb-[15px] md:mb-[20px] text-white">
-              Pronto para Revolucionar sua Criação de Conteúdo?
+              {t('landing.cta.title')}
             </h2>
             
             <p className="text-primary-100 mb-[25px] md:mb-[35px] text-[15px] md:text-[16px] lg:text-[17px] leading-relaxed max-w-[600px] mx-auto">
-              Junte-se a milhares de criadores de conteúdo que já estão usando nossa IA para acelerar sua produtividade e criar conteúdo de alta qualidade.
+              {t('landing.cta.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-[15px] justify-center items-center">
@@ -26,7 +28,7 @@ const Cta: React.FC = () => {
                   <i className="material-symbols-outlined absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 !text-[20px]">
                     rocket_launch
                   </i>
-                  Começar Gratuitamente
+                  {t('landing.cta.startFree')}
                 </span>
               </Link>
               
@@ -38,7 +40,7 @@ const Cta: React.FC = () => {
                   <i className="material-symbols-outlined absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 !text-[20px]">
                     workspace_premium
                   </i>
-                  Ver Todos os Planos
+                  {t('landing.cta.viewPlans')}
                 </span>
               </Link>
             </div>
@@ -47,15 +49,15 @@ const Cta: React.FC = () => {
               <div className="flex flex-col sm:flex-row justify-center items-center gap-[15px] sm:gap-[30px] text-primary-100 text-sm">
                 <div className="flex items-center gap-[8px]">
                   <i className="material-symbols-outlined !text-[18px] text-green-300">verified</i>
-                  <span>Teste grátis por 7 dias</span>
+                  <span>{t('landing.cta.freeTrial')}</span>
                 </div>
                 <div className="flex items-center gap-[8px]">
                   <i className="material-symbols-outlined !text-[18px] text-green-300">verified</i>
-                  <span>Sem compromisso</span>
+                  <span>{t('landing.cta.noCommitment')}</span>
                 </div>
                 <div className="flex items-center gap-[8px]">
                   <i className="material-symbols-outlined !text-[18px] text-green-300">verified</i>
-                  <span>Suporte 24/7</span>
+                  <span>{t('landing.cta.support24x7')}</span>
                 </div>
               </div>
             </div>

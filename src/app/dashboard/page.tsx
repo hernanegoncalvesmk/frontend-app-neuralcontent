@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useTranslation } from 'react-i18next';
 
 // Dynamic import do ApexCharts para evitar problemas de SSR
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
@@ -28,15 +27,13 @@ interface ActivityItem {
 }
 
 export default function Dashboard() {
-  const { t: tDashboard } = useTranslation('dashboard');
-  
   const [widgets, setWidgets] = useState<DashboardWidget[]>([
     {
       id: 'credits',
-      title: tDashboard('widgets.credits.title'),
+      title: 'Créditos Disponíveis',
       value: '1,250',
-      subtitle: tDashboard('widgets.credits.subtitle'),
-      change: tDashboard('widgets.credits.change'),
+      subtitle: 'créditos restantes',
+      change: '+150 este mês',
       changeType: 'positive',
       icon: 'account_balance_wallet',
       order: 1,
@@ -44,10 +41,10 @@ export default function Dashboard() {
     },
     {
       id: 'extra-credits',
-      title: tDashboard('widgets.extraCredits.title'),
+      title: 'Créditos Extras',
       value: '320',
-      subtitle: tDashboard('widgets.extraCredits.subtitle'),
-      change: tDashboard('widgets.extraCredits.change'),
+      subtitle: 'créditos bônus',
+      change: '+50 recentes',
       changeType: 'positive',
       icon: 'stars',
       order: 2,
@@ -55,10 +52,10 @@ export default function Dashboard() {
     },
     {
       id: 'plan',
-      title: tDashboard('widgets.plan.title'),
+      title: 'Plano Atual',
       value: 'Pro',
-      subtitle: tDashboard('widgets.plan.subtitle'),
-      change: tDashboard('widgets.plan.change'),
+      subtitle: 'até 15/02/2025',
+      change: '30 dias restantes',
       changeType: 'neutral',
       icon: 'workspace_premium',
       order: 3,
@@ -66,10 +63,10 @@ export default function Dashboard() {
     },
     {
       id: 'usage',
-      title: tDashboard('widgets.usage.title'),
+      title: 'Uso Mensal',
       value: '75%',
-      subtitle: tDashboard('widgets.usage.subtitle'),
-      change: tDashboard('widgets.usage.change'),
+      subtitle: '750/1000 créditos',
+      change: '+12% vs mês anterior',
       changeType: 'positive',
       icon: 'analytics',
       order: 4,
@@ -77,10 +74,10 @@ export default function Dashboard() {
     },
     {
       id: 'products',
-      title: tDashboard('widgets.products.title'),
+      title: 'Produtos',
       value: '24',
-      subtitle: tDashboard('widgets.products.subtitle'),
-      change: tDashboard('widgets.products.change'),
+      subtitle: 'produtos ativos',
+      change: '+3 esta semana',
       changeType: 'positive',
       icon: 'inventory_2',
       order: 5,
@@ -88,10 +85,10 @@ export default function Dashboard() {
     },
     {
       id: 'personas',
-      title: tDashboard('widgets.personas.title'),
+      title: 'Personas',
       value: '8',
-      subtitle: tDashboard('widgets.personas.subtitle'),
-      change: tDashboard('widgets.personas.change'),
+      subtitle: 'personas criadas',
+      change: '+1 recente',
       changeType: 'positive',
       icon: 'people',
       order: 6,
