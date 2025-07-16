@@ -2,24 +2,25 @@
 
 import React from "react";
 import Link from "next/link";
+import { useT } from "@/providers/TranslationProvider";
 
 const HeroBanner: React.FC = () => {
+  const t = useT();
+
   return (
     <>
       <div className="pt-[125px] md:pt-[145px] lg:pt-[185px] pb-[60px] md:pb-[80px] lg:pb-[100px]">
         <div className="container 2xl:max-w-[1320px] mx-auto px-[12px] relative z-[1]">
           <div className="text-center mx-auto xl:max-w-[935px] mb-[30px] md:mb-[45px] lg:mb-[60px]">
             <h1 className="!text-[32px] md:!text-[40px] lg:!text-[50px] xl:!text-[60px] !mb-[13px] md:!mb-[22px] lg:!mb-[25px] xl:!mb-[30px] -tracking-[.5px] md:-tracking-[1px] xl:-tracking-[1.5px] !leading-[1.2] text-gray-900 dark:text-white">
-              Transforme suas Ideias em 
+              {t('landing.hero.title.main')}
               <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
-                {" "}Conteúdo Inteligente
+                {" "}{t('landing.hero.title.highlight')}
               </span>
             </h1>
 
             <p className="mx-auto leading-[1.6] md:text-[15px] lg:text-[16px] xl:text-[18px] md:max-w-[600px] lg:max-w-[650px] xl:max-w-[740px] xl:tracking-[.2px] text-gray-600 dark:text-gray-300">
-              Plataforma de IA avançada para criação de conteúdo automatizada. 
-              Gere textos, artigos, posts e muito mais com qualidade profissional 
-              em segundos.
+              {t('landing.hero.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-[15px] justify-center items-center mt-[25px] md:mt-[35px]">
@@ -31,7 +32,7 @@ const HeroBanner: React.FC = () => {
                   <i className="material-symbols-outlined absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 !text-[20px]">
                     auto_awesome
                   </i>
-                  Começar Grátis
+                  {t('landing.hero.buttons.startFree')}
                 </span>
               </Link>
               
@@ -43,7 +44,7 @@ const HeroBanner: React.FC = () => {
                   <i className="material-symbols-outlined absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 !text-[20px]">
                     workspace_premium
                   </i>
-                  Ver Planos
+                  {t('landing.hero.buttons.viewPlans')}
                 </span>
               </Link>
             </div>

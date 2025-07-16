@@ -68,6 +68,36 @@
       "markAllRead": "Mark all as read",
       "noNotifications": "No notifications"
     },
+    "credits": {
+      "title": "Available Credits",
+      "subtitle": "credits remaining",
+      "change": "+150 this month"
+    },
+    "extraCredits": {
+      "title": "Extra Credits",
+      "subtitle": "bonus credits",
+      "change": "+50 recent"
+    },
+    "plan": {
+      "title": "Current Plan",
+      "subtitle": "until 02/15/2025",
+      "change": "30 days remaining"
+    },
+    "usage": {
+      "title": "Monthly Usage",
+      "subtitle": "750/1000 credits",
+      "change": "+12% vs last month"
+    },
+    "products": {
+      "title": "Products",
+      "subtitle": "active products",
+      "change": "+3 this week"
+    },
+    "personas": {
+      "title": "Personas",
+      "subtitle": "personas created",
+      "change": "+1 recent"
+    },
     "usageProgress": {
       "title": "Plan Usage",
       "credits": "Credits: {{used}} / {{total}}",

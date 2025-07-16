@@ -152,5 +152,26 @@
     "en-US": "English (US)",
     "es-ES": "Español",
     "fr-FR": "Français"
+  },
+  "landing": {
+    "nav": {
+      "home": "Início",
+      "features": "Recursos", 
+      "plans": "Planos",
+      "contact": "Contato",
+      "login": "Entrar",
+      "register": "Começar Grátis"
+    },
+    "hero": {
+      "title": {
+        "main": "Transforme suas Ideias em",
+        "highlight": "Conteúdo Inteligente"
+      },
+      "subtitle": "Plataforma de IA avançada para criação de conteúdo automatizada. Gere textos, artigos, posts e muito mais com qualidade profissional em segundos.",
+      "buttons": {
+        "startFree": "Começar Grátis",
+        "viewPlans": "Ver Planos"
+      }
+    }
   }
 }

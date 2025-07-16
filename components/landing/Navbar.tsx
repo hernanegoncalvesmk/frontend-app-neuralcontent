@@ -4,18 +4,20 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_ITEMS = [
-  { name: "Início", path: "/" },
-  { name: "Recursos", path: "#features" },
-  { name: "Planos", path: "/billing/plans" },
-  { name: "Contato", path: "#contact" },
-];
+import { useT } from "@/providers/TranslationProvider";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const t = useT();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const handleToggle = () => setMenuOpen(!isMenuOpen);
+
+  const NAV_ITEMS = [
+    { name: t('landing.nav.home'), path: "/" },
+    { name: t('landing.nav.features'), path: "#features" },
+    { name: t('landing.nav.plans'), path: "/billing/plans" },
+    { name: t('landing.nav.contact'), path: "#contact" },
+  ];
 
   // handleScroll
   useEffect(() => {
@@ -108,13 +110,13 @@ const Navbar: React.FC = () => {
                   href="/auth/login"
                   className="font-medium py-[8px] px-[20px] text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md transition-all hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  Entrar
+                  {t('landing.nav.login')}
                 </Link>
                 <Link
                   href="/auth/register"
                   className="font-medium py-[8px] px-[20px] bg-primary-600 text-white rounded-md transition-all hover:bg-primary-500"
                 >
-                  Começar Grátis
+                  {t('landing.nav.register')}
                 </Link>
               </div>
             </div>
@@ -146,13 +148,13 @@ const Navbar: React.FC = () => {
                     href="/auth/login"
                     className="font-medium py-[8px] px-[15px] text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md transition-all hover:bg-gray-50 dark:hover:bg-gray-800 text-center flex-1"
                   >
-                    Entrar
+                    {t('landing.nav.login')}
                   </Link>
                   <Link
                     href="/auth/register"
                     className="font-medium py-[8px] px-[15px] bg-primary-600 text-white rounded-md transition-all hover:bg-primary-500 text-center flex-1"
                   >
-                    Começar Grátis
+                    {t('landing.nav.register')}
                   </Link>
                 </li>
               </ul>

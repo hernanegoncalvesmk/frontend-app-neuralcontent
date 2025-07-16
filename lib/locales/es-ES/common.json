@@ -55,5 +55,18 @@
     "en-US": "English (US)",
     "es-ES": "Español",
     "fr-FR": "Français"
+  },
+  "landing": {
+    "hero": {
+      "title": {
+        "main": "Transforma tus Ideas en",
+        "highlight": "Contenido Inteligente"
+      },
+      "subtitle": "Plataforma de IA avanzada para creación automatizada de contenido. Genera textos, artículos, posts y mucho más con calidad profesional en segundos.",
+      "buttons": {
+        "startFree": "Empezar Gratis",
+        "viewPlans": "Ver Planes"
+      }
+    }
   }
 }

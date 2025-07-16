@@ -152,5 +152,26 @@
     "en-US": "English (US)",
     "es-ES": "Español",
     "fr-FR": "Français"
+  },
+  "landing": {
+    "nav": {
+      "home": "Home",
+      "features": "Features", 
+      "plans": "Plans",
+      "contact": "Contact",
+      "login": "Login",
+      "register": "Start Free"
+    },
+    "hero": {
+      "title": {
+        "main": "Transform your Ideas into",
+        "highlight": "Smart Content"
+      },
+      "subtitle": "Advanced AI platform for automated content creation. Generate texts, articles, posts and much more with professional quality in seconds.",
+      "buttons": {
+        "startFree": "Start Free",
+        "viewPlans": "View Plans"
+      }
+    }
   }
 }
