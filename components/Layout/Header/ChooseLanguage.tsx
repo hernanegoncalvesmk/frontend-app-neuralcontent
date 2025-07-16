@@ -1,30 +1,22 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-
-type Language = {
-  name: string;
-  code: string;
-  flag: string;
-};
-
-const languages: Language[] = [
-  { name: "English", code: "en", flag: "/images/flags/usa.svg" },
-  { name: "French", code: "fr", flag: "/images/flags/france.svg" },
-  { name: "German", code: "de", flag: "/images/flags/germany.svg" },
-  { name: "Portuguese", code: "pt", flag: "/images/flags/portugal.svg" },
-  { name: "Spanish", code: "es", flag: "/images/flags/spain.svg" },
-];
+import { useLanguage, useT } from "@/providers/TranslationProvider";
 
 const ChooseLanguage: React.FC = () => {
-  const handleLanguageChange = (code: string) => {
-    console.log(`Selected language: ${code}`);
-    // Add logic here to update the app's language state
-  };
-
+  const { currentLanguage, languages, changeLanguage } = useLanguage();
+  const t = useT();
   const [active, setActive] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown container
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleLanguageChange = async (code: string) => {
+    try {
+      await changeLanguage(code);
+      setActive(false);
+    } catch (error) {
+      console.error('Failed to change language:', error);
+    }
+  };
 
   const handleDropdownToggle = () => {
     setActive((prevState) => !prevState);
@@ -37,14 +29,11 @@ const ChooseLanguage: React.FC = () => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setActive(false); // Close the dropdown if clicked outside
+        setActive(false);
       }
     };
 
-    // Attach the event listener
     document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup the event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -71,29 +60,34 @@ const ChooseLanguage: React.FC = () => {
       {active && (
         <div className="language-menu-dropdown bg-white dark:bg-[#0c1427] transition-all shadow-3xl dark:shadow-none pt-[13px] md:pt-[14px] absolute mt-[18px] md:mt-[21px] w-[200px] md:w-[240px] z-[1] top-full ltr:left-0 ltr:md:left-auto ltr:lg:right-0 rtl:right-0 rtl:md:right-auto rtl:lg:left-0 rounded-md">
           <span className="block text-black dark:text-white font-semibold px-[20px] pb-[14px] text-sm md:text-[15px]">
-            Choose Language
+            {t('languages.chooseLang')}
           </span>
 
           <ul>
-            {languages.map((language) => (
+            {languages.filter(lang => lang.isActive).map((language) => (
               <li
                 key={language.code}
                 className="border-t border-dashed border-gray-100 dark:border-[#172036]"
               >
                 <button
                   type="button"
-                  className="text-black dark:text-white px-[20px] py-[12px] d-block w-full font-medium"
+                  className={`text-black dark:text-white px-[20px] py-[12px] d-block w-full font-medium hover:bg-gray-50 dark:hover:bg-[#15203c] transition-all ${
+                    currentLanguage === language.code ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : ''
+                  }`}
                   onClick={() => handleLanguageChange(language.code)}
                 >
                   <div className="flex items-center">
-                    <Image
-                      src={language.flag}
-                      className="ltr:mr-[10px] rtl:ml-[10px]"
-                      alt={language.name}
-                      width={30}
-                      height={30}
-                    />
-                    {language.name}
+                    <span className="text-[20px] ltr:mr-[10px] rtl:ml-[10px]">
+                      {language.flag}
+                    </span>
+                    <span className="flex-1 text-left">
+                      {language.name}
+                    </span>
+                    {currentLanguage === language.code && (
+                      <i className="material-symbols-outlined text-primary-500 !text-[16px]">
+                        check
+                      </i>
+                    )}
                   </div>
                 </button>
               </li>

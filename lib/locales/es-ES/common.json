@@ -1,0 +1,59 @@
+{
+  "app": {
+    "name": "Neural Content",
+    "description": "Plataforma de creación de contenido con IA",
+    "welcome": "Bienvenido a Neural Content"
+  },
+  "navigation": {
+    "dashboard": "Panel",
+    "billing": "Facturación",
+    "plans": "Planes",
+    "credits": "Créditos",
+    "profile": "Perfil",
+    "admin": "Administración",
+    "settings": "Configuración",
+    "logout": "Salir"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar",
+    "refresh": "Actualizar",
+    "close": "Cerrar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "reset": "Restablecer",
+    "clear": "Limpiar",
+    "select": "Seleccionar",
+    "selectAll": "Seleccionar Todo",
+    "actions": "Acciones",
+    "status": "Estado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
+    "success": "Éxito",
+    "error": "Error",
+    "warning": "Advertencia",
+    "info": "Información",
+    "required": "Obligatorio",
+    "optional": "Opcional"
+  },
+  "languages": {
+    "chooseLang": "Elegir Idioma",
+    "pt-BR": "Português (Brasil)",
+    "en-US": "English (US)",
+    "es-ES": "Español",
+    "fr-FR": "Français"
+  }
+}

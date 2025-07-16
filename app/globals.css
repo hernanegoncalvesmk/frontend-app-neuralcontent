@@ -275,50 +275,54 @@ button {
 
 .sidebar-custom-scrollbar {
   &::-webkit-scrollbar {
-    width: 3px;
+    width: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
-  /* Track */
+  /* Track - completamente transparente por padrão */
   &::-webkit-scrollbar-track { 
+    background: transparent;
     border-radius: 10px;
   }
-  /* Handle */
+  /* Handle - transparente por padrão */
   &::-webkit-scrollbar-thumb {
-    background: #fff; 
+    background: transparent; 
     border-radius: 10px;
+    transition: background-color 0.3s ease;
   }
-  /* Handle on hover */
+  /* Handle on hover do scrollbar */
   &::-webkit-scrollbar-thumb:hover {
-    background: #fff; 
+    background: rgba(255, 255, 255, 0.6); 
   }
 
+  /* Quando hovering no container, mostra o scrollbar */
   &:hover {
+    &::-webkit-scrollbar {
+      opacity: 1;
+    }
     &::-webkit-scrollbar-thumb {
-      background: #e6e6e6;  
+      background: rgba(255, 255, 255, 0.3);  
     }
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-      background: #a1a1a1; 
+      background: rgba(255, 255, 255, 0.6); 
     }
   }
 }
 .dark {
   .sidebar-custom-scrollbar {
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-      background: #0c1427;  
-    }
-    /* Handle on hover */
+    /* Handle on hover do scrollbar no modo escuro */
     &::-webkit-scrollbar-thumb:hover {
-      background: #333333; 
+      background: rgba(255, 255, 255, 0.4); 
     }
+    /* Quando hovering no container, mostra o scrollbar no modo escuro */
     &:hover {
-      /* Handle */
       &::-webkit-scrollbar-thumb {
-        background: #2a2929;  
+        background: rgba(255, 255, 255, 0.2);  
       }
       /* Handle on hover */
       &::-webkit-scrollbar-thumb:hover {
-        background: #333333; 
+        background: rgba(255, 255, 255, 0.4); 
       }
     }
   }

@@ -8,6 +8,7 @@ import "swiper/css/bundle";
 import "./globals.css";
 
 import LayoutProvider from "@/providers/LayoutProvider";
+import { TranslationProvider } from "@/providers/TranslationProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -17,8 +18,8 @@ const inter = Inter({
 });
   
 export const metadata: Metadata = {
-  title: "Trezo - Tailwind Nextjs Admin Dashboard Templat",
-  description: "Tailwind Nextjs Admin Dashboard Templat",
+  title: "Neural Content - AI-Powered Content Creation Platform",
+  description: "Create amazing content with AI-powered tools and advanced features",
 };
 
 export default function RootLayout({
@@ -27,11 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="pt-BR" dir="ltr">
       <body
         className={`${inter.variable} antialiased`}
       >
-        <LayoutProvider>{children}</LayoutProvider>
+        <TranslationProvider>
+          <LayoutProvider>
+            {children}
+          </LayoutProvider>
+        </TranslationProvider>
       </body>
     </html>
   );

@@ -1,0 +1,7 @@
+{
+  "title": "Tableau de bord",
+  "welcome": {
+    "title": "Bon retour, {{name}} !",
+    "subtitle": "Voici un résumé de vos activités aujourd'hui"
+  }
+}

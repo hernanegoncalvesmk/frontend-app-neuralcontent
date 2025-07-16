@@ -119,7 +119,7 @@ export default function CreditsPage() {
           ].map((section) => (
             <button
               key={section.id}
-              onClick={() => setActiveSection(section.id as any)}
+              onClick={() => setActiveSection(section.id as 'overview' | 'packages' | 'history')}
               className={`
                 flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
                 ${activeSection === section.id

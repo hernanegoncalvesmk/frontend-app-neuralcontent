@@ -1,0 +1,84 @@
+{
+  "title": "Dashboard",
+  "subtitle": "Overview of your activities",
+  "welcome": {
+    "title": "Welcome back, {{name}}!",
+    "subtitle": "Here's a summary of your activities today"
+  },
+  "stats": {
+    "totalCredits": "Total Credits",
+    "usedCredits": "Used Credits",
+    "remainingCredits": "Remaining Credits",
+    "monthlyUsage": "Monthly Usage",
+    "totalDocuments": "Total Documents",
+    "activeProjects": "Active Projects",
+    "thisMonth": "This month",
+    "today": "Today",
+    "increase": "increase",
+    "decrease": "decrease"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "newDocument": "New Document",
+    "buyCredits": "Buy Credits",
+    "upgradePlan": "Upgrade Plan",
+    "viewReports": "View Reports",
+    "managePlans": "Manage Plans",
+    "accountSettings": "Account Settings"
+  },
+  "recentActivity": {
+    "title": "Recent Activity",
+    "noActivity": "No recent activity",
+    "documentCreated": "Document created",
+    "creditsUsed": "Credits used",
+    "planUpgraded": "Plan upgraded",
+    "paymentReceived": "Payment received",
+    "seeAll": "See all"
+  },
+  "charts": {
+    "creditUsage": {
+      "title": "Credit Usage",
+      "subtitle": "Last 30 days"
+    },
+    "documentGeneration": {
+      "title": "Document Generation",
+      "subtitle": "Documents created by category"
+    },
+    "userActivity": {
+      "title": "User Activity",
+      "subtitle": "Peak usage hours"
+    }
+  },
+  "widgets": {
+    "currentPlan": {
+      "title": "Current Plan",
+      "planName": "{{plan}}",
+      "renewsOn": "Renews on {{date}}",
+      "upgrade": "Upgrade",
+      "manage": "Manage"
+    },
+    "creditBalance": {
+      "title": "Credit Balance",
+      "balance": "{{credits}} credits",
+      "expiring": "{{credits}} expire in {{days}} days",
+      "buyMore": "Buy More"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "markAllRead": "Mark all as read",
+      "noNotifications": "No notifications"
+    },
+    "usageProgress": {
+      "title": "Plan Usage",
+      "credits": "Credits: {{used}} / {{total}}",
+      "documents": "Documents: {{used}} / {{total}}",
+      "storage": "Storage: {{used}} / {{total}}"
+    }
+  },
+  "alerts": {
+    "lowCredits": "Your credits are running low",
+    "planExpiring": "Your plan expires in {{days}} days",
+    "paymentFailed": "Payment failed - Please update your details",
+    "maintenanceMode": "Scheduled maintenance on {{date}}"
+  }
+}

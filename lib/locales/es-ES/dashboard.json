@@ -1,0 +1,7 @@
+{
+  "title": "Panel de Control",
+  "welcome": {
+    "title": "¡Bienvenido de vuelta, {{name}}!",
+    "subtitle": "Aquí tienes un resumen de tus actividades hoy"
+  }
+}

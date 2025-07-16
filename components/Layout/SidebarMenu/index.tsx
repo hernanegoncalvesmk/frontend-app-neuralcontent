@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -15,17 +15,6 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
   // Removido temporariamente para evitar problemas de build
   // const { user } = useAuth();
   // const user = null; // Mock temporário
-  
-  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
-    principal: true, // Dashboard sempre aberto por padrão
-  });
-
-  const toggleGroup = (groupId: string) => {
-    setOpenGroups(prev => ({
-      ...prev,
-      [groupId]: !prev[groupId]
-    }));
-  };
 
   // Filtrar itens baseado em permissões
   const filterMenuItems = (items: MenuItem[]): MenuItem[] => {
@@ -57,54 +46,6 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
 
   const renderMenuItem = (item: MenuItem) => {
     const isActive = pathname === item.href;
-    const hasChildren = item.children && item.children.length > 0;
-    const isGroupOpen = openGroups[item.group || ''] || false;
-
-    if (hasChildren) {
-      return (
-        <div key={item.id} className="accordion-item rounded-md text-black dark:text-white mb-[5px] whitespace-nowrap">
-          <button
-            className={`accordion-button toggle flex items-center transition-all py-[9px] ltr:pl-[14px] ltr:pr-[30px] rtl:pr-[14px] rtl:pl-[30px] rounded-md font-medium w-full relative hover:bg-gray-50 text-left dark:hover:bg-[#15203c] ${
-              isGroupOpen ? "open" : ""
-            }`}
-            type="button"
-            onClick={() => toggleGroup(item.group || item.id)}
-          >
-            <i className="material-symbols-outlined transition-all text-gray-500 dark:text-gray-400 ltr:mr-[7px] rtl:ml-[7px] !text-[22px] leading-none relative -top-px">
-              {item.icon}
-            </i>
-            <span className="title leading-none">{item.label}</span>
-            <i className={`material-symbols-outlined ltr:ml-auto rtl:mr-auto transition-transform ${
-              isGroupOpen ? 'rotate-180' : ''
-            }`}>
-              expand_more
-            </i>
-          </button>
-
-          <div className={`accordion-collapse ${isGroupOpen ? "open" : "hidden"}`}>
-            <div className="pt-[4px]">
-              <ul className="sidebar-sub-menu">
-                {item.children?.map(child => (
-                  <li key={child.id} className="sidemenu-item mb-[4px] last:mb-0">
-                    <Link
-                      href={child.href || '#'}
-                      className={`sidemenu-link rounded-md flex items-center relative transition-all font-medium text-gray-500 dark:text-gray-400 py-[9px] ltr:pl-[38px] ltr:pr-[30px] rtl:pr-[38px] rtl:pl-[30px] hover:text-primary-500 hover:bg-primary-50 w-full text-left dark:hover:bg-[#15203c] ${
-                        pathname === child.href ? "active" : ""
-                      }`}
-                    >
-                      <i className="material-symbols-outlined ltr:mr-[7px] rtl:ml-[7px] !text-[18px] leading-none relative -top-px">
-                        {child.icon}
-                      </i>
-                      {child.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      );
-    }
 
     return (
       <div key={item.id} className="sidemenu-item mb-[4px] last:mb-0">
@@ -154,7 +95,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ toggleActive }) => {
       </div>
 
       {/* Menu Content */}
-      <div className="pt-[89px] px-[22px] pb-[20px] h-screen overflow-y-scroll sidebar-custom-scrollbar">
+      <div className="pt-[89px] px-[22px] pb-[20px] h-screen overflow-y-auto sidebar-custom-scrollbar">
         <div className="accordion">
           {Object.entries(groupedMenuItems).map(([groupKey, items]) => (
             <div key={groupKey} className="mb-[25px]">
