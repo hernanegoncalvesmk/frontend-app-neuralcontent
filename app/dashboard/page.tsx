@@ -103,29 +103,29 @@ export default function Dashboard() {
     {
       id: '1',
       type: 'content',
-      title: tDashboard('activities.items.instagramPost'),
-      time: tDashboard('activities.time.twoHours'),
+      title: tDashboard('activities.instagramPost'),
+      time: tDashboard('timeAgo.hours2'),
       status: 'success'
     },
     {
       id: '2',
       type: 'product',
-      title: tDashboard('activities.items.productUpdated'),
-      time: tDashboard('activities.time.fourHours'),
+      title: tDashboard('activities.productUpdated'),
+      time: tDashboard('timeAgo.hours4'),
       status: 'success'
     },
     {
       id: '3',
       type: 'persona',
-      title: tDashboard('activities.items.newPersona'),
-      time: tDashboard('activities.time.oneDay'),
+      title: tDashboard('activities.newPersona'),
+      time: tDashboard('timeAgo.day1'),
       status: 'success'
     },
     {
       id: '4',
       type: 'content',
-      title: tDashboard('activities.items.emailProcessing'),
-      time: tDashboard('activities.time.twoDays'),
+      title: tDashboard('activities.emailProcessing'),
+      time: tDashboard('timeAgo.days2'),
       status: 'pending'
     }
   ]);
@@ -133,7 +133,7 @@ export default function Dashboard() {
   // Dados para o gráfico de consumo ao longo do tempo
   const [consumptionChartData] = useState({
     series: [{
-      name: tDashboard('charts.consumption.seriesName'),
+      name: 'Créditos Utilizados',
       data: [45, 52, 38, 67, 89, 125, 156, 178, 203, 234, 267, 289]
     }],
     options: {
@@ -149,20 +149,7 @@ export default function Dashboard() {
       },
       colors: ['#3b82f6'],
       xaxis: {
-        categories: [
-          tDashboard('charts.months.jan'), 
-          tDashboard('charts.months.feb'), 
-          tDashboard('charts.months.mar'), 
-          tDashboard('charts.months.apr'), 
-          tDashboard('charts.months.may'), 
-          tDashboard('charts.months.jun'),
-          tDashboard('charts.months.jul'), 
-          tDashboard('charts.months.aug'), 
-          tDashboard('charts.months.sep'), 
-          tDashboard('charts.months.oct'), 
-          tDashboard('charts.months.nov'), 
-          tDashboard('charts.months.dec')
-        ],
+        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
         labels: {
           style: {
             colors: '#6b7280'
@@ -194,12 +181,7 @@ export default function Dashboard() {
         type: 'pie' as const,
         height: 350
       },
-      labels: [
-        tDashboard('charts.distribution.labels.socialPosts'),
-        tDashboard('charts.distribution.labels.emails'),
-        tDashboard('charts.distribution.labels.blogArticles'),
-        tDashboard('charts.distribution.labels.others')
-      ],
+      labels: ['Posts Sociais', 'E-mails', 'Artigos Blog', 'Outros'],
       colors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
       legend: {
         position: 'bottom' as const,
@@ -261,10 +243,10 @@ export default function Dashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            {tDashboard('page.title')}
+            Dashboard
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-1">
-            {tDashboard('page.subtitle')}
+            {tDashboard('overview')}
           </p>
         </div>
         <div className="flex space-x-3">
@@ -335,7 +317,7 @@ export default function Dashboard() {
             <span className="material-icons text-3xl mr-4">add_business</span>
             <div>
               <h3 className="text-lg font-semibold">{tDashboard('quickActions.createProduct.title')}</h3>
-              <p className="text-blue-100">{tDashboard('quickActions.createProduct.subtitle')}</p>
+              <p className="text-blue-100">{tDashboard('quickActions.createProduct.description')}</p>
             </div>
           </div>
         </div>
@@ -348,7 +330,7 @@ export default function Dashboard() {
             <span className="material-icons text-3xl mr-4">person_add</span>
             <div>
               <h3 className="text-lg font-semibold">{tDashboard('quickActions.createPersona.title')}</h3>
-              <p className="text-green-100">{tDashboard('quickActions.createPersona.subtitle')}</p>
+              <p className="text-green-100">{tDashboard('quickActions.createPersona.description')}</p>
             </div>
           </div>
         </div>
@@ -360,8 +342,8 @@ export default function Dashboard() {
           <div className="flex items-center">
             <span className="material-icons text-3xl mr-4">auto_awesome</span>
             <div>
-              <h3 className="text-lg font-semibold">{tDashboard('quickActions.generateContent.title')}</h3>
-              <p className="text-purple-100">{tDashboard('quickActions.generateContent.subtitle')}</p>
+              <h3 className="text-lg font-semibold">{tDashboard('quickActions.createContent.title')}</h3>
+              <p className="text-purple-100">{tDashboard('quickActions.createContent.description')}</p>
             </div>
           </div>
         </div>
@@ -371,7 +353,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            {tDashboard('charts.consumption.title')}
+            {tDashboard('charts.creditUsage')}
           </h3>
           <Chart
             options={consumptionChartData.options}
@@ -383,7 +365,7 @@ export default function Dashboard() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            {tDashboard('charts.distribution.title')}
+            {tDashboard('charts.contentDistribution')}
           </h3>
           <Chart
             options={contentDistributionData.options}
@@ -398,7 +380,7 @@ export default function Dashboard() {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            {tDashboard('activities.title')}
+            {tDashboard('recentActivities.title')}
           </h3>
         </div>
         <div className="p-6">
@@ -420,9 +402,9 @@ export default function Dashboard() {
                 </div>
                 <div className="flex-shrink-0">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getActivityColor(activity.status)}`}>
-                    {activity.status === 'success' && tDashboard('activities.status.completed')}
-                    {activity.status === 'pending' && tDashboard('activities.status.pending')}
-                    {activity.status === 'error' && tDashboard('activities.status.error')}
+                    {activity.status === 'success' && tDashboard('activityStatus.completed')}
+                    {activity.status === 'pending' && tDashboard('activityStatus.pending')}
+                    {activity.status === 'error' && tDashboard('activityStatus.error')}
                   </span>
                 </div>
               </div>

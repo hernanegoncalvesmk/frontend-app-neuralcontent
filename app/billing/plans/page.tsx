@@ -8,7 +8,7 @@ import BillingToggle from '@/components/billing/plans/BillingToggle';
 import PlanCard from '@/components/billing/plans/PlanCard';
 
 export default function PlansPage() {
-  const { t: tBilling } = useTranslation('billing');
+  const { t } = useTranslation('billing');
   const [plans, setPlans] = useState<Plan[]>([]);
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>('monthly');
   const [currentPlanId, setCurrentPlanId] = useState<string | undefined>();
@@ -28,7 +28,7 @@ export default function PlansPage() {
       const plansData = plansService.getMockPlans();
       setPlans(plansData);
     } catch (err) {
-      setError(tBilling('error.loadPlans'));
+      setError(t('errors.loadPlans'));
       console.error('Erro ao carregar planos:', err);
     } finally {
       setLoading(false);
@@ -86,14 +86,14 @@ export default function PlansPage() {
             <span className="material-icons text-6xl">error_outline</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-            {tBilling('error.title')}
+            {t('errors.loadPlansTitle')}
           </h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">{error}</p>
           <button
             onClick={loadPlans}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
           >
-            {tBilling('error.tryAgain')}
+            {t('errors.tryAgain')}
           </button>
         </div>
       </div>
@@ -113,11 +113,11 @@ export default function PlansPage() {
           </div>
           
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 px-4">
-            {tBilling('page.title')}
+            {t('plans.title')}
           </h2>
           
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 leading-relaxed">
-            {tBilling('page.subtitle')}
+            {t('plans.subtitle')}
           </p>
         </div>
 
@@ -147,10 +147,10 @@ export default function PlansPage() {
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              {tBilling('whyUpgrade.title')}
+              {t('plans.whyUpgrade.title')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              {tBilling('whyUpgrade.description')}
+              {t('plans.whyUpgrade.description')}
             </p>
           </div>
           
@@ -159,11 +159,9 @@ export default function PlansPage() {
               <div className="bg-blue-100 dark:bg-blue-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="material-icons text-blue-600 dark:text-blue-400 text-2xl">speed</span>
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                {tBilling('whyUpgrade.benefits.productivity.title')}
-              </h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{t('plans.whyUpgrade.benefits.productivity.title')}</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                {tBilling('whyUpgrade.benefits.productivity.description')}
+                {t('plans.whyUpgrade.benefits.productivity.description')}
               </p>
             </div>
             
@@ -171,11 +169,9 @@ export default function PlansPage() {
               <div className="bg-green-100 dark:bg-green-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="material-icons text-green-600 dark:text-green-400 text-2xl">savings</span>
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                {tBilling('whyUpgrade.benefits.savings.title')}
-              </h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{t('plans.whyUpgrade.benefits.savings.title')}</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                {tBilling('whyUpgrade.benefits.savings.description')}
+                {t('plans.whyUpgrade.benefits.savings.description')}
               </p>
             </div>
             
@@ -183,11 +179,9 @@ export default function PlansPage() {
               <div className="bg-purple-100 dark:bg-purple-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="material-icons text-purple-600 dark:text-purple-400 text-2xl">auto_awesome</span>
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                {tBilling('whyUpgrade.benefits.features.title')}
-              </h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{t('plans.whyUpgrade.benefits.features.title')}</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                {tBilling('whyUpgrade.benefits.features.description')}
+                {t('plans.whyUpgrade.benefits.features.description')}
               </p>
             </div>
           </div>

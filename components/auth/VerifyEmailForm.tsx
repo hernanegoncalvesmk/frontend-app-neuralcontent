@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/Button';
 
 const VerifyEmailForm: React.FC = () => {
+  const { t } = useTranslation('auth');
   const searchParams = useSearchParams();
   const [email, setEmail] = useState<string>('');
   const [isResending, setIsResending] = useState(false);
@@ -27,10 +29,10 @@ const VerifyEmailForm: React.FC = () => {
       // Aqui você implementará a chamada para reenviar o email
       // await authService.resendVerificationEmail(email);
       
-      setResendMessage('Email de verificação reenviado com sucesso!');
+      setResendMessage(t('verifyEmail.resend.success'));
     } catch (err) {
       console.error('Erro ao reenviar email:', err);
-      setResendMessage('Erro ao reenviar email. Tente novamente.');
+      setResendMessage(t('verifyEmail.resend.error'));
     } finally {
       setIsResending(false);
     }
@@ -81,10 +83,10 @@ const VerifyEmailForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                Verifique seu email!
+                {t('verifyEmail.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400 mb-4">
-                Enviamos um link de verificação para:
+                {t('verifyEmail.subtitle')}
               </p>
               {email && (
                 <p className="font-semibold text-primary-500 mb-4">
@@ -92,21 +94,20 @@ const VerifyEmailForm: React.FC = () => {
                 </p>
               )}
               <p className="text-sm text-[#445164] dark:text-gray-400">
-                Clique no link no email para ativar sua conta. Caso não encontre o email, 
-                verifique sua caixa de spam ou lixo eletrônico.
+                {t('verifyEmail.description')}
               </p>
             </div>
 
             {/* Instruções */}
             <div className="mb-[25px] p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
               <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-2">
-                Próximos passos:
+                {t('verifyEmail.steps.title')}
               </h3>
               <ol className="list-decimal list-inside text-sm text-blue-700 dark:text-blue-400 space-y-1">
-                <li>Acesse seu email</li>
-                <li>Procure pelo email de verificação do Neural Content</li>
-                <li>Clique no link &quot;Verificar Email&quot;</li>
-                <li>Faça login em sua conta</li>
+                <li>{t('verifyEmail.steps.step1')}</li>
+                <li>{t('verifyEmail.steps.step2')}</li>
+                <li>{t('verifyEmail.steps.step3')}</li>
+                <li>{t('verifyEmail.steps.step4')}</li>
               </ol>
             </div>
 
@@ -124,7 +125,7 @@ const VerifyEmailForm: React.FC = () => {
             {/* Botão para reenviar email */}
             <div className="mb-[20px]">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                Não recebeu o email?
+                {t('verifyEmail.resend.question')}
               </p>
               <Button
                 variant="outline"
@@ -135,7 +136,7 @@ const VerifyEmailForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">refresh</i>
-                  {isResending ? 'Reenviando...' : 'Reenviar Email'}
+                  {isResending ? t('verifyEmail.resend.sending') : t('verifyEmail.resend.button')}
                 </span>
               </Button>
             </div>
@@ -143,25 +144,25 @@ const VerifyEmailForm: React.FC = () => {
             {/* Link para login */}
             <div className="text-center">
               <p className="text-gray-600 dark:text-gray-400 mb-2">
-                Já verificou seu email?
+                {t('verifyEmail.login.question')}
               </p>
               <Link
                 href="/auth/login"
                 className="text-primary-500 transition-all font-semibold hover:underline"
               >
-                Fazer Login
+                {t('verifyEmail.login.link')}
               </Link>
             </div>
 
             {/* Link para suporte */}
             <div className="mt-[20px] text-center">
               <p className="text-sm text-gray-500 dark:text-gray-500">
-                Precisa de ajuda?{" "}
+                {t('verifyEmail.support.question')}{" "}
                 <Link
                   href="/support"
                   className="text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                 >
-                  Entre em contato
+                  {t('verifyEmail.support.link')}
                 </Link>
               </p>
             </div>

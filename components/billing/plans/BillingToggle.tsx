@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslation } from 'react-i18next';
 import { BillingPeriod } from '@/types/plans.types';
 
 interface BillingToggleProps {
@@ -17,12 +16,10 @@ export default function BillingToggle({
   onPeriodChange, 
   discounts 
 }: BillingToggleProps) {
-  const { t: tBilling } = useTranslation('billing');
-  
   const periods = [
-    { key: 'monthly' as BillingPeriod, label: tBilling('periods.monthly'), icon: 'calendar_today' },
-    { key: 'quarterly' as BillingPeriod, label: tBilling('periods.quarterly'), icon: 'calendar_view_month', discount: discounts.quarterly },
-    { key: 'annual' as BillingPeriod, label: tBilling('periods.annual'), icon: 'calendar_view_year', discount: discounts.annual }
+    { key: 'monthly' as BillingPeriod, label: 'Mensal', icon: 'calendar_today' },
+    { key: 'quarterly' as BillingPeriod, label: 'Trimestral', icon: 'calendar_view_month', discount: discounts.quarterly },
+    { key: 'annual' as BillingPeriod, label: 'Anual', icon: 'calendar_view_year', discount: discounts.annual }
   ];
 
   return (

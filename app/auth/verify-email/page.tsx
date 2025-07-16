@@ -3,13 +3,13 @@ import { Suspense } from 'react';
 import VerifyEmailForm from '@/components/auth/VerifyEmailForm';
 
 export const metadata: Metadata = {
-  title: 'Verificar Email - Neural Content',
-  description: 'Verifique seu email para ativar sua conta',
+  title: 'Verify Email - Neural Content',
+  description: 'Verify your email to activate your account',
 };
 
 export default function VerifyEmailPage() {
   return (
-    <Suspense fallback={<div>Carregando...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <VerifyEmailForm />
     </Suspense>
   );

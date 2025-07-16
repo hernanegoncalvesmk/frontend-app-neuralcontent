@@ -16,8 +16,7 @@ export default function PlanCard({
   isCurrentPlan, 
   onSelectPlan 
 }: PlanCardProps) {
-  const { t: tBilling } = useTranslation('billing');
-  
+  const { t } = useTranslation('billing');
   const getCurrentPrice = () => plan.price[billingPeriod];
   const getOriginalPrice = () => plan.originalPrice?.[billingPeriod];
   const getDiscount = () => {
@@ -35,21 +34,21 @@ export default function PlanCard({
 
   const getPeriodLabel = () => {
     switch (billingPeriod) {
-      case 'monthly': return tBilling('periodLabels.monthly');
-      case 'quarterly': return tBilling('periodLabels.quarterly');
-      case 'annual': return tBilling('periodLabels.annual');
-      default: return tBilling('periodLabels.monthly');
+      case 'monthly': return `/${t('plans.periods.month')}`;
+      case 'quarterly': return `/${t('plans.periods.quarter')}`;
+      case 'annual': return `/${t('plans.periods.year')}`;
+      default: return `/${t('plans.periods.month')}`;
     }
   };
 
   const getSavingsText = () => {
     if (billingPeriod === 'quarterly') {
       const monthlySavings = (plan.price.monthly * 3) - plan.price.quarterly;
-      return `${tBilling('savings.label')}: ${formatPrice(monthlySavings)}`;
+      return `${t('plans.savings')}: ${formatPrice(monthlySavings)}`;
     }
     if (billingPeriod === 'annual') {
       const monthlySavings = (plan.price.monthly * 12) - plan.price.annual;
-      return `${tBilling('savings.label')}: ${formatPrice(monthlySavings)}`;
+      return `${t('plans.savings')}: ${formatPrice(monthlySavings)}`;
     }
     return null;
   };
@@ -67,7 +66,7 @@ export default function PlanCard({
       {plan.isPopular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg border-2 border-white dark:border-gray-800">
-            ⭐ {tBilling('popular')}
+            ⭐ {t('plans.mostPopular')}
           </div>
         </div>
       )}
@@ -118,13 +117,13 @@ export default function PlanCard({
             <div className="flex justify-center items-center">
               <span className="material-icons text-blue-600 mr-2">auto_awesome</span>
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                {plan.credits} créditos mensais
+                {plan.credits} {t('plans.monthlyCredits')}
               </span>
             </div>
             {plan.bonusCredits > 0 && (
               <div className="text-center mt-2">
                 <span className="text-sm text-green-600 dark:text-green-400 font-medium">
-                  +{plan.bonusCredits} créditos bônus
+                  +{plan.bonusCredits} {t('plans.bonusCredits')}
                 </span>
               </div>
             )}
@@ -134,7 +133,7 @@ export default function PlanCard({
         {/* Lista de Features */}
         <div className="flex-1 mb-8">
           <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-center">
-            Recursos incluídos:
+            {t('plans.featuresIncluded')}
           </h4>
           <ul className="space-y-3">
             {plan.features.map((feature) => (
@@ -168,7 +167,7 @@ export default function PlanCard({
               className="w-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-6 py-4 rounded-xl font-semibold text-base transition-colors cursor-not-allowed border border-gray-200 dark:border-gray-600"
             >
               <span className="material-icons mr-2 text-lg">check</span>
-              {tBilling('buttons.currentPlan')}
+              {t('plans.currentPlan')}
             </button>
           ) : (
             <button
@@ -182,7 +181,7 @@ export default function PlanCard({
               `}
             >
               <span className="material-icons mr-2 text-lg">rocket_launch</span>
-              {tBilling('buttons.choose')} {plan.name}
+              {t('plans.choose')} {plan.name}
             </button>
           )}
         </div>

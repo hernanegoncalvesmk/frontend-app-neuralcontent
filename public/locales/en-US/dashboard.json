@@ -1,96 +1,82 @@
 {
-  "page": {
-    "title": "Dashboard",
-    "subtitle": "Overview of your activities and performance"
+  "overview": "Overview of your account and activities",
+  "widgets": {
+    "credits": {
+      "title": "Credit Balance",
+      "subtitle": "Your available credits",
+      "change": "Change plan"
+    },
+    "extraCredits": {
+      "title": "Extra Credits",
+      "subtitle": "Buy additional credits",
+      "change": "Buy credits"
+    },
+    "plan": {
+      "title": "Current Plan",
+      "subtitle": "Manage your subscription",
+      "change": "Change plan"
+    },
+    "usage": {
+      "title": "Monthly Usage",
+      "subtitle": "Track your consumption",
+      "change": "View details"
+    },
+    "products": {
+      "title": "My Products",
+      "subtitle": "Books and content created",
+      "change": "View all"
+    },
+    "personas": {
+      "title": "My Personas",
+      "subtitle": "Writing profiles created",
+      "change": "Manage"
+    }
   },
   "actions": {
     "customize": "Customize",
     "refresh": "Refresh"
   },
+  "performance": {
+    "title": "Performance",
+    "chartTitle": "Performance in the Last 7 Days",
+    "lastUpdate": "Last update"
+  },
+  "recentActivities": {
+    "title": "Recent Activities"
+  },
+  "charts": {
+    "creditUsage": "Credit Usage Over Time",
+    "contentDistribution": "Content Type Distribution"
+  },
   "quickActions": {
-    "title": "Quick Actions",
     "createProduct": {
       "title": "Create Product",
-      "subtitle": "Add a new product to your catalog"
+      "description": "Add new product"
     },
     "createPersona": {
       "title": "Create Persona",
-      "subtitle": "Define a new persona for your audience"
+      "description": "New customer persona"
     },
     "createContent": {
-      "title": "Create Content",
-      "subtitle": "Generate new content for your campaigns"
+      "title": "Generate Content",
+      "description": "Create new content"
     }
   },
-  "widgets": {
-    "credits": {
-      "title": "Available Credits",
-      "subtitle": "Current account balance",
-      "change": "+12% this month"
-    },
-    "extraCredits": {
-      "title": "Extra Credits",
-      "subtitle": "Accumulated bonuses",
-      "change": "+5% this week"
-    },
-    "plan": {
-      "title": "Current Plan",
-      "subtitle": "Renewal in 15 days",
-      "change": ""
-    },
-    "usage": {
-      "title": "Monthly Usage",
-      "subtitle": "Credits used",
-      "change": "75% of limit"
-    }
-  },
-  "charts": {
-    "consumption": {
-      "title": "Credit Consumption",
-      "seriesName": "Credits Used"
-    },
-    "distribution": {
-      "title": "Content Distribution",
-      "labels": {
-        "socialPosts": "Social Posts",
-        "emails": "Emails",
-        "blogArticles": "Blog Articles",
-        "others": "Others"
-      }
-    },
-    "months": {
-      "jan": "Jan",
-      "feb": "Feb",
-      "mar": "Mar",
-      "apr": "Apr",
-      "may": "May",
-      "jun": "Jun",
-      "jul": "Jul",
-      "aug": "Aug",
-      "sep": "Sep",
-      "oct": "Oct",
-      "nov": "Nov",
-      "dec": "Dec"
-    }
+  "activityStatus": {
+    "completed": "Completed",
+    "pending": "Pending",
+    "error": "Error"
   },
   "activities": {
-    "title": "Recent Activities",
-    "status": {
-      "completed": "Completed",
-      "pending": "Pending",
-      "error": "Error"
-    },
-    "items": {
-      "instagramPost": "Instagram post created",
-      "productUpdated": "Product updated",
-      "newPersona": "New persona created",
-      "emailProcessing": "Email processing"
-    },
-    "time": {
-      "twoHours": "2 hours ago",
-      "fourHours": "4 hours ago",
-      "oneDay": "1 day ago",
-      "twoDays": "2 days ago"
-    }
+    "instagramPost": "Instagram post created",
+    "productUpdated": "Product \"Online Course\" updated",
+    "newPersona": "New persona \"Digital Entrepreneur\"",
+    "emailProcessing": "Email marketing in processing"
+  },
+  "timeAgo": {
+    "hours2": "2 hours ago",
+    "hours4": "4 hours ago",
+    "day1": "1 day ago",
+    "days2": "2 days ago"
   }
 }

@@ -15,14 +15,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCredits } from '@/hooks/useCredits';
 import { creditsService } from '@/services/credits.service';
 
 // Componentes
-import CreditBalanceCard from '@/components/credits/CreditBalanceCard';
-import CreditPackageCard from '@/components/credits/CreditPackageCard';
-import CreditHistoryTable from '@/components/credits/CreditHistoryTable';
-import CreditAlerts from '@/components/credits/CreditAlerts';
+import CreditBalanceCard from '@/components/billing/credits/CreditBalanceCard';
+import CreditPackageCard from '@/components/billing/credits/CreditPackageCard';
+import CreditHistoryTable from '@/components/billing/credits/CreditHistoryTable';
+import CreditAlerts from '@/components/billing/credits/CreditAlerts';
 
 // Tipos
 import { CreditPackage, CreditHistoryFilters } from '@/types/credits.types';
@@ -37,6 +38,8 @@ export default function CreditsPage() {
   // HOOKS E ESTADO
   // ============================================================================
 
+  const { t } = useTranslation('billing');
+  
   const {
     state,
     stats,
@@ -113,9 +116,9 @@ export default function CreditsPage() {
       <div className="p-6">
         <nav className="flex space-x-8" aria-label="Sections">
           {[
-            { id: 'overview', label: 'Visão Geral', icon: 'dashboard' },
-            { id: 'packages', label: 'Comprar Créditos', icon: 'shopping_cart' },
-            { id: 'history', label: 'Histórico', icon: 'history' }
+            { id: 'overview', label: t('sections.overview'), icon: 'dashboard' },
+            { id: 'packages', label: t('sections.buyCredits'), icon: 'shopping_cart' },
+            { id: 'history', label: t('sections.history'), icon: 'history' }
           ].map((section) => (
             <button
               key={section.id}
@@ -163,23 +166,23 @@ export default function CreditsPage() {
           {/* Resumo do Mês */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Resumo do Mês
+              {t('credits.monthSummary')}
             </h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Créditos usados:</span>
+                <span className="text-gray-600 dark:text-gray-400">{t('credits.creditsUsed')}:</span>
                 <span className="font-semibold text-gray-900 dark:text-white">
                   {creditsService.formatCredits(stats?.usedThisMonth || 0)}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Média diária:</span>
+                <span className="text-gray-600 dark:text-gray-400">{t('credits.dailyAverage')}:</span>
                 <span className="font-semibold text-gray-900 dark:text-white">
                   {creditsService.formatCredits(stats?.averageDaily || 0)}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-600 dark:text-gray-400">Projeção mensal:</span>
+                <span className="text-gray-600 dark:text-gray-400">{t('credits.monthlyProjection')}:</span>
                 <span className="font-semibold text-blue-600 dark:text-blue-400">
                   {creditsService.formatCredits(stats?.projectedMonthly || 0)}
                 </span>
@@ -190,7 +193,7 @@ export default function CreditsPage() {
           {/* Ações Rápidas */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Ações Rápidas
+              {t('credits.quickActions')}
             </h3>
             <div className="space-y-3">
               <button
@@ -198,14 +201,14 @@ export default function CreditsPage() {
                 className="w-full flex items-center justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200"
               >
                 <span className="material-icons mr-2">add_shopping_cart</span>
-                Comprar Créditos
+                {t('credits.buyCredits')}
               </button>
               <button
                 onClick={() => setActiveSection('history')}
                 className="w-full flex items-center justify-center px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200"
               >
                 <span className="material-icons mr-2">history</span>
-                Ver Histórico
+                {t('credits.viewHistory')}
               </button>
             </div>
           </div>
@@ -219,10 +222,10 @@ export default function CreditsPage() {
       {/* Header */}
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Escolha seu Pacote de Créditos
+          {t('credits.chooseCreditPackage')}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Selecione o pacote ideal para suas necessidades e economize com nossos descontos progressivos.
+          {t('credits.choosePackageDescription')}
         </p>
       </div>
 
@@ -253,29 +256,29 @@ export default function CreditsPage() {
       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 text-center">
         <div className="max-w-3xl mx-auto">
           <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">
-            💎 Por que escolher nossos créditos?
+            💎 {t('benefits.title')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div className="text-center">
               <div className="bg-blue-100 dark:bg-blue-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                 <span className="material-icons text-blue-600 dark:text-blue-400 text-2xl">flash_on</span>
               </div>
-              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Processamento Rápido</h4>
-              <p className="text-blue-700 dark:text-blue-200 text-sm">IA otimizada para resultados em segundos</p>
+              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">{t('benefits.fastProcessing.title')}</h4>
+              <p className="text-blue-700 dark:text-blue-200 text-sm">{t('benefits.fastProcessing.description')}</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 dark:bg-blue-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                 <span className="material-icons text-blue-600 dark:text-blue-400 text-2xl">verified</span>
               </div>
-              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Qualidade Premium</h4>
-              <p className="text-blue-700 dark:text-blue-200 text-sm">Conteúdo de alta qualidade garantido</p>
+              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">{t('benefits.premiumQuality.title')}</h4>
+              <p className="text-blue-700 dark:text-blue-200 text-sm">{t('benefits.premiumQuality.description')}</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 dark:bg-blue-900 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                 <span className="material-icons text-blue-600 dark:text-blue-400 text-2xl">support</span>
               </div>
-              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Suporte 24/7</h4>
-              <p className="text-blue-700 dark:text-blue-200 text-sm">Ajuda sempre que precisar</p>
+              <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">{t('benefits.support247.title')}</h4>
+              <p className="text-blue-700 dark:text-blue-200 text-sm">{t('benefits.support247.description')}</p>
             </div>
           </div>
         </div>
@@ -289,10 +292,10 @@ export default function CreditsPage() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Histórico de Transações
+            {t('history.title')}
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-1">
-            Acompanhe todas as suas movimentações de créditos
+            {t('history.description')}
           </p>
         </div>
         <button
@@ -303,7 +306,7 @@ export default function CreditsPage() {
           <span className={`material-icons mr-2 ${state.loading.transactions ? 'animate-spin' : ''}`}>
             refresh
           </span>
-          Atualizar
+          {t('actions.refresh')}
         </button>
       </div>
 

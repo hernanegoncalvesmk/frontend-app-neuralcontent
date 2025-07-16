@@ -19,10 +19,10 @@ import { useCredits } from '@/hooks/useCredits';
 import { creditsService } from '@/services/credits.service';
 
 // Componentes
-import CreditBalanceCard from '@/components/credits/CreditBalanceCard';
-import CreditPackageCard from '@/components/credits/CreditPackageCard';
-import CreditHistoryTable from '@/components/credits/CreditHistoryTable';
-import CreditAlerts from '@/components/credits/CreditAlerts';
+import CreditBalanceCard from '@/components/billing/credits/CreditBalanceCard';
+import CreditPackageCard from '@/components/billing/credits/CreditPackageCard';
+import CreditHistoryTable from '@/components/billing/credits/CreditHistoryTable';
+import CreditAlerts from '@/components/billing/credits/CreditAlerts';
 
 // Tipos
 import { CreditPackage, CreditHistoryFilters } from '@/types/credits.types';

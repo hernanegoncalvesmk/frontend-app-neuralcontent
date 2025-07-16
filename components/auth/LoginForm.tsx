@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
@@ -24,6 +25,7 @@ interface LoginErrors {
 const LoginForm: React.FC = () => {
   const router = useRouter();
   const { login, isLoading, error } = useAuth();
+  const { t } = useTranslation('auth');
   
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
@@ -38,15 +40,15 @@ const LoginForm: React.FC = () => {
     const newErrors: LoginErrors = {};
 
     if (!formData.email) {
-      newErrors.email = 'Email é obrigatório';
+      newErrors.email = t('login.validation.emailRequired');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('login.validation.emailInvalid');
     }
 
     if (!formData.password) {
-      newErrors.password = 'Senha é obrigatória';
+      newErrors.password = t('login.validation.passwordRequired');
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Senha deve ter pelo menos 6 caracteres';
+      newErrors.password = t('login.validation.passwordMinLength');
     }
 
     setErrors(newErrors);
@@ -70,7 +72,7 @@ const LoginForm: React.FC = () => {
       router.push('/dashboard');
     } catch (err: unknown) {
       console.error('Erro no login:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Credenciais inválidas. Tente novamente.';
+      const errorMessage = err instanceof Error ? err.message : t('login.validation.invalidCredentials');
       setErrors({ general: errorMessage });
     }
   };
@@ -126,10 +128,10 @@ const LoginForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[17px] md:mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                Bem-vindo ao Neural Content!
+                {t('login.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400">
-                Entre com suas redes sociais ou digite seus dados
+                {t('login.subtitle')}
               </p>
             </div>
 
@@ -185,7 +187,7 @@ const LoginForm: React.FC = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white dark:bg-[#0a0e19] text-gray-500 dark:text-gray-400">
-                  ou
+                  {t('login.divider')}
                 </span>
               </div>
             </div>
@@ -194,9 +196,9 @@ const LoginForm: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {/* Campo de email */}
               <Input
-                label="Endereço de Email"
+                label={t('login.fields.email')}
                 type="email"
-                placeholder="exemplo@neuralcontent.com"
+                placeholder={t('login.placeholders.email')}
                 value={formData.email}
                 onChange={handleInputChange('email')}
                 error={errors.email}
@@ -204,9 +206,9 @@ const LoginForm: React.FC = () => {
 
               {/* Campo de senha */}
               <Input
-                label="Senha"
+                label={t('login.fields.password')}
                 type="password"
-                placeholder="Digite sua senha"
+                placeholder={t('login.placeholders.password')}
                 value={formData.password}
                 onChange={handleInputChange('password')}
                 error={errors.password}
@@ -223,7 +225,7 @@ const LoginForm: React.FC = () => {
                     className="mr-2 h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-300 rounded"
                   />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    Lembrar-me
+                    {t('login.rememberMe')}
                   </span>
                 </label>
 
@@ -231,7 +233,7 @@ const LoginForm: React.FC = () => {
                   href="/auth/forgot-password"
                   className="text-sm text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                 >
-                  Esqueci a senha
+                  {t('login.forgotPassword')}
                 </Link>
               </div>
 
@@ -254,18 +256,18 @@ const LoginForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">login</i>
-                  {isLoading ? 'Entrando...' : 'Entrar'}
+                  {isLoading ? t('login.loginButtonLoading') : t('login.loginButton')}
                 </span>
               </Button>
 
               {/* Link para cadastro */}
               <p className="mt-[15px] md:mt-[20px] text-center text-gray-600 dark:text-gray-400">
-                Não tem uma conta?{" "}
+                {t('login.noAccount')}{" "}
                 <Link
                   href="/auth/register"
                   className="text-primary-500 transition-all font-semibold hover:underline"
                 >
-                  Cadastre-se
+                  {t('login.signUpLink')}
                 </Link>
               </p>
             </form>

@@ -22,10 +22,11 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 #### Componentes já traduzidos:
 - ✅ `components/landing/HeroBanner.tsx`
 - ✅ `components/landing/Navbar.tsx`
-- ✅ `components/landing/Footer.tsx`
-- ✅ `components/landing/Features.tsx`
-- ✅ `components/landing/Cta.tsx`
-- ✅ `components/landing/LightDarkModeButton.tsx` (não precisa tradução)
+
+#### Componentes pendentes:
+- [ ] `components/landing/Footer.tsx` (se existir)
+- [ ] `components/landing/Features.tsx` (se existir)
+- [ ] `components/landing/Testimonials.tsx` (se existir)
 
 **Namespace:** `landing`
 
@@ -33,17 +34,17 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 
 ### **TAREFA 1.2: Completar Dashboard Principal**
 **Duração estimada:** 45 min
-**Status:** ✅ CONCLUÍDO
+**Status:** 🔄 EM ANDAMENTO
 
-#### Implementado:
-- ✅ `app/dashboard/page.tsx` - Todas as seções traduzidas
-- ✅ Título e subtítulo da página
-- ✅ Botões de ação (personalizar, atualizar)
-- ✅ Seção de ações rápidas
-- ✅ Todos os widgets (créditos, plano, uso)
-- ✅ Gráficos e estatísticas
-- ✅ Seção de atividades
-- ✅ Arquivos de tradução criados para 4 idiomas
+#### Já implementado:
+- ✅ Widgets básicos traduzidos
+
+#### Pendente:
+- [ ] `app/dashboard/page.tsx` - Seções restantes
+  - [ ] Gráficos e estatísticas
+  - [ ] Ações rápidas
+  - [ ] Breadcrumbs
+  - [ ] Cabeçalhos de seção
 
 **Namespace:** `dashboard`
 
@@ -51,7 +52,7 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 
 ### **TAREFA 1.3: Página de Planos (Billing)**
 **Duração estimada:** 60 min
-**Status:** 🔄 EM ANDAMENTO
+**Status:** ❌ PENDENTE
 
 #### Arquivos para traduzir:
 - [ ] `app/billing/page.tsx`
@@ -91,62 +92,90 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 
 ### **TAREFA 2.1: Página de Login**
 **Duração estimada:** 30 min
-**Status:** ❌ PENDENTE
+**Status:** ✅ CONCLUÍDO
 
-#### Arquivos para traduzir:
-- [ ] `app/auth/login/page.tsx`
-- [ ] `components/auth/LoginForm.tsx` (se existir)
+#### Arquivos traduzidos:
+- ✅ `app/auth/login/page.tsx`
+- ✅ `components/auth/LoginForm.tsx`
 
-#### Conteúdo a traduzir:
-- [ ] Título da página
-- [ ] Labels dos campos
-- [ ] Placeholders
-- [ ] Botões de ação
-- [ ] Mensagens de erro
-- [ ] Links auxiliares
+#### Conteúdo traduzido:
+- ✅ Título da página
+- ✅ Labels dos campos
+- ✅ Placeholders
+- ✅ Botões de ação
+- ✅ Mensagens de erro e validação
+- ✅ Links auxiliares
+- ✅ Estados de carregamento
 
-**Namespace:** `auth`
+**Namespace:** `auth` - Expandido com `login`
+
+**Idiomas implementados:** 🇧🇷 pt-BR, 🇺🇸 en-US, 🇪🇸 es-ES, 🇫🇷 fr-FR
 
 ---
 
 ### **TAREFA 2.2: Página de Registro**
 **Duração estimada:** 30 min
-**Status:** ❌ PENDENTE
+**Status:** ✅ CONCLUÍDO
 
-#### Arquivos para traduzir:
-- [ ] `app/auth/register/page.tsx`
-- [ ] Componentes de formulário
+#### Arquivos traduzidos:
+- ✅ `app/auth/register/page.tsx`
+- ✅ `components/auth/RegisterForm.tsx`
 
-#### Conteúdo a traduzir:
-- [ ] Formulário de cadastro
-- [ ] Validações
-- [ ] Termos e condições
-- [ ] Confirmações
+#### Conteúdo traduzido:
+- ✅ Formulário de cadastro completo
+- ✅ Validações de todos os campos
+- ✅ Termos e condições
+- ✅ Confirmações e mensagens
+- ✅ Seleção de país
+- ✅ Estados de carregamento
 
-**Namespace:** `auth`
+**Namespace:** `auth` - Expandido com `register`
+
+**Idiomas implementados:** 🇧🇷 pt-BR, 🇺🇸 en-US, 🇪🇸 es-ES
 
 ---
 
 ### **TAREFA 2.3: Recuperação de Senha**
 **Duração estimada:** 25 min
-**Status:** ❌ PENDENTE
+**Status:** ✅ CONCLUÍDO
 
-#### Arquivos para traduzir:
-- [ ] `app/auth/forgot-password/page.tsx`
-- [ ] `app/auth/reset-password/page.tsx`
+#### Arquivos traduzidos:
+- ✅ `components/auth/ForgotPasswordForm.tsx`
+- ✅ `components/auth/ResetPasswordForm.tsx`
 
-**Namespace:** `auth`
+#### Conteúdo traduzido:
+- ✅ Formulário de solicitação de recuperação
+- ✅ Tela de confirmação de envio
+- ✅ Formulário de redefinição de senha
+- ✅ Tela de sucesso
+- ✅ Validações e mensagens de erro
+- ✅ Estados de carregamento
+
+**Namespace:** `auth` - Expandido com `forgotPassword` e `resetPassword`
+
+**Idiomas implementados:** 🇧🇷 pt-BR, 🇺🇸 en-US, 🇪🇸 es-ES, 🇫🇷 fr-FR
 
 ---
 
 ### **TAREFA 2.4: Verificação de Email**
 **Duração estimada:** 20 min
-**Status:** ❌ PENDENTE
+**Status:** ✅ CONCLUÍDO
 
-#### Arquivos para traduzir:
-- [ ] `app/auth/verify-email/page.tsx`
+#### Arquivos traduzidos:
+- ✅ `app/auth/verify-email/page.tsx`
+- ✅ `components/auth/VerifyEmailForm.tsx`
 
-**Namespace:** `auth`
+#### Conteúdo traduzido:
+- ✅ Título e instruções principais
+- ✅ Passos de verificação
+- ✅ Botão de reenvio de email
+- ✅ Mensagens de feedback (sucesso/erro)
+- ✅ Links de navegação e suporte
+- ✅ Estados de carregamento
+
+**Namespace:** `auth` - Expandido com `verifyEmail`
+
+**Idiomas implementados:** 🇧🇷 pt-BR, 🇺🇸 en-US, 🇫🇷 fr-FR (es-ES pendente correção)
 
 ---
 
@@ -348,9 +377,9 @@ Este documento contém a lista completa e sequencial de tarefas para implementar
 - 🟢 **Baixa:** 6 tarefas (3h estimado)
 
 ### **Por Status:**
-- ✅ **Concluído:** 1 tarefa
-- 🔄 **Em andamento:** 1 tarefa
-- ❌ **Pendente:** 16 tarefas
+- ✅ **Concluído:** 7 tarefas
+- 🔄 **Em andamento:** 0 tarefas
+- ❌ **Pendente:** 11 tarefas
 
 ### **Tempo Total Estimado:** 12h50min
 

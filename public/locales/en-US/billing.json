@@ -1,47 +1,122 @@
 {
-  "page": {
-    "title": "Choose the Best Plan for You",
-    "subtitle": "Flexible and affordable plans, designed exclusively for you"
+  "errors": {
+    "loadPlans": "Error loading plans",
+    "loadPlansTitle": "Error loading plans",
+    "tryAgain": "Try again"
   },
-  "periods": {
-    "monthly": "Monthly",
-    "quarterly": "Quarterly", 
-    "annual": "Annual"
-  },
-  "periodLabels": {
-    "monthly": "/Month",
-    "quarterly": "/Quarter",
-    "annual": "/Year"
-  },
-  "popular": "Most Popular",
-  "savings": {
-    "label": "Save"
-  },
-  "buttons": {
-    "currentPlan": "Current Plan",
-    "choose": "Choose"
-  },
-  "whyUpgrade": {
-    "title": "Why upgrade?",
-    "description": "We value our customers and our goal is to help them achieve their dreams in every way possible. We work hard to save your time and get you up and running as quickly as possible. By upgrading, you'll get several new features that can help expand your business.",
+  "credits": {
+    "monthSummary": "Month Summary",
+    "creditsUsed": "Credits used",
+    "dailyAverage": "Daily average",
+    "monthlyProjection": "Monthly projection",
+    "quickActions": "Quick Actions",
+    "buyCredits": "Buy Credits",
+    "viewHistory": "View History",
+    "chooseCreditPackage": "Choose Your Credit Package",
+    "choosePackageDescription": "Select the ideal package for your needs and save with our progressive discounts.",
+    "sections": {
+      "overview": "Overview",
+      "buyCredits": "Buy Credits",
+      "history": "History"
+    },
     "benefits": {
-      "productivity": {
-        "title": "Higher Productivity",
-        "description": "Generate more content in less time with advanced features"
+      "title": "Why choose our credits?",
+      "fastProcessing": {
+        "title": "Fast Processing",
+        "description": "AI optimized for results in seconds"
       },
-      "savings": {
-        "title": "Guaranteed Savings",
-        "description": "Better prices per credit and exclusive bonus credits"
+      "premiumQuality": {
+        "title": "Premium Quality",
+        "description": "High-quality content guaranteed"
       },
-      "features": {
-        "title": "Exclusive Features",
-        "description": "Access to premium functionalities and advanced tools"
+      "support247": {
+        "title": "24/7 Support",
+        "description": "Help whenever you need it"
+      }
+    },
+    "history": {
+      "title": "Transaction History",
+      "description": "Track all your credit movements"
+    },
+    "actions": {
+      "refresh": "Refresh"
+    },
+    "billingHistory": {
+      "title": "Billing History",
+      "description": "View all your transactions and credit movements",
+      "export": "Export Data",
+      "searchPlaceholder": "Search transactions...",
+      "noTransactions": "No transactions found",
+      "noTransactionsDescription": "You don't have any transactions yet or none match the applied filters.",
+      "downloadInvoice": "Download Invoice",
+      "filters": {
+        "allTypes": "All Types",
+        "purchases": "Purchases",
+        "usage": "Usage",
+        "bonus": "Bonus",
+        "refunds": "Refunds",
+        "allStatus": "All Status",
+        "completed": "Completed",
+        "pending": "Pending",
+        "failed": "Failed",
+        "allTime": "All Time",
+        "last7Days": "Last 7 days",
+        "last30Days": "Last 30 days",
+        "last90Days": "Last 90 days"
+      },
+      "table": {
+        "transaction": "Transaction",
+        "type": "Type",
+        "amount": "Amount",
+        "date": "Date",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "types": {
+        "purchase": "Purchase",
+        "usage": "Usage",
+        "bonus": "Bonus",
+        "refund": "Refund"
+      },
+      "status": {
+        "completed": "Completed",
+        "pending": "Pending",
+        "failed": "Failed"
       }
     }
   },
-  "error": {
-    "title": "Error loading plans",
-    "loadPlans": "Error loading plans",
-    "tryAgain": "Try again"
+  "plans": {
+    "title": "Choose the Best Plan for You",
+    "subtitle": "Flexible and economical plans, designed exclusively for you",
+    "mostPopular": "Most Popular",
+    "periods": {
+      "month": "Month",
+      "quarter": "Quarter", 
+      "year": "Year"
+    },
+    "savings": "Save",
+    "monthlyCredits": "monthly credits",
+    "bonusCredits": "bonus credits",
+    "featuresIncluded": "Features included:",
+    "currentPlan": "Current Plan",
+    "choose": "Choose",
+    "whyUpgrade": {
+      "title": "Why upgrade?",
+      "description": "We value our customers and our goal is to help them achieve their dreams in every way possible. We work hard to save your time and get you up and running as quickly as possible. By upgrading, you will get several new features that can help expand your business.",
+      "benefits": {
+        "productivity": {
+          "title": "Higher Productivity",
+          "description": "Generate more content in less time with advanced features"
+        },
+        "savings": {
+          "title": "Guaranteed Savings",
+          "description": "Better prices per credit and exclusive bonus credits"
+        },
+        "features": {
+          "title": "Exclusive Features",
+          "description": "Access to premium functionality and advanced tools"
+        }
+      }
+    }
   }
 }

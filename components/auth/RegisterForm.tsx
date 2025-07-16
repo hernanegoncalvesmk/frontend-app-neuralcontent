@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
@@ -59,6 +60,7 @@ const COUNTRIES = [
 const RegisterForm: React.FC = () => {
   const router = useRouter();
   const { register, isLoading, error } = useAuth();
+  const { t } = useTranslation('auth');
   
   const [formData, setFormData] = useState<RegisterFormData>({
     fullName: '',
@@ -79,59 +81,59 @@ const RegisterForm: React.FC = () => {
 
     // Nome completo
     if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Nome completo é obrigatório';
+      newErrors.fullName = t('register.validation.fullNameRequired');
     } else if (formData.fullName.trim().length < 2) {
-      newErrors.fullName = 'Nome deve ter pelo menos 2 caracteres';
+      newErrors.fullName = t('register.validation.fullNameMinLength');
     }
 
     // Email
     if (!formData.email) {
-      newErrors.email = 'Email é obrigatório';
+      newErrors.email = t('register.validation.emailRequired');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('register.validation.emailInvalid');
     }
 
     // Senha
     if (!formData.password) {
-      newErrors.password = 'Senha é obrigatória';
+      newErrors.password = t('register.validation.passwordRequired');
     } else if (formData.password.length < 4) {
-      newErrors.password = 'Senha deve ter pelo menos 4 caracteres';
+      newErrors.password = t('register.validation.passwordMinLength');
     }
 
     // Confirmação de senha
     if (!formData.confirmPassword) {
-      newErrors.confirmPassword = 'Confirmação de senha é obrigatória';
+      newErrors.confirmPassword = t('register.validation.confirmPasswordRequired');
     } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Senhas não coincidem';
+      newErrors.confirmPassword = t('register.validation.passwordsMustMatch');
     }
 
     // Telefone
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Telefone é obrigatório';
+      newErrors.phone = t('register.validation.phoneRequired');
     } else if (formData.phone.trim().length < 8) {
-      newErrors.phone = 'Telefone deve ter pelo menos 8 dígitos';
+      newErrors.phone = t('register.validation.phoneMinLength');
     }
 
     // Data de nascimento
     if (!formData.birthDate) {
-      newErrors.birthDate = 'Data de nascimento é obrigatória';
+      newErrors.birthDate = t('register.validation.birthDateRequired');
     } else {
       const birthDate = new Date(formData.birthDate);
       const today = new Date();
       const age = today.getFullYear() - birthDate.getFullYear();
       if (age < 13) {
-        newErrors.birthDate = 'Você deve ter pelo menos 13 anos';
+        newErrors.birthDate = t('register.validation.ageMinimum');
       }
     }
 
     // País
     if (!formData.country) {
-      newErrors.country = 'País é obrigatório';
+      newErrors.country = t('register.validation.countryRequired');
     }
 
     // Termos de uso
     if (!formData.acceptTerms) {
-      newErrors.acceptTerms = 'Você deve aceitar os termos de uso e política de privacidade';
+      newErrors.acceptTerms = t('register.validation.acceptTermsRequired');
     }
 
     setErrors(newErrors);
@@ -158,7 +160,7 @@ const RegisterForm: React.FC = () => {
       router.push('/auth/verify-email?email=' + encodeURIComponent(formData.email));
     } catch (err: unknown) {
       console.error('Erro no cadastro:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Erro ao criar conta. Tente novamente.';
+      const errorMessage = err instanceof Error ? err.message : t('register.validation.registrationFailed');
       setErrors({ general: errorMessage });
     }
   };
@@ -214,10 +216,10 @@ const RegisterForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[17px] md:mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                Crie sua conta no Neural Content!
+                {t('register.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400">
-                Cadastre-se com suas redes sociais ou preencha os dados abaixo
+                {t('register.subtitle')}
               </p>
             </div>
 
@@ -273,7 +275,7 @@ const RegisterForm: React.FC = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white dark:bg-[#0a0e19] text-gray-500 dark:text-gray-400">
-                  ou
+                  {t('register.divider')}
                 </span>
               </div>
             </div>
@@ -282,9 +284,9 @@ const RegisterForm: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {/* Nome completo */}
               <Input
-                label="Nome Completo"
+                label={t('register.fields.fullName')}
                 type="text"
-                placeholder="Digite seu nome completo"
+                placeholder={t('register.placeholders.fullName')}
                 value={formData.fullName}
                 onChange={handleInputChange('fullName')}
                 error={errors.fullName}
@@ -292,9 +294,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Email */}
               <Input
-                label="Endereço de Email"
+                label={t('register.fields.email')}
                 type="email"
-                placeholder="exemplo@neuralcontent.com"
+                placeholder={t('register.placeholders.email')}
                 value={formData.email}
                 onChange={handleInputChange('email')}
                 error={errors.email}
@@ -302,9 +304,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Senha */}
               <Input
-                label="Senha"
+                label={t('register.fields.password')}
                 type="password"
-                placeholder="Digite sua senha (mín. 4 caracteres)"
+                placeholder={t('register.placeholders.password')}
                 value={formData.password}
                 onChange={handleInputChange('password')}
                 error={errors.password}
@@ -313,9 +315,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Confirmação de senha */}
               <Input
-                label="Confirmar Senha"
+                label={t('register.fields.confirmPassword')}
                 type="password"
-                placeholder="Digite novamente sua senha"
+                placeholder={t('register.placeholders.confirmPassword')}
                 value={formData.confirmPassword}
                 onChange={handleInputChange('confirmPassword')}
                 error={errors.confirmPassword}
@@ -324,9 +326,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Telefone */}
               <Input
-                label="Telefone"
+                label={t('register.fields.phone')}
                 type="tel"
-                placeholder="(11) 99999-9999"
+                placeholder={t('register.placeholders.phone')}
                 value={formData.phone}
                 onChange={handleInputChange('phone')}
                 error={errors.phone}
@@ -334,7 +336,7 @@ const RegisterForm: React.FC = () => {
 
               {/* Data de nascimento */}
               <Input
-                label="Data de Nascimento"
+                label={t('register.fields.birthDate')}
                 type="date"
                 value={formData.birthDate}
                 onChange={handleInputChange('birthDate')}
@@ -344,7 +346,7 @@ const RegisterForm: React.FC = () => {
               {/* País */}
               <div className="mb-[20px]">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  País
+                  {t('register.fields.country')}
                 </label>
                 <select
                   value={formData.country}
@@ -355,7 +357,7 @@ const RegisterForm: React.FC = () => {
                       : 'border-gray-300 dark:border-[#2d3c5b] focus:border-primary-500'
                   } focus:outline-none focus:ring-1 focus:ring-primary-500`}
                 >
-                  <option value="">Selecione seu país</option>
+                  <option value="">{t('register.placeholders.country')}</option>
                   {COUNTRIES.map((country) => (
                     <option key={country.value} value={country.value}>
                       {country.label}
@@ -379,19 +381,19 @@ const RegisterForm: React.FC = () => {
                     className="mt-1 mr-3 h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-300 rounded"
                   />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    Eu aceito os{" "}
+                    {t('register.acceptTerms.text')}{" "}
                     <Link
                       href="/terms"
                       className="text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                     >
-                      Termos de Uso
+                      {t('register.acceptTerms.termsLink')}
                     </Link>
-                    {" "}e a{" "}
+                    {" "}{t('register.acceptTerms.and')}{" "}
                     <Link
                       href="/privacy"
                       className="text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                     >
-                      Política de Privacidade
+                      {t('register.acceptTerms.privacyLink')}
                     </Link>
                   </span>
                 </label>
@@ -421,18 +423,18 @@ const RegisterForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">person_add</i>
-                  {isLoading ? 'Criando conta...' : 'Criar Conta'}
+                  {isLoading ? t('register.registerButtonLoading') : t('register.registerButton')}
                 </span>
               </Button>
 
               {/* Link para login */}
               <p className="mt-[15px] md:mt-[20px] text-center text-gray-600 dark:text-gray-400">
-                Já tem uma conta?{" "}
+                {t('register.hasAccount')}{" "}
                 <Link
                   href="/auth/login"
                   className="text-primary-500 transition-all font-semibold hover:underline"
                 >
-                  Faça login
+                  {t('register.loginLink')}
                 </Link>
               </p>
             </form>

@@ -1,96 +1,82 @@
 {
-  "page": {
-    "title": "Panel de Control",
-    "subtitle": "Visión general de tus actividades y rendimiento"
+  "overview": "Resumen de tu cuenta y actividades",
+  "widgets": {
+    "credits": {
+      "title": "Saldo de Créditos",
+      "subtitle": "Tus créditos disponibles",
+      "change": "Cambiar plan"
+    },
+    "extraCredits": {
+      "title": "Créditos Extras",
+      "subtitle": "Compra créditos adicionales",
+      "change": "Comprar créditos"
+    },
+    "plan": {
+      "title": "Plan Actual",
+      "subtitle": "Gestiona tu suscripción",
+      "change": "Cambiar plan"
+    },
+    "usage": {
+      "title": "Uso Mensual",
+      "subtitle": "Sigue tu consumo",
+      "change": "Ver detalles"
+    },
+    "products": {
+      "title": "Mis Productos",
+      "subtitle": "Libros y contenido creado",
+      "change": "Ver todos"
+    },
+    "personas": {
+      "title": "Mis Personas",
+      "subtitle": "Perfiles de escritura creados",
+      "change": "Gestionar"
+    }
   },
   "actions": {
     "customize": "Personalizar",
     "refresh": "Actualizar"
   },
+  "performance": {
+    "title": "Rendimiento",
+    "chartTitle": "Rendimiento en los Últimos 7 Días",
+    "lastUpdate": "Última actualización"
+  },
+  "recentActivities": {
+    "title": "Actividades Recientes"
+  },
+  "charts": {
+    "creditUsage": "Uso de Créditos a lo Largo del Tiempo",
+    "contentDistribution": "Distribución por Tipo de Contenido"
+  },
   "quickActions": {
-    "title": "Acciones Rápidas",
     "createProduct": {
       "title": "Crear Producto",
-      "subtitle": "Añade un nuevo producto a tu catálogo"
+      "description": "Agregar nuevo producto"
     },
     "createPersona": {
       "title": "Crear Persona",
-      "subtitle": "Define una nueva persona para tu audiencia"
+      "description": "Nueva persona de cliente"
     },
     "createContent": {
-      "title": "Crear Contenido",
-      "subtitle": "Genera nuevo contenido para tus campañas"
+      "title": "Generar Contenido",
+      "description": "Crear nuevo contenido"
     }
   },
-  "widgets": {
-    "credits": {
-      "title": "Créditos Disponibles",
-      "subtitle": "Saldo actual de la cuenta",
-      "change": "+12% este mes"
-    },
-    "extraCredits": {
-      "title": "Créditos Extra",
-      "subtitle": "Bonificaciones acumuladas",
-      "change": "+5% esta semana"
-    },
-    "plan": {
-      "title": "Plan Actual",
-      "subtitle": "Renovación en 15 días",
-      "change": ""
-    },
-    "usage": {
-      "title": "Uso del Mes",
-      "subtitle": "Créditos utilizados",
-      "change": "75% del límite"
-    }
-  },
-  "charts": {
-    "consumption": {
-      "title": "Consumo de Créditos",
-      "seriesName": "Créditos Utilizados"
-    },
-    "distribution": {
-      "title": "Distribución de Contenido",
-      "labels": {
-        "socialPosts": "Posts Sociales",
-        "emails": "Correos",
-        "blogArticles": "Artículos de Blog",
-        "others": "Otros"
-      }
-    },
-    "months": {
-      "jan": "Ene",
-      "feb": "Feb",
-      "mar": "Mar",
-      "apr": "Abr",
-      "may": "May",
-      "jun": "Jun",
-      "jul": "Jul",
-      "aug": "Ago",
-      "sep": "Sep",
-      "oct": "Oct",
-      "nov": "Nov",
-      "dec": "Dic"
-    }
+  "activityStatus": {
+    "completed": "Completado",
+    "pending": "Pendiente",
+    "error": "Error"
   },
   "activities": {
-    "title": "Actividades Recientes",
-    "status": {
-      "completed": "Completado",
-      "pending": "Pendiente",
-      "error": "Error"
-    },
-    "items": {
-      "instagramPost": "Post de Instagram creado",
-      "productUpdated": "Producto actualizado",
-      "newPersona": "Nueva persona creada",
-      "emailProcessing": "Correo en procesamiento"
-    },
-    "time": {
-      "twoHours": "hace 2 horas",
-      "fourHours": "hace 4 horas",
-      "oneDay": "hace 1 día",
-      "twoDays": "hace 2 días"
-    }
+    "instagramPost": "Post de Instagram creado",
+    "productUpdated": "Producto \"Curso Online\" actualizado",
+    "newPersona": "Nueva persona \"Emprendedor Digital\"",
+    "emailProcessing": "Email marketing en procesamiento"
+  },
+  "timeAgo": {
+    "hours2": "hace 2 horas",
+    "hours4": "hace 4 horas",
+    "day1": "hace 1 día",
+    "days2": "hace 2 días"
   }
 }

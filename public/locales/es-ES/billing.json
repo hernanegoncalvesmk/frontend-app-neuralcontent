@@ -1,47 +1,122 @@
 {
-  "page": {
-    "title": "Elige el Mejor Plan para Ti",
-    "subtitle": "Planes flexibles y económicos, pensados exclusivamente para ti"
+  "errors": {
+    "loadPlans": "Error al cargar planes",
+    "loadPlansTitle": "Error al cargar planes",
+    "tryAgain": "Intentar de nuevo"
   },
-  "periods": {
-    "monthly": "Mensual",
-    "quarterly": "Trimestral", 
-    "annual": "Anual"
-  },
-  "periodLabels": {
-    "monthly": "/Mes",
-    "quarterly": "/Trimestre",
-    "annual": "/Año"
-  },
-  "popular": "Más Popular",
-  "savings": {
-    "label": "Ahorra"
-  },
-  "buttons": {
-    "currentPlan": "Plan Actual",
-    "choose": "Elegir"
-  },
-  "whyUpgrade": {
-    "title": "¿Por qué actualizar?",
-    "description": "Valoramos a nuestros clientes y nuestro objetivo es ayudarles a realizar sus sueños de todas las maneras posibles. Trabajamos duro para ahorrar tu tiempo y ponerte en funcionamiento lo más rápido posible. Al actualizar, obtendrás varias características nuevas que pueden ayudar a expandir tu negocio.",
+  "credits": {
+    "monthSummary": "Resumen del Mes",
+    "creditsUsed": "Créditos usados",
+    "dailyAverage": "Promedio diario",
+    "monthlyProjection": "Proyección mensual",
+    "quickActions": "Acciones Rápidas",
+    "buyCredits": "Comprar Créditos",
+    "viewHistory": "Ver Historial",
+    "chooseCreditPackage": "Elige tu Paquete de Créditos",
+    "choosePackageDescription": "Selecciona el paquete ideal para tus necesidades y ahorra con nuestros descuentos progresivos.",
+    "sections": {
+      "overview": "Resumen",
+      "buyCredits": "Comprar Créditos",
+      "history": "Historial"
+    },
     "benefits": {
-      "productivity": {
-        "title": "Mayor Productividad",
-        "description": "Genera más contenido en menos tiempo con características avanzadas"
+      "title": "¿Por qué elegir nuestros créditos?",
+      "fastProcessing": {
+        "title": "Procesamiento Rápido",
+        "description": "IA optimizada para resultados en segundos"
       },
-      "savings": {
-        "title": "Ahorro Garantizado",
-        "description": "Mejores precios por crédito y créditos bonus exclusivos"
+      "premiumQuality": {
+        "title": "Calidad Premium",
+        "description": "Contenido de alta calidad garantizado"
       },
-      "features": {
-        "title": "Características Exclusivas",
-        "description": "Acceso a funcionalidades premium y herramientas avanzadas"
+      "support247": {
+        "title": "Soporte 24/7",
+        "description": "Ayuda cuando la necesites"
+      }
+    },
+    "history": {
+      "title": "Historial de Transacciones",
+      "description": "Rastrea todos tus movimientos de créditos"
+    },
+    "actions": {
+      "refresh": "Actualizar"
+    },
+    "billingHistory": {
+      "title": "Historial de Facturación",
+      "description": "Ve todas tus transacciones y movimientos de créditos",
+      "export": "Exportar Datos",
+      "searchPlaceholder": "Buscar transacciones...",
+      "noTransactions": "No se encontraron transacciones",
+      "noTransactionsDescription": "Aún no tienes transacciones o ninguna coincide con los filtros aplicados.",
+      "downloadInvoice": "Descargar Factura",
+      "filters": {
+        "allTypes": "Todos los Tipos",
+        "purchases": "Compras",
+        "usage": "Uso",
+        "bonus": "Bonus",
+        "refunds": "Reembolsos",
+        "allStatus": "Todos los Estados",
+        "completed": "Completado",
+        "pending": "Pendiente",
+        "failed": "Falló",
+        "allTime": "Todo el Tiempo",
+        "last7Days": "Últimos 7 días",
+        "last30Days": "Últimos 30 días",
+        "last90Days": "Últimos 90 días"
+      },
+      "table": {
+        "transaction": "Transacción",
+        "type": "Tipo",
+        "amount": "Monto",
+        "date": "Fecha",
+        "status": "Estado",
+        "actions": "Acciones"
+      },
+      "types": {
+        "purchase": "Compra",
+        "usage": "Uso",
+        "bonus": "Bonus",
+        "refund": "Reembolso"
+      },
+      "status": {
+        "completed": "Completado",
+        "pending": "Pendiente",
+        "failed": "Falló"
       }
     }
   },
-  "error": {
-    "title": "Error al cargar planes",
-    "loadPlans": "Error al cargar planes",
-    "tryAgain": "Intentar de nuevo"
+  "plans": {
+    "title": "Elige el Mejor Plan para Ti",
+    "subtitle": "Planes flexibles y económicos, diseñados exclusivamente para ti",
+    "mostPopular": "Más Popular",
+    "periods": {
+      "month": "Mes",
+      "quarter": "Trimestre", 
+      "year": "Año"
+    },
+    "savings": "Ahorra",
+    "monthlyCredits": "créditos mensuales",
+    "bonusCredits": "créditos bonus",
+    "featuresIncluded": "Características incluidas:",
+    "currentPlan": "Plan Actual",
+    "choose": "Elegir",
+    "whyUpgrade": {
+      "title": "¿Por qué actualizar?",
+      "description": "Valoramos a nuestros clientes y nuestro objetivo es ayudarlos a alcanzar sus sueños de todas las formas posibles. Trabajamos duro para ahorrar su tiempo y ponerlos en funcionamiento lo más rápido posible. Al actualizar, obtendrás varias funciones nuevas que pueden ayudar a expandir tu negocio.",
+      "benefits": {
+        "productivity": {
+          "title": "Mayor Productividad",
+          "description": "Genera más contenido en menos tiempo con funciones avanzadas"
+        },
+        "savings": {
+          "title": "Ahorro Garantizado",
+          "description": "Mejores precios por crédito y créditos de bonificación exclusivos"
+        },
+        "features": {
+          "title": "Funciones Exclusivas",
+          "description": "Acceso a funcionalidad premium y herramientas avanzadas"
+        }
+      }
+    }
   }
 }

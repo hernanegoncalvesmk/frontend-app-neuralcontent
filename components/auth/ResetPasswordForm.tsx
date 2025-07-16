@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
@@ -21,6 +22,7 @@ interface ResetPasswordErrors {
 }
 
 const ResetPasswordForm: React.FC = () => {
+  const { t } = useTranslation('auth');
   const searchParams = useSearchParams();
   const { isLoading } = useAuth();
   
@@ -387,7 +389,7 @@ const ResetPasswordForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">security</i>
-                  {isSubmitting ? 'Redefinindo...' : 'Redefinir Senha'}
+                  {isSubmitting ? t('resetPassword.form.submitting') : t('resetPassword.form.submitButton')}
                 </span>
               </Button>
 

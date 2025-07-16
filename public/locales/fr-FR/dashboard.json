@@ -1,96 +1,82 @@
 {
-  "page": {
-    "title": "Tableau de Bord",
-    "subtitle": "Aperçu de vos activités et performances"
+  "overview": "Aperçu de votre compte et activités",
+  "widgets": {
+    "credits": {
+      "title": "Solde de Crédits",
+      "subtitle": "Vos crédits disponibles",
+      "change": "Changer de plan"
+    },
+    "extraCredits": {
+      "title": "Crédits Supplémentaires",
+      "subtitle": "Acheter des crédits additionnels",
+      "change": "Acheter des crédits"
+    },
+    "plan": {
+      "title": "Plan Actuel",
+      "subtitle": "Gérer votre abonnement",
+      "change": "Changer de plan"
+    },
+    "usage": {
+      "title": "Utilisation Mensuelle",
+      "subtitle": "Suivez votre consommation",
+      "change": "Voir les détails"
+    },
+    "products": {
+      "title": "Mes Produits",
+      "subtitle": "Livres et contenu créés",
+      "change": "Voir tous"
+    },
+    "personas": {
+      "title": "Mes Personas",
+      "subtitle": "Profils d'écriture créés",
+      "change": "Gérer"
+    }
   },
   "actions": {
     "customize": "Personnaliser",
     "refresh": "Actualiser"
   },
-  "quickActions": {
-    "title": "Actions Rapides",
-    "createProduct": {
-      "title": "Créer Produit",
-      "subtitle": "Ajoutez un nouveau produit à votre catalogue"
-    },
-    "createPersona": {
-      "title": "Créer Persona",
-      "subtitle": "Définissez une nouvelle persona pour votre audience"
-    },
-    "createContent": {
-      "title": "Créer Contenu",
-      "subtitle": "Générez du nouveau contenu pour vos campagnes"
-    }
+  "performance": {
+    "title": "Performance",
+    "chartTitle": "Performance des 7 Derniers Jours",
+    "lastUpdate": "Dernière mise à jour"
   },
-  "widgets": {
-    "credits": {
-      "title": "Crédits Disponibles",
-      "subtitle": "Solde actuel du compte",
-      "change": "+12% ce mois"
-    },
-    "extraCredits": {
-      "title": "Crédits Extra",
-      "subtitle": "Bonus accumulés",
-      "change": "+5% cette semaine"
-    },
-    "plan": {
-      "title": "Plan Actuel",
-      "subtitle": "Renouvellement dans 15 jours",
-      "change": ""
-    },
-    "usage": {
-      "title": "Utilisation du Mois",
-      "subtitle": "Crédits utilisés",
-      "change": "75% de la limite"
-    }
+  "recentActivities": {
+    "title": "Activités Récentes"
   },
   "charts": {
-    "consumption": {
-      "title": "Consommation de Crédits",
-      "seriesName": "Crédits Utilisés"
+    "creditUsage": "Utilisation des Crédits au Fil du Temps",
+    "contentDistribution": "Distribution par Type de Contenu"
+  },
+  "quickActions": {
+    "createProduct": {
+      "title": "Créer un Produit",
+      "description": "Ajouter un nouveau produit"
     },
-    "distribution": {
-      "title": "Distribution du Contenu",
-      "labels": {
-        "socialPosts": "Posts Sociaux",
-        "emails": "E-mails",
-        "blogArticles": "Articles de Blog",
-        "others": "Autres"
-      }
+    "createPersona": {
+      "title": "Créer une Persona",
+      "description": "Nouvelle persona client"
     },
-    "months": {
-      "jan": "Jan",
-      "feb": "Fév",
-      "mar": "Mar",
-      "apr": "Avr",
-      "may": "Mai",
-      "jun": "Juin",
-      "jul": "Juil",
-      "aug": "Août",
-      "sep": "Sep",
-      "oct": "Oct",
-      "nov": "Nov",
-      "dec": "Déc"
+    "createContent": {
+      "title": "Générer du Contenu",
+      "description": "Créer un nouveau contenu"
     }
   },
+  "activityStatus": {
+    "completed": "Terminé",
+    "pending": "En attente",
+    "error": "Erreur"
+  },
   "activities": {
-    "title": "Activités Récentes",
-    "status": {
-      "completed": "Terminé",
-      "pending": "En attente",
-      "error": "Erreur"
-    },
-    "items": {
-      "instagramPost": "Post Instagram créé",
-      "productUpdated": "Produit mis à jour",
-      "newPersona": "Nouvelle persona créée",
-      "emailProcessing": "E-mail en traitement"
-    },
-    "time": {
-      "twoHours": "il y a 2 heures",
-      "fourHours": "il y a 4 heures",
-      "oneDay": "il y a 1 jour",
-      "twoDays": "il y a 2 jours"
-    }
+    "instagramPost": "Post Instagram créé",
+    "productUpdated": "Produit \"Cours en Ligne\" mis à jour",
+    "newPersona": "Nouvelle persona \"Entrepreneur Numérique\"",
+    "emailProcessing": "Email marketing en cours"
+  },
+  "timeAgo": {
+    "hours2": "il y a 2 heures",
+    "hours4": "il y a 4 heures",
+    "day1": "il y a 1 jour",
+    "days2": "il y a 2 jours"
   }
 }
