@@ -1,0 +1,146 @@
+{
+  "app": {
+    "name": "Neural Content",
+    "description": "Plataforma de creación de contenido con IA",
+    "welcome": "Bienvenido a Neural Content"
+  },
+  "navigation": {
+    "dashboard": "Panel",
+    "billing": "Facturación",
+    "plans": "Planes",
+    "credits": "Créditos",
+    "profile": "Perfil",
+    "admin": "Administración",
+    "settings": "Configuración",
+    "logout": "Salir"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar",
+    "refresh": "Actualizar",
+    "close": "Cerrar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "reset": "Restablecer",
+    "clear": "Limpiar",
+    "select": "Seleccionar",
+    "selectAll": "Seleccionar Todo",
+    "actions": "Acciones",
+    "status": "Estado",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
+    "success": "Éxito",
+    "error": "Error",
+    "warning": "Advertencia",
+    "info": "Información",
+    "required": "Obligatorio",
+    "optional": "Opcional"
+  },
+  "languages": {
+    "chooseLang": "Elegir Idioma",
+    "pt-BR": "Português (Brasil)",
+    "en-US": "English (US)",
+    "es-ES": "Español",
+    "fr-FR": "Français"
+  },
+  "landing": {
+    "nav": {
+      "home": "Inicio",
+      "features": "Características", 
+      "plans": "Planes",
+      "contact": "Contacto",
+      "login": "Iniciar Sesión",
+      "register": "Empezar Gratis"
+    },
+    "hero": {
+      "title": {
+        "main": "Transforma tus Ideas en",
+        "highlight": "Contenido Inteligente"
+      },
+      "subtitle": "Plataforma de IA avanzada para creación automatizada de contenido. Genera textos, artículos, posts y mucho más con calidad profesional en segundos.",
+      "buttons": {
+        "startFree": "Empezar Gratis",
+        "viewPlans": "Ver Planes"
+      }
+    },
+    "features": {
+      "title": "Características",
+      "titleHighlight": "Poderosas",
+      "subtitle": "Descubre las funcionalidades que hacen de Neural Content la mejor opción para creación automatizada de contenido",
+      "ai": {
+        "title": "IA Avanzada",
+        "description": "Tecnología de vanguardia para generación de contenido con calidad profesional y contexto relevante."
+      },
+      "speed": {
+        "title": "Generación Rápida",
+        "description": "Crea contenido en segundos, no en horas. Aumenta tu productividad exponencialmente."
+      },
+      "languages": {
+        "title": "Múltiples Idiomas",
+        "description": "Soporte completo para portugués, inglés, español y muchos otros idiomas."
+      },
+      "formats": {
+        "title": "Diversos Formatos",
+        "description": "Artículos, posts, emails, descripciones de productos, subtítulos y mucho más."
+      },
+      "editor": {
+        "title": "Editor Inteligente",
+        "description": "Refina y personaliza tu contenido con herramientas de edición avanzadas."
+      },
+      "sync": {
+        "title": "Sincronización",
+        "description": "Accede a tu contenido desde cualquier dispositivo con sincronización automática."
+      },
+      "stats": {
+        "contentGenerated": "Contenido Generado",
+        "activeUsers": "Usuarios Activos",
+        "satisfaction": "Satisfacción",
+        "availability": "Disponibilidad"
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Revolucionar tu Creación de Contenido?",
+      "subtitle": "Únete a miles de creadores de contenido que ya están usando nuestra IA para acelerar su productividad y crear contenido de alta calidad.",
+      "startFree": "Empezar Gratis",
+      "viewPlans": "Ver Todos los Planes",
+      "freeTrial": "Prueba gratis por 7 días",
+      "noCommitment": "Sin compromiso",
+      "support24x7": "Soporte 24/7"
+    },
+    "footer": {
+      "description": "Plataforma de IA avanzada para creación automatizada de contenido. Transforma tus ideas en contenido profesional en segundos.",
+      "product": "Producto",
+      "plansAndPricing": "Planes y Precios",
+      "features": "Características",
+      "freeTrial": "Prueba Gratis",
+      "integrations": "Integraciones",
+      "company": "Empresa",
+      "aboutUs": "Acerca de Nosotros",
+      "blog": "Blog",
+      "careers": "Carreras",
+      "contact": "Contacto",
+      "support": "Soporte",
+      "helpCenter": "Centro de Ayuda",
+      "documentation": "Documentación",
+      "systemStatus": "Estado del Sistema",
+      "community": "Comunidad",
+      "allRightsReserved": "Todos los derechos reservados.",
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfUse": "Términos de Uso",
+      "cookies": "Cookies"
+    }
+  }
+}

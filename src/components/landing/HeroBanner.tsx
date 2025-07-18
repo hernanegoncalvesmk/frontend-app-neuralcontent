@@ -2,10 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import { useT } from "@/providers/TranslationProvider";
+import { useTranslation } from "react-i18next";
 
 const HeroBanner: React.FC = () => {
-  const t = useT();
+  const { t } = useTranslation();
 
   return (
     <>

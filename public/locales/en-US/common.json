@@ -1,0 +1,243 @@
+{
+  "app": {
+    "name": "Neural Content",
+    "description": "AI-powered content creation platform",
+    "welcome": "Welcome to Neural Content"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "billing": "Billing",
+    "plans": "Plans",
+    "credits": "Credits",
+    "profile": "Profile",
+    "admin": "Administration",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "refresh": "Refresh",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset",
+    "clear": "Clear",
+    "select": "Select",
+    "selectAll": "Select All",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Information",
+    "required": "Required",
+    "optional": "Optional",
+    "back": "Back",
+    "continue": "Continue",
+    "finish": "Finish",
+    "start": "Start",
+    "stop": "Stop",
+    "pause": "Pause",
+    "resume": "Resume",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "copy": "Copy",
+    "paste": "Paste",
+    "cut": "Cut",
+    "duplicate": "Duplicate",
+    "rename": "Rename",
+    "move": "Move",
+    "share": "Share",
+    "print": "Print",
+    "help": "Help",
+    "about": "About",
+    "version": "Version",
+    "copyright": "Copyright",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  },
+  "messages": {
+    "success": {
+      "saved": "Successfully saved!",
+      "updated": "Successfully updated!",
+      "deleted": "Successfully deleted!",
+      "created": "Successfully created!",
+      "sent": "Successfully sent!",
+      "copied": "Copied to clipboard!"
+    },
+    "error": {
+      "generic": "An unexpected error occurred",
+      "network": "Network error",
+      "unauthorized": "Unauthorized",
+      "forbidden": "Access denied",
+      "notFound": "Not found",
+      "validation": "Validation error",
+      "required": "This field is required",
+      "invalid": "Invalid value",
+      "tooShort": "Too short",
+      "tooLong": "Too long",
+      "invalidEmail": "Invalid email",
+      "invalidUrl": "Invalid URL",
+      "invalidDate": "Invalid date",
+      "invalidNumber": "Invalid number",
+      "passwordMismatch": "Passwords do not match",
+      "weakPassword": "Password is too weak"
+    },
+    "confirmation": {
+      "delete": "Are you sure you want to delete?",
+      "unsavedChanges": "You have unsaved changes. Do you want to continue?",
+      "logout": "Are you sure you want to logout?"
+    }
+  },
+  "dateTime": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "thisWeek": "This week",
+    "lastWeek": "Last week",
+    "nextWeek": "Next week",
+    "thisMonth": "This month",
+    "lastMonth": "Last month",
+    "nextMonth": "Next month",
+    "thisYear": "This year",
+    "lastYear": "Last year",
+    "nextYear": "Next year",
+    "now": "Now",
+    "never": "Never",
+    "always": "Always",
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "weekdays": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    }
+  },
+  "languages": {
+    "chooseLang": "Choose Language",
+    "pt-BR": "Português (Brasil)",
+    "en-US": "English (US)",
+    "es-ES": "Español",
+    "fr-FR": "Français"
+  },
+  "landing": {
+    "nav": {
+      "home": "Home",
+      "features": "Features", 
+      "plans": "Plans",
+      "contact": "Contact",
+      "login": "Login",
+      "register": "Start Free"
+    },
+    "hero": {
+      "title": {
+        "main": "Transform your Ideas into",
+        "highlight": "Smart Content"
+      },
+      "subtitle": "Advanced AI platform for automated content creation. Generate texts, articles, posts and much more with professional quality in seconds.",
+      "buttons": {
+        "startFree": "Start Free",
+        "viewPlans": "View Plans"
+      }
+    },
+    "features": {
+      "title": "Powerful",
+      "titleHighlight": "Features",
+      "subtitle": "Discover the features that make Neural Content the best choice for automated content creation",
+      "ai": {
+        "title": "Advanced AI",
+        "description": "Cutting-edge technology for professional quality content generation with relevant context."
+      },
+      "speed": {
+        "title": "Fast Generation",
+        "description": "Create content in seconds, not hours. Boost your productivity exponentially."
+      },
+      "languages": {
+        "title": "Multiple Languages",
+        "description": "Full support for Portuguese, English, Spanish and many other languages."
+      },
+      "formats": {
+        "title": "Various Formats",
+        "description": "Articles, posts, emails, product descriptions, captions and much more."
+      },
+      "editor": {
+        "title": "Smart Editor",
+        "description": "Refine and customize your content with advanced editing tools."
+      },
+      "sync": {
+        "title": "Synchronization",
+        "description": "Access your content from any device with automatic synchronization."
+      },
+      "stats": {
+        "contentGenerated": "Content Generated",
+        "activeUsers": "Active Users",
+        "satisfaction": "Satisfaction",
+        "availability": "Availability"
+      }
+    },
+    "cta": {
+      "title": "Ready to Revolutionize your Content Creation?",
+      "subtitle": "Join thousands of content creators who are already using our AI to accelerate their productivity and create high-quality content.",
+      "startFree": "Start for Free",
+      "viewPlans": "View All Plans",
+      "freeTrial": "7-day free trial",
+      "noCommitment": "No commitment",
+      "support24x7": "24/7 Support"
+    },
+    "footer": {
+      "description": "Advanced AI platform for automated content creation. Transform your ideas into professional content in seconds.",
+      "product": "Product",
+      "plansAndPricing": "Plans & Pricing",
+      "features": "Features",
+      "freeTrial": "Free Trial",
+      "integrations": "Integrations",
+      "company": "Company",
+      "aboutUs": "About Us",
+      "blog": "Blog",
+      "careers": "Careers",
+      "contact": "Contact",
+      "support": "Support",
+      "helpCenter": "Help Center",
+      "documentation": "Documentation",
+      "systemStatus": "System Status",
+      "community": "Community",
+      "allRightsReserved": "All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfUse": "Terms of Use",
+      "cookies": "Cookies"
+    }
+  }
+}

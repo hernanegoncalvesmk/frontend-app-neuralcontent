@@ -268,7 +268,8 @@ const resources = {
   }
 };
 
-// Backend integration service
+// Backend integration service (não utilizado no momento)
+/*
 const backendConnector = {
   type: 'backend' as const,
   
@@ -308,6 +309,7 @@ const backendConnector = {
     }
   }
 };
+*/
 
 i18n
   .use(Backend)

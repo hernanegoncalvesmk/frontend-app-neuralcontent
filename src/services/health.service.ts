@@ -5,8 +5,8 @@
  * Data: 2025-01-17
  */
 
-import apiClient from '@/src/lib/api/client';
-import { ApiResponse } from '@/src/types/api';
+import apiClient from '@/lib/api/client';
+import { ApiResponse } from '@/types/api';
 
 export interface HealthCheckResponse {
   status: 'ok';

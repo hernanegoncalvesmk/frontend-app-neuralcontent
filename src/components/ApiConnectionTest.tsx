@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useHealthCheck } from '@/src/hooks/useHealthCheck';
+import { useHealthCheck } from '@/hooks/useHealthCheck';
 
 export default function ApiConnectionTest() {
   const { data, isLoading, error, isError } = useHealthCheck();

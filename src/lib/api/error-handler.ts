@@ -5,7 +5,7 @@
  * Data: 2025-01-17
  */
 
-import { ApiError } from '@/src/types/api';
+import { ApiError } from '@/types/api';
 
 export class ApiErrorHandler {
   /**

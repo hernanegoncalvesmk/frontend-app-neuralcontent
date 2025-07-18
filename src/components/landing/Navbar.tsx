@@ -4,13 +4,29 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useT } from "@/providers/TranslationProvider";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "@/components/landing/LanguageSelector";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const t = useT();
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState(i18n.language);
+  
   const handleToggle = () => setMenuOpen(!isMenuOpen);
+
+  // Atualizar quando o idioma mudar
+  useEffect(() => {
+    const handleLanguageChanged = (lng: string) => {
+      setCurrentLang(lng);
+    };
+
+    i18n.on('languageChanged', handleLanguageChanged);
+    
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged);
+    };
+  }, [i18n]);
 
   const NAV_ITEMS = [
     { name: t('landing.nav.home'), path: "/" },
@@ -106,6 +122,7 @@ const Navbar: React.FC = () => {
               </ul>
 
               <div className="flex items-center ltr:ml-auto rtl:mr-auto gap-[15px]">
+                <LanguageSelector />
                 <Link
                   href="/auth/login"
                   className="font-medium py-[8px] px-[20px] text-black dark:text-white border border-gray-300 dark:border-gray-600 rounded-md transition-all hover:bg-gray-50 dark:hover:bg-gray-800"
@@ -156,6 +173,9 @@ const Navbar: React.FC = () => {
                   >
                     {t('landing.nav.register')}
                   </Link>
+                </li>
+                <li className="mt-[15px] flex justify-center">
+                  <LanguageSelector />
                 </li>
               </ul>
             </div>

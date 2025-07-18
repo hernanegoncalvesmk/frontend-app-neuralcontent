@@ -13,7 +13,7 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axiosRetry from 'axios-retry';
-import { ApiResponse, ApiError, AuthTokens } from '@/src/types/api';
+import { ApiResponse, ApiError, AuthTokens } from '@/types/api';
 
 // Configuração base do cliente
 const BASE_CONFIG = {
@@ -249,7 +249,10 @@ class ApiClient {
 
     // Log para desenvolvimento
     if (process.env.NODE_ENV === 'development') {
-      console.error('❌ API Error:', apiError);
+      console.error('❌ API Error:', {
+        original: error,
+        processed: apiError
+      });
     }
 
     return apiError;

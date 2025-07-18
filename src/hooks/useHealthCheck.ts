@@ -8,8 +8,8 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { healthService, HealthCheckResponse } from '@/src/services/health.service';
-import { ApiResponse } from '@/src/types/api';
+import { healthService, HealthCheckResponse } from '@/services/health.service';
+import { ApiResponse } from '@/types/api';
 
 export const useHealthCheck = () => {
   return useQuery<ApiResponse<HealthCheckResponse>>({
