@@ -24,7 +24,8 @@ export default function BillingHistoryPage() {
   const { t } = useTranslation('billing');
   
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [loading, setLoading] = useState(false);
+  // TODO: Implementar estado de loading quando necessário
+  // const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<FilterOptions>({
     type: 'all',
     status: 'all',

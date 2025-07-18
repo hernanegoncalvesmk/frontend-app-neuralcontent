@@ -9,6 +9,7 @@ import "./globals.css";
 
 import LayoutProvider from "@/providers/LayoutProvider";
 import { TranslationProvider } from "@/providers/TranslationProvider";
+import QueryProvider from "@/src/providers/QueryProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -32,11 +33,13 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
-        <TranslationProvider>
-          <LayoutProvider>
-            {children}
-          </LayoutProvider>
-        </TranslationProvider>
+        <QueryProvider>
+          <TranslationProvider>
+            <LayoutProvider>
+              {children}
+            </LayoutProvider>
+          </TranslationProvider>
+        </QueryProvider>
       </body>
     </html>
   );
