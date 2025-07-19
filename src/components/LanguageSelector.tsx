@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useLanguage, useT } from '@/providers/TranslationProvider';
+import { useTranslation } from 'react-i18next';
 
 interface LanguageSelectorProps {
   variant?: 'dropdown' | 'buttons' | 'minimal';
@@ -10,22 +10,28 @@ interface LanguageSelectorProps {
   showNames?: boolean;
 }
 
+const LANGUAGES = [
+  { code: 'pt-BR', name: 'Português (Brasil)', flag: '🇧🇷' },
+  { code: 'en-US', name: 'English (US)', flag: '🇺🇸' },
+  { code: 'es-ES', name: 'Español', flag: '🇪🇸' },
+  { code: 'fr-FR', name: 'Français', flag: '🇫🇷' },
+];
+
 export default function LanguageSelector({ 
   variant = 'dropdown',
   className = '',
   showFlags = true,
   showNames = true 
 }: LanguageSelectorProps) {
-  const { currentLanguage, languages, changeLanguage } = useLanguage();
-  const t = useT();
+  const { i18n, t } = useTranslation('common');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLang = languages.find(lang => lang.code === currentLanguage);
+  const currentLang = LANGUAGES.find(lang => lang.code === i18n.language);
 
   const handleLanguageChange = async (code: string) => {
     try {
-      await changeLanguage(code);
+      await i18n.changeLanguage(code);
       setIsOpen(false);
     } catch (error) {
       console.error('Failed to change language:', error);
@@ -53,12 +59,12 @@ export default function LanguageSelector({
   if (variant === 'minimal') {
     return (
       <div className={`flex gap-1 ${className}`}>
-        {languages.filter(lang => lang.isActive).map((language) => (
+        {LANGUAGES.map((language) => (
           <button
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
             className={`px-2 py-1 text-xs rounded transition-colors ${
-              currentLanguage === language.code
+              i18n.language === language.code
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
@@ -76,12 +82,12 @@ export default function LanguageSelector({
   if (variant === 'buttons') {
     return (
       <div className={`space-y-2 ${className}`}>
-        {languages.filter(lang => lang.isActive).map((language) => (
+        {LANGUAGES.map((language) => (
           <button
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
             className={`w-full text-left px-3 py-2 rounded-md transition-colors flex items-center ${
-              currentLanguage === language.code
+              i18n.language === language.code
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100'
             }`}
@@ -122,12 +128,12 @@ export default function LanguageSelector({
               {t('languages.chooseLang')}
             </div>
             
-            {languages.filter(lang => lang.isActive).map((language) => (
+            {LANGUAGES.map((language) => (
               <button
                 key={language.code}
                 type="button"
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 text-left ${
-                  currentLanguage === language.code 
+                  i18n.language === language.code 
                     ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' 
                     : 'text-gray-700 dark:text-gray-300'
                 }`}
@@ -135,7 +141,7 @@ export default function LanguageSelector({
               >
                 {showFlags && <span className="text-lg">{language.flag}</span>}
                 {showNames && <span className="flex-1 text-sm font-medium">{language.name}</span>}
-                {currentLanguage === language.code && (
+                {i18n.language === language.code && (
                   <svg className="w-4 h-4 text-primary-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>

@@ -1,0 +1,8 @@
+{
+  "title": "Painel",
+  "subtitle": "Visão geral das suas atividades",
+  "welcome": {
+    "title": "Bem-vindo de volta, {{name}}!",
+    "subtitle": "Aqui está um resumo das suas atividades hoje"
+  }
+}

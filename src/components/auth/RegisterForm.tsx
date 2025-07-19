@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
 import { isValidEmail } from '@/lib/utils';
+import CountrySelector from './CountrySelector';
 
 interface RegisterFormData {
   fullName: string;
@@ -32,30 +33,6 @@ interface RegisterErrors {
   acceptTerms?: string;
   general?: string;
 }
-
-// Lista de países mais comuns
-const COUNTRIES = [
-  { value: 'BR', label: 'Brasil' },
-  { value: 'US', label: 'Estados Unidos' },
-  { value: 'PT', label: 'Portugal' },
-  { value: 'ES', label: 'Espanha' },
-  { value: 'AR', label: 'Argentina' },
-  { value: 'MX', label: 'México' },
-  { value: 'CO', label: 'Colômbia' },
-  { value: 'CL', label: 'Chile' },
-  { value: 'PE', label: 'Peru' },
-  { value: 'UY', label: 'Uruguai' },
-  { value: 'PY', label: 'Paraguai' },
-  { value: 'BO', label: 'Bolívia' },
-  { value: 'EC', label: 'Equador' },
-  { value: 'VE', label: 'Venezuela' },
-  { value: 'FR', label: 'França' },
-  { value: 'DE', label: 'Alemanha' },
-  { value: 'IT', label: 'Itália' },
-  { value: 'GB', label: 'Reino Unido' },
-  { value: 'CA', label: 'Canadá' },
-  { value: 'AU', label: 'Austrália' },
-].sort((a, b) => a.label.localeCompare(b.label));
 
 const RegisterForm: React.FC = () => {
   const router = useRouter();
@@ -348,27 +325,12 @@ const RegisterForm: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   {t('register.fields.country')}
                 </label>
-                <select
+                <CountrySelector
                   value={formData.country}
-                  onChange={handleInputChange('country')}
-                  className={`w-full px-3 py-2 border rounded-md bg-white dark:bg-[#172036] text-gray-900 dark:text-white transition-all ${
-                    errors.country 
-                      ? 'border-red-500 focus:border-red-500' 
-                      : 'border-gray-300 dark:border-[#2d3c5b] focus:border-primary-500'
-                  } focus:outline-none focus:ring-1 focus:ring-primary-500`}
-                >
-                  <option value="">{t('register.placeholders.country')}</option>
-                  {COUNTRIES.map((country) => (
-                    <option key={country.value} value={country.value}>
-                      {country.label}
-                    </option>
-                  ))}
-                </select>
-                {errors.country && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.country}
-                  </p>
-                )}
+                  onChange={(value) => setFormData(prev => ({ ...prev, country: value }))}
+                  error={errors.country}
+                  placeholder={t('register.placeholders.country')}
+                />
               </div>
 
               {/* Checkbox Termos e Política */}

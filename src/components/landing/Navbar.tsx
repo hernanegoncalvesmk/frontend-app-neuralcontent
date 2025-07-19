@@ -9,7 +9,7 @@ import LanguageSelector from "@/components/landing/LanguageSelector";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('common');
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(i18n.language);
   
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                   className="ltr:mr-2 rtl:ml-2"
                 />
                 <span className="text-xl font-bold text-gray-900 dark:text-white">
-                  Neural Content
+                  {t('app.name')}
                 </span>
               </div>
             </Link>

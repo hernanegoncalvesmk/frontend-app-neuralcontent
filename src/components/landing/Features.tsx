@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { useT } from "@/providers/TranslationProvider";
+import { useTranslation } from "react-i18next";
 
 const Features: React.FC = () => {
-  const t = useT();
+  const { t } = useTranslation('common');
   
   const FEATURES = [
     {

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import '@/lib/i18n'; // Importar a configuração
 
 export default function I18nTest() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('common');
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -27,18 +27,6 @@ export default function I18nTest() {
         >
           EN-US
         </button>
-        <button 
-          onClick={() => changeLanguage('es-ES')}
-          className="px-3 py-1 bg-red-500 text-white rounded"
-        >
-          ES-ES
-        </button>
-        <button 
-          onClick={() => changeLanguage('fr-FR')}
-          className="px-3 py-1 bg-purple-500 text-white rounded"
-        >
-          FR-FR
-        </button>
       </div>
 
       <div className="space-y-2">
@@ -46,8 +34,8 @@ export default function I18nTest() {
         <p><strong>Nome do app:</strong> {t('app.name')}</p>
         <p><strong>Descrição:</strong> {t('app.description')}</p>
         <p><strong>Bem-vindo:</strong> {t('app.welcome')}</p>
-        <p><strong>Navigation - Dashboard:</strong> {t('navigation.dashboard')}</p>
-        <p><strong>Landing - Home:</strong> {t('landing.nav.home')}</p>
+        <p><strong>Carregando:</strong> {t('common.loading')}</p>
+        <p><strong>Salvar:</strong> {t('common.save')}</p>
       </div>
     </div>
   );

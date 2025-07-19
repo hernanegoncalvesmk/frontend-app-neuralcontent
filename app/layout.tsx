@@ -10,6 +10,7 @@ import "./globals.css";
 import LayoutProvider from "@/providers/LayoutProvider";
 import { TranslationProvider } from "@/providers/TranslationProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { NextAuthProvider } from "@/providers/NextAuthProvider";
 import QueryProvider from "@/providers/QueryProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -35,13 +36,15 @@ export default function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <QueryProvider>
-          <AuthProvider>
-            <TranslationProvider>
-              <LayoutProvider>
-                {children}
-              </LayoutProvider>
-            </TranslationProvider>
-          </AuthProvider>
+          <NextAuthProvider>
+            <AuthProvider>
+              <TranslationProvider>
+                <LayoutProvider>
+                  {children}
+                </LayoutProvider>
+              </TranslationProvider>
+            </AuthProvider>
+          </NextAuthProvider>
         </QueryProvider>
       </body>
     </html>

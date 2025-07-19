@@ -74,6 +74,20 @@
       "buttons": {
         "startFree": "Commencer Gratuitement",
         "viewPlans": "Voir les Plans"
+      },
+      "benefits": {
+        "noCredit": "Aucune carte de crédit requise",
+        "instantSetup": "Configuration instantanée",
+        "cancelAnytime": "Annulez à tout moment"
+      },
+      "dashboard": {
+        "title": "Tableau de bord Neural Content",
+        "subtitle": "Interface intuitive pour la création de contenu"
+      },
+      "features": {
+        "aiAdvanced": "IA Avancée",
+        "superFast": "Super Rapide",
+        "highQuality": "Haute Qualité"
       }
     },
     "features": {

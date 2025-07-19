@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
@@ -19,6 +20,7 @@ interface ForgotPasswordErrors {
 
 const ForgotPasswordForm: React.FC = () => {
   const { isLoading } = useAuth();
+  const { t } = useTranslation('auth');
   
   const [formData, setFormData] = useState<ForgotPasswordFormData>({
     email: ''
@@ -33,9 +35,9 @@ const ForgotPasswordForm: React.FC = () => {
     const newErrors: ForgotPasswordErrors = {};
 
     if (!formData.email) {
-      newErrors.email = 'Email é obrigatório';
+      newErrors.email = t('forgotPassword.emailNotFound');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('errors.invalidEmail');
     }
 
     setErrors(newErrors);
@@ -58,7 +60,7 @@ const ForgotPasswordForm: React.FC = () => {
       setIsSuccess(true);
     } catch (err: unknown) {
       console.error('Erro ao solicitar recuperação:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Erro ao enviar email de recuperação. Tente novamente.';
+      const errorMessage = err instanceof Error ? err.message : t('errors.serverError');
       setErrors({ general: errorMessage });
     } finally {
       setIsSubmitting(false);
@@ -124,29 +126,29 @@ const ForgotPasswordForm: React.FC = () => {
               {/* Título e descrição */}
               <div className="mb-[25px]">
                 <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                  Email enviado com sucesso!
+                  {t('forgotPassword.emailSent')}
                 </h1>
                 <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400 mb-4">
-                  Enviamos um link de recuperação para:
+                  {t('forgotPassword.emailSentSubtitle')}
                 </p>
                 <p className="font-semibold text-primary-500 mb-4">
                   {formData.email}
                 </p>
                 <p className="text-sm text-[#445164] dark:text-gray-400">
-                  Clique no link no email para redefinir sua senha. O link é válido por 15 minutos.
+                  {t('forgotPassword.emailSentDescription')}
                 </p>
               </div>
 
               {/* Instruções */}
               <div className="mb-[25px] p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
                 <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-2">
-                  Próximos passos:
+                  {t('forgotPassword.nextSteps')}
                 </h3>
                 <ol className="list-decimal list-inside text-sm text-blue-700 dark:text-blue-400 space-y-1">
-                  <li>Acesse seu email</li>
-                  <li>Procure pelo email de recuperação do Neural Content</li>
-                  <li>Clique no link &quot;Redefinir Senha&quot;</li>
-                  <li>Crie uma nova senha</li>
+                  <li>{t('forgotPassword.step1')}</li>
+                  <li>{t('forgotPassword.step2')}</li>
+                  <li>{t('forgotPassword.step3')}</li>
+                  <li>{t('forgotPassword.step4')}</li>
                 </ol>
               </div>
 
@@ -159,7 +161,7 @@ const ForgotPasswordForm: React.FC = () => {
                 >
                   <span className="flex items-center justify-center gap-[5px]">
                     <i className="material-symbols-outlined">refresh</i>
-                    Enviar novamente
+                    {t('forgotPassword.sendAgain')}
                   </span>
                 </Button>
 
@@ -170,7 +172,7 @@ const ForgotPasswordForm: React.FC = () => {
                   <Button variant="ghost" className="w-full">
                     <span className="flex items-center justify-center gap-[5px]">
                       <i className="material-symbols-outlined">arrow_back</i>
-                      Voltar ao Login
+                      {t('forgotPassword.backToLogin')}
                     </span>
                   </Button>
                 </Link>
@@ -220,10 +222,10 @@ const ForgotPasswordForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[17px] md:mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                Esqueceu sua senha?
+                {t('forgotPassword.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400">
-                Não se preocupe! Digite seu email e enviaremos um link para redefinir sua senha
+                {t('forgotPassword.subtitle')}
               </p>
             </div>
 
@@ -231,9 +233,9 @@ const ForgotPasswordForm: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {/* Campo de email */}
               <Input
-                label="Endereço de Email"
+                label={t('forgotPassword.email')}
                 type="email"
-                placeholder="exemplo@neuralcontent.com"
+                placeholder={t('forgotPassword.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleInputChange('email')}
                 error={errors.email}
@@ -258,20 +260,20 @@ const ForgotPasswordForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">send</i>
-                  {isSubmitting ? 'Enviando...' : 'Enviar Link de Recuperação'}
+                  {isSubmitting ? t('forgotPassword.sendButtonLoading') : t('forgotPassword.sendButton')}
                 </span>
               </Button>
 
               {/* Link para voltar ao login */}
               <div className="text-center">
                 <p className="text-gray-600 dark:text-gray-400 mb-2">
-                  Lembrou da senha?
+                  {t('forgotPassword.rememberedPassword')}
                 </p>
                 <Link
                   href="/auth/login"
                   className="text-primary-500 transition-all font-semibold hover:underline"
                 >
-                  Voltar ao Login
+                  {t('forgotPassword.backToLogin')}
                 </Link>
               </div>
             </form>

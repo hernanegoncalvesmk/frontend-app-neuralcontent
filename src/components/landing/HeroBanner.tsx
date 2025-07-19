@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 const HeroBanner: React.FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   return (
     <>
@@ -52,15 +52,15 @@ const HeroBanner: React.FC = () => {
             <div className="flex justify-center items-center gap-[20px] mt-[20px] text-sm text-gray-500 dark:text-gray-400">
               <div className="flex items-center gap-[5px]">
                 <i className="material-symbols-outlined !text-[16px] text-green-500">check_circle</i>
-                <span>Sem cartão de crédito</span>
+                <span>{t('landing.hero.benefits.noCredit')}</span>
               </div>
               <div className="flex items-center gap-[5px]">
                 <i className="material-symbols-outlined !text-[16px] text-green-500">check_circle</i>
-                <span>Setup instantâneo</span>
+                <span>{t('landing.hero.benefits.instantSetup')}</span>
               </div>
               <div className="flex items-center gap-[5px]">
                 <i className="material-symbols-outlined !text-[16px] text-green-500">check_circle</i>
-                <span>Cancele quando quiser</span>
+                <span>{t('landing.hero.benefits.cancelAnytime')}</span>
               </div>
             </div>
           </div>
@@ -70,8 +70,8 @@ const HeroBanner: React.FC = () => {
               <div className="w-[848px] h-[585px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 rounded-xl flex items-center justify-center">
                 <div className="text-center">
                   <i className="material-symbols-outlined text-[80px] text-gray-400 dark:text-gray-500 mb-4">dashboard</i>
-                  <p className="text-gray-500 dark:text-gray-400 text-lg font-medium">Neural Content Dashboard</p>
-                  <p className="text-gray-400 dark:text-gray-500 text-sm mt-2">Interface intuitiva para criação de conteúdo</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-lg font-medium">{t('landing.hero.dashboard.title')}</p>
+                  <p className="text-gray-400 dark:text-gray-500 text-sm mt-2">{t('landing.hero.dashboard.subtitle')}</p>
                 </div>
               </div>
             </div>
@@ -80,21 +80,21 @@ const HeroBanner: React.FC = () => {
             <div className="absolute top-[10%] left-[5%] bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 border border-gray-200 dark:border-gray-700 animate-bounce">
               <div className="flex items-center gap-2">
                 <i className="material-symbols-outlined text-primary-600 !text-[20px]">psychology</i>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">IA Avançada</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('landing.hero.features.aiAdvanced')}</span>
               </div>
             </div>
 
             <div className="absolute top-[20%] right-[8%] bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 border border-gray-200 dark:border-gray-700 animate-bounce" style={{animationDelay: '1s'}}>
               <div className="flex items-center gap-2">
                 <i className="material-symbols-outlined text-green-500 !text-[20px]">speed</i>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Super Rápido</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('landing.hero.features.superFast')}</span>
               </div>
             </div>
 
             <div className="absolute bottom-[15%] left-[10%] bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 border border-gray-200 dark:border-gray-700 animate-bounce" style={{animationDelay: '2s'}}>
               <div className="flex items-center gap-2">
                 <i className="material-symbols-outlined text-purple-600 !text-[20px]">high_quality</i>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Alta Qualidade</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('landing.hero.features.highQuality')}</span>
               </div>
             </div>
           </div>

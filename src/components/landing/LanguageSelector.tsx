@@ -1,22 +1,23 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { useLanguage, useT } from "@/providers/TranslationProvider";
+import { useTranslation } from "react-i18next";
+import { I18N_CONFIG } from "@/constants/config";
 
 const LanguageSelector: React.FC = () => {
-  const { currentLanguage, languages, changeLanguage } = useLanguage();
-  const t = useT();
+  const { i18n, t } = useTranslation('common');
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLang = languages.find(lang => lang.code === currentLanguage);
+  const languages = I18N_CONFIG.SUPPORTED_LANGUAGES;
+  const currentLanguage = i18n.language;
+
+  const currentLang = languages.find((lang: any) => lang.code === currentLanguage);
 
   const handleLanguageChange = async (code: string) => {
     try {
-      console.log('Changing language from', currentLanguage, 'to', code);
-      await changeLanguage(code);
+      await i18n.changeLanguage(code);
       setIsOpen(false);
-      console.log('Language changed successfully to', code);
     } catch (error) {
       console.error('Failed to change language:', error);
     }
@@ -66,7 +67,7 @@ const LanguageSelector: React.FC = () => {
               {t('languages.chooseLang')}
             </div>
             
-            {languages.filter(lang => lang.isActive).map((language) => (
+            {languages.map((language: any) => (
               <button
                 key={language.code}
                 type="button"

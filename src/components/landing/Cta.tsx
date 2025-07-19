@@ -2,10 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import { useT } from "@/providers/TranslationProvider";
+import { useTranslation } from "react-i18next";
 
 const Cta: React.FC = () => {
-  const t = useT();
+  const { t } = useTranslation('common');
   return (
     <>
       <div className="py-[80px] md:py-[100px] lg:py-[120px] bg-gradient-to-r from-primary-600 to-purple-600 relative overflow-hidden">

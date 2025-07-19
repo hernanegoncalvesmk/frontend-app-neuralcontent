@@ -171,6 +171,20 @@
       "buttons": {
         "startFree": "Start Free",
         "viewPlans": "View Plans"
+      },
+      "benefits": {
+        "noCredit": "No credit card required",
+        "instantSetup": "Instant setup",
+        "cancelAnytime": "Cancel anytime"
+      },
+      "dashboard": {
+        "title": "Neural Content Dashboard",
+        "subtitle": "Intuitive interface for content creation"
+      },
+      "features": {
+        "aiAdvanced": "Advanced AI",
+        "superFast": "Super Fast",
+        "highQuality": "High Quality"
       }
     },
     "features": {

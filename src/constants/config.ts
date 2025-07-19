@@ -29,10 +29,10 @@ export const I18N_CONFIG = {
   DEFAULT_LANGUAGE: 'pt-BR',
   FALLBACK_LANGUAGE: 'en-US',
   SUPPORTED_LANGUAGES: [
-    { code: 'pt-BR', name: 'Português (Brasil)', flag: '🇧🇷' },
-    { code: 'en-US', name: 'English (US)', flag: '🇺🇸' },
-    { code: 'es-ES', name: 'Español', flag: '🇪🇸' },
-    { code: 'fr-FR', name: 'Français', flag: '🇫🇷' },
+    { code: 'pt-BR', name: 'Português (Brasil)', flag: '🇧🇷', isActive: true },
+    { code: 'en-US', name: 'English (US)', flag: '🇺🇸', isActive: true },
+    { code: 'es-ES', name: 'Español', flag: '🇪🇸', isActive: true },
+    { code: 'fr-FR', name: 'Français', flag: '🇫🇷', isActive: true },
   ],
   CACHE_DURATION: 60 * 60 * 1000, // 1 hora
 } as const;

@@ -3,11 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useT } from "@/providers/TranslationProvider";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const t = useT();
+  const { t } = useTranslation('common');
 
   return (
     <>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                       className="ltr:mr-2 rtl:ml-2"
                     />
                     <span className="text-xl font-bold text-white">
-                      Neural Content
+                      {t('app.name')}
                     </span>
                   </div>
                 </Link>
