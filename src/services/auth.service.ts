@@ -1,4 +1,4 @@
-import { apiClient } from '@/lib/api';
+import { apiClient, api } from '@/lib/api';
 import type { 
   LoginRequest, 
   RegisterRequest, 
@@ -15,7 +15,21 @@ import type { ApiResponse } from '@/types/api.types';
 export const authService = {
   // Login
   async login(credentials: LoginRequest): Promise<AuthResponse> {
-    return await apiClient.post<AuthResponse['data']>('/auth/login', credentials);
+    console.log('🔍 Auth Service - Login attempt:', credentials);
+    console.log('🌐 Base URL:', process.env.NEXT_PUBLIC_API_URL);
+    console.log('📍 Base Path:', process.env.NEXT_PUBLIC_API_BASE_PATH);
+    
+    // Fazer a requisição diretamente usando axios pois o backend não retorna ApiResponse wrapper
+    const response = await api.post('/auth/login', credentials);
+    
+    // Adaptar a resposta para o formato esperado pelo frontend
+    const authResponse: AuthResponse = {
+      success: true,
+      message: 'Login realizado com sucesso',
+      data: response.data
+    };
+    
+    return authResponse;
   },
 
   // Registro

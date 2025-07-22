@@ -17,7 +17,7 @@ import { ApiResponse, ApiError, AuthTokens } from '@/types/api';
 
 // Configuração base do cliente
 const BASE_CONFIG = {
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/v1',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',

@@ -8,8 +8,8 @@ export const ENV = {
 
 // URLs da API e serviços
 export const API_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
-  TIMEOUT: 30000, // 30 segundos
+  BASE_URL: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${process.env.NEXT_PUBLIC_API_BASE_PATH || '/api/v1'}`,
+  TIMEOUT: parseInt(process.env.NEXT_PUBLIC_API_TIMEOUT || '30000'),
   RETRY_ATTEMPTS: 3,
   RETRY_DELAY: 1000, // 1 segundo
 } as const;

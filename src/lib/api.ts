@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosRequestConfig, AxiosResponse, AxiosError, AxiosProgressEvent } from 'axios';
 import { API_CONFIG } from '@/constants/config';
-import { isTokenExpired, getStoredTokens, clearStoredTokens } from './auth';
+import { isTokenExpired, getStoredTokens, clearStoredTokens } from './cookies';
 import type { ApiResponse, ApiError } from '@/types/api.types';
 
 // Configuração base do axios
@@ -75,8 +75,15 @@ api.interceptors.response.use(
     if (process.env.NODE_ENV === 'development') {
       console.error('❌ Response Error:', {
         status: error.response?.status,
+        statusText: error.response?.statusText,
         url: error.config?.url,
+        method: error.config?.method,
         data: error.response?.data,
+        message: error.message,
+        code: error.code,
+        hasResponse: !!error.response,
+        hasRequest: !!error.request,
+        fullError: error
       });
     }
 

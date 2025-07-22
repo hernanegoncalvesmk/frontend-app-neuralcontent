@@ -1,19 +1,19 @@
 // Tipos para requests de autenticação
 export interface LoginRequest {
-  email: string;
+  emailOrUsername: string; // Alinhado com backend DTO
   password: string;
   rememberMe?: boolean;
 }
 
 export interface RegisterRequest {
-  fullName: string;
+  name: string;              // Alinhado com schema MySQL
   email: string;
   password: string;
   confirmPassword?: string;
-  phone: string;
-  birthDate: string;
-  country: string;
-  acceptTerms?: boolean;
+  username?: string;         // Opcional, alinhado com schema
+  phone?: string;            // Opcional, alinhado com schema
+  agreeToTerms: boolean;     // Alinhado com backend DTO
+  agreeToPrivacy: boolean;   // Alinhado com backend DTO
 }
 
 export interface ForgotPasswordRequest {

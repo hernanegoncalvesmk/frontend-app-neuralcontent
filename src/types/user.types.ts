@@ -1,22 +1,35 @@
-// Tipos base para usuário
+// Tipos base para usuário - Alinhado com schema MySQL usr_users
 export interface User {
-  id: string;
-  email: string;
-  name: string;
-  avatar?: string;
-  role: UserRole;
-  status: UserStatus;
-  credits: number;
-  plan: UserPlan;
-  preferences: UserPreferences;
-  isEmailVerified: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  lastLoginAt?: Date;
+  id: string;                           // CHAR(36) PRIMARY KEY
+  email: string;                        // VARCHAR(255) UNIQUE NOT NULL
+  name: string;                         // VARCHAR(255) NOT NULL
+  username?: string;                    // VARCHAR(100) UNIQUE
+  phone?: string;                       // VARCHAR(20)
+  avatarUrl?: string;                   // avatar_url VARCHAR(500)
+  role: UserRole;                       // ENUM('user', 'admin', 'moderator')
+  status: UserStatus;                   // ENUM('active', 'inactive', 'suspended', 'pending')
+  accountType: AccountType;             // ENUM('personal', 'business', 'enterprise')
+  subscriptionStatus: SubscriptionStatus; // ENUM('trial', 'active', 'cancelled', 'expired')
+  authProvider: AuthProvider;           // ENUM('email', 'google', 'facebook', 'microsoft', 'apple')
+  isEmailVerified: boolean;             // email_verified_at IS NOT NULL
+  isPhoneVerified: boolean;             // phone_verified_at IS NOT NULL
+  language: string;                     // VARCHAR(10) DEFAULT 'pt-BR'
+  timezone: string;                     // VARCHAR(50) DEFAULT 'America/Sao_Paulo'
+  theme: ThemeType;                     // ENUM('light', 'dark', 'auto')
+  totalPoints: number;                  // INT DEFAULT 0
+  globalLevel: number;                  // INT DEFAULT 1
+  companyName?: string;                 // VARCHAR(255)
+  jobTitle?: string;                    // VARCHAR(100)
+  createdAt: Date;                      // TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  updatedAt: Date;                      // TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  lastLoginAt?: Date;                   // TIMESTAMP NULL
 }
 
-export type UserRole = 'user' | 'admin' | 'moderator' | 'super_admin';
-export type UserStatus = 'active' | 'inactive' | 'suspended' | 'pending_verification';
+export type UserRole = 'user' | 'admin' | 'moderator'; // Alinhado com schema MySQL
+export type UserStatus = 'active' | 'inactive' | 'suspended' | 'pending'; // Alinhado com schema MySQL
+export type AccountType = 'personal' | 'business' | 'enterprise'; // Alinhado com schema MySQL
+export type SubscriptionStatus = 'trial' | 'active' | 'cancelled' | 'expired'; // Alinhado com schema MySQL
+export type AuthProvider = 'email' | 'google' | 'facebook' | 'microsoft' | 'apple'; // Alinhado com schema MySQL
 
 // Tipos para planos
 export interface UserPlan {

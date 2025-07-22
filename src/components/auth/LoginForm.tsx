@@ -63,7 +63,7 @@ const LoginForm: React.FC = () => {
 
     try {
       await login({
-        email: formData.email,
+        emailOrUsername: formData.email, // Corrigido para alinhar com backend
         password: formData.password,
         rememberMe: formData.rememberMe
       });

@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '@/services/auth.service';
-import { setTokens, setUserData, clearStoredTokens, getAuthState } from '@/lib/auth';
+import { setTokens, setUserData, clearStoredTokens, getAuthState } from '@/lib/cookies';
 import type { User } from '@/types/user.types';
 import type { LoginRequest, RegisterRequest } from '@/types/auth.types';
 
