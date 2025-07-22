@@ -1,0 +1,12 @@
+﻿ANALISE DE DUPLICATAS INTERNAS - FRONTEND NEURALCONTENT
+Data: 07/22/2025 16:16:09
+Diretorio: C:\Users\Hernane\Music\NeuralContent\frontend-app-neuralcontent
+
+ESTATISTICAS:
+Total de arquivos analisados: 21755
+Duplicatas por nome: 2701 grupos
+Duplicatas por conteudo: 123 grupos
+Tamanho total: 281,08 MB
+Espaco desperdicado: 11.531,43 MB
+Potencial economia: 4.102,52%
+
