@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import VerifyEmailForm from '@/components/auth/VerifyEmailForm';
+import VerifyEmailForm from '@/domains/auth/components/VerifyEmailForm';
 
 export const metadata: Metadata = {
   title: 'Verify Email - Neural Content',

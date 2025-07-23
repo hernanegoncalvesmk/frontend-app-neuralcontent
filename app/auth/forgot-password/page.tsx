@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm';
+import ForgotPasswordForm from '@/domains/auth/components/ForgotPasswordForm';
 
 export const metadata: Metadata = {
   title: 'Esqueci a Senha - Neural Content',

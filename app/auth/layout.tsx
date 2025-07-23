@@ -1,7 +1,7 @@
 'use client';
 
-import { AuthProvider } from '@/providers/AuthProvider';
-import AuthLanguageSelector from '@/components/auth/AuthLanguageSelector';
+import { AuthProvider } from '@/infrastructure/providers/AuthProvider';
+import AuthLanguageSelector from '@/domains/auth/components/AuthLanguageSelector';
 
 export default function AuthLayout({
   children,

@@ -1,12 +1,12 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosRequestConfig, AxiosResponse, AxiosError, AxiosProgressEvent } from 'axios';
 import { API_CONFIG } from '@/constants/config';
 import { isTokenExpired, getStoredTokens, clearStoredTokens } from './cookies';
-import type { ApiResponse, ApiError } from '@/types/api.types';
+import type { ApiResponse, ApiError } from '@/domains/shared/types/api.types';
 
 // Configuração base do axios
 const axiosConfig = {
-  baseURL: API_CONFIG.BASE_URL,
-  timeout: API_CONFIG.TIMEOUT,
+  baseURL: API_CONFIG.baseUrl,
+  timeout: API_CONFIG.timeout,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -30,7 +30,7 @@ api.interceptors.request.use(
     // Adicionar token de autorização se não for explicitamente ignorado
     if (!customConfig.skipAuth) {
       const tokens = getStoredTokens();
-      if (tokens?.accessToken && !isTokenExpired()) {
+      if (tokens?.accessToken && !isTokenExpired(tokens.accessToken)) {
         config.headers = config.headers || {};
         config.headers['Authorization'] = `Bearer ${tokens.accessToken}`;
       }
@@ -103,6 +103,7 @@ api.interceptors.response.use(
         message: getErrorMessage(error),
         code: getErrorCode(error),
         timestamp: new Date().toISOString(),
+        statusCode: error.response?.status || 500,
       };
 
       // Adicionar erros de validação se existirem
@@ -234,8 +235,8 @@ export const apiClient = {
   // Request com retry automático
   async withRetry<T>(
     requestFn: () => Promise<ApiResponse<T>>,
-    maxRetries: number = API_CONFIG.RETRY_ATTEMPTS,
-    delay: number = API_CONFIG.RETRY_DELAY
+    maxRetries: number = API_CONFIG.retryAttempts,
+    delay: number = API_CONFIG.retryDelay
   ): Promise<ApiResponse<T>> {
     let lastError: Error;
 

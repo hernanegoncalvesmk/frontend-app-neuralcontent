@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
+import ResetPasswordForm from '@/domains/auth/components/ResetPasswordForm';
 
 export const metadata: Metadata = {
   title: 'Redefinir Senha - Neural Content',

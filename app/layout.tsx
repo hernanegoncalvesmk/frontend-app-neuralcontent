@@ -7,10 +7,10 @@ import "swiper/css/bundle";
 // globals
 import "./globals.css";
 
-import LayoutProvider from "@/providers/LayoutProvider";
-import { TranslationProvider } from "@/providers/TranslationProvider";
-import { AuthProvider } from "@/providers/AuthProvider";
-import QueryProvider from "@/providers/QueryProvider";
+import LayoutProvider from "@/infrastructure/providers/LayoutProvider";
+import { TranslationProvider } from "@/infrastructure/providers/TranslationProvider";
+import { AuthProvider } from "@/infrastructure/providers/AuthProvider";
+import QueryProvider from "@/infrastructure/providers/QueryProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 

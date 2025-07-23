@@ -1,4 +1,4 @@
-import LoginForm from '@/components/auth/LoginForm';
+import LoginForm from '@/domains/auth/components/LoginForm';
 import { Metadata } from 'next';
 
 // Metadata será dinâmica via middleware de tradução

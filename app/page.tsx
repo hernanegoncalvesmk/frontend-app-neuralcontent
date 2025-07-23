@@ -1,10 +1,10 @@
-import Navbar from "@/components/landing/Navbar";
-import HeroBanner from "@/components/landing/HeroBanner";
-import Features from "@/components/landing/Features";
-import Cta from "@/components/landing/Cta";
-import Footer from "@/components/landing/Footer";
-import LightDarkModeButton from "@/components/landing/LightDarkModeButton";
-import ApiConnectionTest from "@/components/ApiConnectionTest";
+import Navbar from "@/domains/shared/components/Navbar";
+import HeroBanner from "@/domains/shared/components/HeroBanner";
+import Features from "@/domains/shared/components/Features";
+import Cta from "@/domains/shared/components/Cta";
+import Footer from "@/domains/shared/components/Footer";
+import LightDarkModeButton from "@/domains/shared/components/LightDarkModeButton";
+import ApiConnectionTest from "@/domains/shared/components/ApiConnectionTest";
 
 // Desabilitar static rendering para esta página
 export const dynamic = 'force-dynamic';

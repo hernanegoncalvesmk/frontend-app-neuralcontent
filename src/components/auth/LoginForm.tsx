@@ -5,8 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
+import { Input } from '@/domains/shared/components/ui/Input';
+import { Button } from '@/domains/shared/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
 import { isValidEmail } from '@/lib/utils';
 
@@ -62,11 +62,7 @@ const LoginForm: React.FC = () => {
     if (!validateForm()) return;
 
     try {
-      await login({
-        emailOrUsername: formData.email, // Corrigido para alinhar com backend
-        password: formData.password,
-        rememberMe: formData.rememberMe
-      });
+      await login(formData.email, formData.password);
       
       // Redirecionamento será feito pelo AuthProvider após login bem-sucedido
       router.push('/dashboard');

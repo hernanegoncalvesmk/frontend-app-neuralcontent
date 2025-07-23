@@ -5,11 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
+import { Input } from '@/domains/shared/components/ui/Input';
+import { Button } from '@/domains/shared/components/ui/Button';
 import { useAuth } from '@/providers/AuthProvider';
 import { isValidEmail } from '@/lib/utils';
-import CountrySelector from './CountrySelector';
+import CountrySelector from '@/domains/auth/components/CountrySelector';
 
 interface RegisterFormData {
   fullName: string;
@@ -125,12 +125,10 @@ const RegisterForm: React.FC = () => {
 
     try {
       await register({
-        fullName: formData.fullName.trim(),
         email: formData.email,
         password: formData.password,
-        phone: formData.phone.trim(),
-        birthDate: formData.birthDate,
-        country: formData.country
+        firstName: formData.fullName.split(' ')[0]?.trim(),
+        lastName: formData.fullName.split(' ').slice(1).join(' ')?.trim()
       });
       
       // Redirecionamento para página de verificação de email

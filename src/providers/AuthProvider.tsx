@@ -1,203 +1,215 @@
+/**
+ * @fileoverview Auth Provider
+ * 
+ * Authentication context provider that manages user authentication state.
+ * 
+ * @version 1.0.0
+ * @domain auth
+ */
+
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
-import { authService } from '@/services/auth.service';
-import { setTokens, setUserData, clearStoredTokens, getAuthState } from '@/lib/cookies';
-import type { User } from '@/types/user.types';
-import type { LoginRequest, RegisterRequest } from '@/types/auth.types';
+import { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 
-// Interface do contexto de autenticação
-interface AuthContextType {
-  // Estados
+// ================================
+// Types
+// ================================
+interface User {
+  id: string;
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  avatar?: string;
+  role: string;
+  emailVerified: boolean;
+}
+
+interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
-  
-  // Ações
-  login: (credentials: LoginRequest) => Promise<void>;
-  register: (userData: RegisterRequest) => Promise<void>;
-  logout: () => Promise<void>;
-  refreshUser: () => Promise<void>;
+}
+
+interface AuthContextType extends AuthState {
+  login: (email: string, password: string) => Promise<void>;
+  register: (userData: RegisterData) => Promise<void>;
+  logout: () => void;
   clearError: () => void;
 }
 
-// Criar contexto
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-// Props do provider
-interface AuthProviderProps {
-  children: ReactNode;
+interface RegisterData {
+  email: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
 }
 
-// Provider de autenticação
-export function AuthProvider({ children }: AuthProviderProps) {
-  const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+// ================================
+// Actions
+// ================================
+type AuthAction =
+  | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_USER'; payload: User }
+  | { type: 'SET_ERROR'; payload: string }
+  | { type: 'CLEAR_ERROR' }
+  | { type: 'LOGOUT' };
 
-  // Inicializar estado de autenticação
+// ================================
+// Reducer
+// ================================
+function authReducer(state: AuthState, action: AuthAction): AuthState {
+  switch (action.type) {
+    case 'SET_LOADING':
+      return { ...state, isLoading: action.payload };
+    case 'SET_USER':
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: true,
+        isLoading: false,
+        error: null,
+      };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
+    case 'CLEAR_ERROR':
+      return { ...state, error: null };
+    case 'LOGOUT':
+      return {
+        ...state,
+        user: null,
+        isAuthenticated: false,
+        isLoading: false,
+        error: null,
+      };
+    default:
+      return state;
+  }
+}
+
+// ================================
+// Initial State
+// ================================
+const initialState: AuthState = {
+  user: null,
+  isAuthenticated: false,
+  isLoading: true, // Start with loading true to check existing session
+  error: null,
+};
+
+// ================================
+// Context
+// ================================
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+// ================================
+// Provider Component
+// ================================
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  // Initialize auth state on mount
   useEffect(() => {
-    const initializeAuth = async () => {
-      try {
-        setIsLoading(true);
-        const authState = getAuthState();
-        
-        if (authState.isAuthenticated && authState.userData) {
-          setUser(authState.userData);
-          
-          // Verificar se o token precisa ser renovado
-          if (authState.shouldRefresh) {
-            try {
-              await authService.refreshToken();
-            } catch (error) {
-              console.error('Erro ao renovar token:', error);
-              await logout();
-              return;
-            }
-          }
-          
-          // Buscar dados atualizados do usuário
-          try {
-            await refreshUser();
-          } catch (error) {
-            console.error('Erro ao buscar dados do usuário:', error);
-            // Se falhar ao buscar dados, manter os dados locais
-          }
-        }
-      } catch (error) {
-        console.error('Erro ao inicializar autenticação:', error);
-        await logout();
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     initializeAuth();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
-  // Função de login
-  const login = async (credentials: LoginRequest) => {
+  const initializeAuth = async () => {
     try {
-      setIsLoading(true);
-      setError(null);
+      dispatch({ type: 'SET_LOADING', payload: true });
       
-      const response = await authService.login(credentials);
-      
-      if (response.success && response.data) {
-        // Salvar tokens e dados do usuário
-        setTokens(response.data.tokens);
-        setUserData(response.data.user);
-        setUser(response.data.user);
-        
-        // Redirecionar para dashboard
-        router.push('/dashboard');
-      }
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Erro ao fazer login';
-      setError(errorMessage);
-      throw new Error(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Função de registro
-  const register = async (userData: RegisterRequest) => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      
-      const response = await authService.register(userData);
-      
-      if (response.success && response.data) {
-        // Salvar tokens e dados do usuário
-        setTokens(response.data.tokens);
-        setUserData(response.data.user);
-        setUser(response.data.user);
-        
-        // Redirecionar para verificação de email ou dashboard
-        if (!response.data.user.isEmailVerified) {
-          router.push('/auth/verify-email');
-        } else {
-          router.push('/dashboard');
-        }
-      }
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Erro ao criar conta';
-      setError(errorMessage);
-      throw new Error(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Função de logout
-  const logout = async () => {
-    try {
-      setIsLoading(true);
-      
-      // Tentar fazer logout no servidor
-      try {
-        await authService.logout();
-      } catch (error) {
-        console.error('Erro ao fazer logout no servidor:', error);
-        // Continuar com logout local mesmo se servidor falhar
-      }
-      
-      // Limpar dados locais
-      clearStoredTokens();
-      setUser(null);
-      setError(null);
-      
-      // Redirecionar para login
-      router.push('/auth/login');
-    } catch (error) {
-      console.error('Erro durante logout:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Função para atualizar dados do usuário
-  const refreshUser = async () => {
-    try {
-      const response = await authService.getProfile();
-      
-      if (response.success && response.data) {
-        setUserData(response.data);
-        setUser(response.data);
+      // Check for existing session/token
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        // TODO: Validate token and get user data from API
+        // For now, just set loading to false
+        dispatch({ type: 'SET_LOADING', payload: false });
+      } else {
+        dispatch({ type: 'SET_LOADING', payload: false });
       }
     } catch (error) {
-      console.error('Erro ao atualizar dados do usuário:', error);
-      // Se erro 401, fazer logout
-      if (error instanceof Error && error.message.includes('401')) {
-        await logout();
-      }
-      throw error;
+      console.error('Auth initialization error:', error);
+      dispatch({ type: 'SET_LOADING', payload: false });
     }
   };
 
-  // Limpar erro
+  const login = async (email: string, password: string) => {
+    try {
+      dispatch({ type: 'SET_LOADING', payload: true });
+      dispatch({ type: 'CLEAR_ERROR' });
+
+      // TODO: Implement actual API call
+      // const response = await authService.login(email, password);
+      
+      // Mock success for now
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      
+      const mockUser: User = {
+        id: '1',
+        email,
+        firstName: 'John',
+        lastName: 'Doe',
+        role: 'user',
+        emailVerified: true,
+      };
+
+      // Store token
+      localStorage.setItem('auth_token', 'mock-token');
+      
+      dispatch({ type: 'SET_USER', payload: mockUser });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Login failed';
+      dispatch({ type: 'SET_ERROR', payload: message });
+    }
+  };
+
+  const register = async (userData: RegisterData) => {
+    try {
+      dispatch({ type: 'SET_LOADING', payload: true });
+      dispatch({ type: 'CLEAR_ERROR' });
+
+      // TODO: Implement actual API call
+      // const response = await authService.register(userData);
+      
+      // Mock success for now
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      
+      const mockUser: User = {
+        id: '1',
+        email: userData.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        role: 'user',
+        emailVerified: false, // Usually requires email verification
+      };
+
+      // Store token
+      localStorage.setItem('auth_token', 'mock-token');
+      
+      dispatch({ type: 'SET_USER', payload: mockUser });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Registration failed';
+      dispatch({ type: 'SET_ERROR', payload: message });
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('auth_token');
+    dispatch({ type: 'LOGOUT' });
+  };
+
   const clearError = () => {
-    setError(null);
+    dispatch({ type: 'CLEAR_ERROR' });
   };
 
-  // Valor do contexto
   const contextValue: AuthContextType = {
-    // Estados
-    user,
-    isAuthenticated: !!user,
-    isLoading,
-    error,
-    
-    // Ações
+    ...state,
     login,
     register,
     logout,
-    refreshUser,
     clearError,
   };
 
@@ -208,15 +220,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   );
 }
 
-// Hook para usar o contexto
-export function useAuth() {
+// ================================
+// Hook
+// ================================
+export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
-  
   if (context === undefined) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
+    throw new Error('useAuth must be used within an AuthProvider');
   }
-  
   return context;
 }
-
-export default AuthProvider;

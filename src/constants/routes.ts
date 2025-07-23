@@ -1,102 +1,180 @@
-// Constantes de rotas da aplicação Neural Content
-export const ROUTES = {
-  // Autenticação
-  AUTH: {
-    LOGIN: '/auth/login',
-    REGISTER: '/auth/register',
-    FORGOT_PASSWORD: '/auth/forgot-password',
-    RESET_PASSWORD: '/auth/reset-password',
-    VERIFY_EMAIL: '/auth/verify-email',
-  },
-  
-  // Dashboard Principal
-  DASHBOARD: '/dashboard',
-  
-  // Perfil (páginas construídas)
-  PROFILE: {
-    MAIN: '/dashboard/profile',
-  },
-  
-  // Financeiro (páginas construídas)
-  BILLING: {
-    PLANS: '/billing/plans',
-    CREDITS: '/billing/credits',
-  },
-  
-  // Administração (páginas construídas)
-  ADMIN: {
-    MAIN: '/admin',
-    DASHBOARD: '/admin/dashboard',
-  },
-} as const;
-
-// Estrutura do menu de navegação
 export interface MenuItem {
   id: string;
   label: string;
-  icon: string;
   href?: string;
+  icon?: string;
   children?: MenuItem[];
-  group?: string;
-  requiresAuth?: boolean;
-  requiresAdmin?: boolean;
+  badge?: string;
+  isActive?: boolean;
+  permission?: string;
+  group?: string; // Add group property
 }
 
+export interface MenuGroup {
+  id: string;
+  label: string;
+  items: MenuItem[];
+}
+
+// Navigation Menu Configuration
 export const NAVIGATION_MENU: MenuItem[] = [
-  // Grupo: Principal
   {
     id: 'dashboard',
     label: 'Dashboard',
-    icon: 'dashboard',
-    href: ROUTES.DASHBOARD,
-    group: 'principal',
-    requiresAuth: true,
+    href: '/dashboard',
+    icon: 'home',
+    group: 'main'
   },
-  
-  // Grupo: Perfil (páginas construídas)
   {
     id: 'profile',
-    label: 'Perfil',
-    icon: 'person',
-    href: ROUTES.PROFILE.MAIN,
-    group: 'profile',
-    requiresAuth: true,
-  },
-  
-  // Grupo: Financeiro (páginas construídas)
-  {
-    id: 'plans',
-    label: 'Planos',
-    icon: 'workspace_premium',
-    href: ROUTES.BILLING.PLANS,
-    group: 'billing',
-    requiresAuth: true,
+    label: 'Profile',
+    href: '/profile',
+    icon: 'user',
+    group: 'user'
   },
   {
-    id: 'credits',
-    label: 'Créditos',
-    icon: 'account_balance_wallet',
-    href: ROUTES.BILLING.CREDITS,
-    group: 'billing',
-    requiresAuth: true,
+    id: 'billing',
+    label: 'Billing',
+    href: '/billing',
+    icon: 'credit-card',
+    group: 'user'
   },
-  
-  // Grupo: Administração (páginas construídas)
   {
-    id: 'admin-dashboard',
-    label: 'Dashboard Admin',
-    icon: 'admin_panel_settings',
-    href: ROUTES.ADMIN.DASHBOARD,
+    id: 'admin',
+    label: 'Admin',
+    href: '/admin',
+    icon: 'settings',
+    permission: 'admin',
     group: 'admin',
-    requiresAuth: true,
-    requiresAdmin: true,
-  },
+    children: [
+      {
+        id: 'admin-users',
+        label: 'Users',
+        href: '/admin/users',
+        icon: 'users',
+        group: 'admin'
+      },
+      {
+        id: 'admin-plans',
+        label: 'Plans',
+        href: '/admin/plans',
+        icon: 'package',
+        group: 'admin'
+      },
+      {
+        id: 'admin-payments',
+        label: 'Payments',
+        href: '/admin/payments',
+        icon: 'credit-card',
+        group: 'admin'
+      }
+    ]
+  }
 ];
 
-// Grupos do menu para organização visual
-export const MENU_GROUPS = {
-  principal: 'Principal',
-  profile: 'Perfil',
-  billing: 'Financeiro',
-  admin: 'Administração',
+// Menu Groups Configuration
+export const MENU_GROUPS: MenuGroup[] = [
+  {
+    id: 'main',
+    label: 'Main',
+    items: [
+      {
+        id: 'dashboard',
+        label: 'Dashboard',
+        href: '/dashboard',
+        icon: 'home'
+      }
+    ]
+  },
+  {
+    id: 'user',
+    label: 'User',
+    items: [
+      {
+        id: 'profile',
+        label: 'Profile',
+        href: '/profile',
+        icon: 'user'
+      },
+      {
+        id: 'billing',
+        label: 'Billing',
+        href: '/billing',
+        icon: 'credit-card'
+      }
+    ]
+  },
+  {
+    id: 'admin',
+    label: 'Administration',
+    items: [
+      {
+        id: 'admin-users',
+        label: 'Users',
+        href: '/admin/users',
+        icon: 'users',
+        permission: 'admin'
+      },
+      {
+        id: 'admin-plans',
+        label: 'Plans',
+        href: '/admin/plans',
+        icon: 'package',
+        permission: 'admin'
+      },
+      {
+        id: 'admin-payments',
+        label: 'Payments',
+        href: '/admin/payments',
+        icon: 'credit-card',
+        permission: 'admin'
+      }
+    ]
+  }
+];
+
+// Route Configuration
+export const ROUTES = {
+  HOME: '/',
+  DASHBOARD: '/dashboard',
+  PROFILE: '/profile',
+  BILLING: '/billing',
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
+  FORGOT_PASSWORD: '/auth/forgot-password',
+  RESET_PASSWORD: '/auth/reset-password',
+  ADMIN: {
+    BASE: '/admin',
+    USERS: '/admin/users',
+    PLANS: '/admin/plans',
+    PAYMENTS: '/admin/payments'
+  }
 } as const;
+
+// Public routes that don't require authentication
+export const PUBLIC_ROUTES = [
+  ROUTES.HOME,
+  ROUTES.LOGIN,
+  ROUTES.REGISTER,
+  ROUTES.FORGOT_PASSWORD,
+  ROUTES.RESET_PASSWORD
+];
+
+// Protected routes that require authentication
+export const PROTECTED_ROUTES = [
+  ROUTES.DASHBOARD,
+  ROUTES.PROFILE,
+  ROUTES.BILLING,
+  ROUTES.ADMIN.BASE,
+  ROUTES.ADMIN.USERS,
+  ROUTES.ADMIN.PLANS,
+  ROUTES.ADMIN.PAYMENTS
+];
+
+// Admin routes that require admin permission
+export const ADMIN_ROUTES = [
+  ROUTES.ADMIN.BASE,
+  ROUTES.ADMIN.USERS,
+  ROUTES.ADMIN.PLANS,
+  ROUTES.ADMIN.PAYMENTS
+];

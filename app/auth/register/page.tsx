@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import RegisterForm from '@/components/auth/RegisterForm';
+import RegisterForm from '@/domains/auth/components/RegisterForm';
 
 // Metadata será dinâmica via middleware de tradução
 export const metadata: Metadata = {
