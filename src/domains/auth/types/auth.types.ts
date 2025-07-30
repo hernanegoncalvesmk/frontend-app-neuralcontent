@@ -107,7 +107,8 @@ export interface RegisterRequest {
   email: string;
   password: string;
   confirmPassword: string;
-  acceptTerms: boolean;
+  agreeToTerms: boolean;
+  agreeToPrivacy: boolean;  // Adicionado agreeToPrivacy
   language?: string;
   referralCode?: string;
 }

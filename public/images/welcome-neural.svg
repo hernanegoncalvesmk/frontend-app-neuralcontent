@@ -1,0 +1,36 @@
+<!-- SVG placeholder para imagem de boas-vindas -->
+<svg width="418" height="336" viewBox="0 0 418 336" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="418" height="336" rx="8" fill="url(#gradient)"/>
+  
+  <!-- Ilustração de welcome com IA -->
+  <circle cx="209" cy="120" r="40" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="209" cy="120" r="25" fill="rgba(255,255,255,0.3)"/>
+  
+  <!-- Ícone de IA/robô -->
+  <rect x="194" y="110" width="30" height="20" rx="4" fill="white"/>
+  <circle cx="201" cy="118" r="2" fill="#4F46E5"/>
+  <circle cx="217" cy="118" r="2" fill="#4F46E5"/>
+  <rect x="204" y="123" width="10" height="2" rx="1" fill="#4F46E5"/>
+  
+  <!-- Elementos decorativos */
+  <circle cx="150" cy="80" r="3" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="280" cy="90" r="2" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="320" cy="140" r="4" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="100" cy="160" r="2" fill="rgba(255,255,255,0.3)"/>
+  
+  <!-- Texto placeholder -->
+  <text x="209" y="200" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="500">
+    Neural Content AI
+  </text>
+  <text x="209" y="220" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial" font-size="12">
+    Criando conteúdo inteligente
+  </text>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#7C3AED;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+</svg>

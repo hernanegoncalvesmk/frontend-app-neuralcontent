@@ -62,12 +62,14 @@ const LoginForm: React.FC = () => {
     if (!validateForm()) return;
 
     try {
+      console.log('📝 LoginForm: Enviando credenciais...', { email: formData.email });
       await login(formData.email, formData.password);
+      console.log('✅ LoginForm: Login realizado com sucesso');
       
-      // Redirecionamento será feito pelo AuthProvider após login bem-sucedido
-      router.push('/dashboard');
+      // Redirecionamento será feito automaticamente pelo useAuth hook
+      // Não precisa redirecionar aqui pois o hook já faz isso
     } catch (err: unknown) {
-      console.error('Erro no login:', err);
+      console.error('❌ LoginForm: Erro no login:', err);
       const errorMessage = err instanceof Error ? err.message : t('login.validation.invalidCredentials');
       setErrors({ general: errorMessage });
     }

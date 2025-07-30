@@ -7,12 +7,18 @@ import { I18N_CONFIG } from "@/constants/config";
 const AuthLanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false); // Add mounted state
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages = I18N_CONFIG.languages;
   const currentLanguage = i18n.language;
 
   const currentLang = languages.find((lang: any) => lang.code === currentLanguage);
+
+  // Fix hydration mismatch by waiting for component to mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLanguageChange = async (code: string) => {
     try {
@@ -39,6 +45,18 @@ const AuthLanguageSelector: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="fixed top-6 right-6 z-50">
+        <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-lg">
+          <span className="text-lg">🌐</span>
+          <span className="hidden sm:inline">Language</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed top-6 right-6 z-50" ref={dropdownRef}>

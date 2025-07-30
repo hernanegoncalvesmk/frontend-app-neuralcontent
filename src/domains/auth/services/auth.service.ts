@@ -268,23 +268,32 @@ export class AuthService {
    */
   async initializeAuth(): Promise<UserSafeResponse | null> {
     try {
+      console.log('🔍 AuthService: Verificando autenticação existente...');
+      
       if (!tokenService.isAuthenticated()) {
+        console.log('📝 AuthService: Nenhum token encontrado');
         return null;
       }
 
+      console.log('🔑 AuthService: Tokens encontrados, verificando validade...');
+
       // Verificar se o token ainda é válido
       if (!tokenService.isAccessTokenValid()) {
+        console.log('⏰ AuthService: Access token expirado, tentando renovar...');
         // Tentar renovar
         const refreshed = await this.refreshTokens();
         if (!refreshed) {
+          console.log('❌ AuthService: Falha ao renovar tokens');
           return null;
         }
+        console.log('✅ AuthService: Tokens renovados com sucesso');
       }
 
       // Obter perfil do usuário
+      console.log('👤 AuthService: Buscando perfil do usuário...');
       return await this.getCurrentUserProfile();
     } catch (error) {
-      console.error('Erro ao inicializar autenticação:', error);
+      console.error('❌ AuthService: Erro ao inicializar autenticação:', error);
       await this.logout();
       return null;
     }

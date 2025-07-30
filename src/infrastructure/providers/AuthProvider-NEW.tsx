@@ -57,7 +57,8 @@ interface RegisterData {
   email: string;
   password: string;
   confirmPassword: string;
-  acceptTerms: boolean;
+  agreeToTerms: boolean;
+  agreeToPrivacy: boolean;
   language?: string;
 }
 
@@ -96,7 +97,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         email: userData.email,
         password: userData.password,
         confirmPassword: userData.confirmPassword,
-        acceptTerms: userData.acceptTerms,
+        agreeToTerms: userData.agreeToTerms,
+        agreeToPrivacy: userData.agreeToPrivacy,
         language: userData.language,
       });
     },

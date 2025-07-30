@@ -129,7 +129,8 @@ const RegisterForm: React.FC = () => {
         email: formData.email,
         password: formData.password,
         confirmPassword: formData.confirmPassword,
-        acceptTerms: formData.acceptTerms,
+        agreeToTerms: formData.acceptTerms,
+        agreeToPrivacy: formData.acceptTerms,  // Usando o mesmo valor por enquanto
         language: 'pt-BR'
       });
       

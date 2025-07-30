@@ -7,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function ForgotPasswordPage() {
-  return <ForgotPasswordForm />;
+  return (
+    <div className="auth-main-content">
+      <ForgotPasswordForm />
+    </div>
+  );
 }

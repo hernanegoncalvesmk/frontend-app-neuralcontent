@@ -1,19 +1,19 @@
 /**
  * @fileoverview useAuth Hook
  * 
- * Hook principal de autenticação que integra com AuthService.
+ * Hook principal de autenticação que integra com AuthService e AuthProvider.
  * Fornece estado reativo e métodos de autenticação.
  * 
- * @version 1.0.0
+ * @version 2.0.0
  * @domain auth
  */
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../services/auth.service';
-import { tokenService } from '../services/token.service';
+import { useAuthContext } from '../providers/AuthProvider';
 import type {
   LoginRequest,
   RegisterRequest,
@@ -25,18 +25,17 @@ import type {
 } from '../types/auth.types';
 
 // ============================================================================
-// HOOK STATE INTERFACE
+// HOOK RETURN INTERFACE
 // ============================================================================
 
-interface AuthState {
+interface UseAuthReturn {
+  // State
   user: UserSafeResponse | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   isInitialized: boolean;
   error: string | null;
-}
-
-interface UseAuthReturn extends AuthState {
+  
   // Authentication methods
   login: (credentials: LoginRequest) => Promise<void>;
   register: (userData: RegisterRequest) => Promise<void>;
@@ -70,76 +69,63 @@ interface UseAuthReturn extends AuthState {
 
 export const useAuth = (): UseAuthReturn => {
   const router = useRouter();
-  
-  const [state, setState] = useState<AuthState>({
-    user: null,
-    isAuthenticated: false,
-    isLoading: true,
-    isInitialized: false,
-    error: null,
-  });
+  const {
+    user,
+    isAuthenticated,
+    isLoading,
+    isInitialized,
+    error,
+    setUser,
+    setError,
+    setLoading,
+    clearError,
+  } = useAuthContext();
 
-  /**
-   * Atualizar estado interno
-   */
-  const updateState = useCallback((updates: Partial<AuthState>) => {
-    setState(prev => ({ ...prev, ...updates }));
-  }, []);
-
-  /**
-   * Definir erro
-   */
-  const setError = useCallback((error: string | null) => {
-    updateState({ error, isLoading: false });
-  }, [updateState]);
-
-  /**
-   * Limpar erro
-   */
-  const clearError = useCallback(() => {
-    setError(null);
-  }, [setError]);
-
-  /**
-   * Definir usuário e estado de autenticação
-   */
-  const setUser = useCallback((user: UserSafeResponse | null) => {
-    authService.setCurrentUser(user);
-    updateState({
-      user,
-      isAuthenticated: user !== null,
-      isLoading: false,
-      error: null,
-    });
-  }, [updateState]);
+  // Effect para redirecionar após login bem-sucedido
+  useEffect(() => {
+    if (isInitialized && isAuthenticated && user && !isLoading) {
+      // Verificar se não estamos já na rota do dashboard
+      if (typeof window !== 'undefined' && window.location.pathname === '/auth/login') {
+        console.log('🚀 useAuth: Usuário autenticado, redirecionando para dashboard');
+        router.push('/dashboard');
+      }
+    }
+  }, [isInitialized, isAuthenticated, user, isLoading, router]);
 
   /**
    * Login
    */
   const login = useCallback(async (credentials: LoginRequest): Promise<void> => {
     try {
-      updateState({ isLoading: true, error: null });
+      setLoading(true);
+      setError(null);
       
+      console.log('🔐 Iniciando login...');
       await authService.login(credentials);
       
       // Obter usuário atual do AuthService
       const user = authService.getCurrentUser();
+      console.log('👤 Usuário logado:', user);
       setUser(user);
       
-      // Redirecionar para dashboard após login bem-sucedido
-      router.push('/dashboard');
+      // O redirecionamento será feito pelo useEffect quando o estado for atualizado
+      console.log('✅ Login realizado com sucesso, aguardando redirecionamento...');
     } catch (error: any) {
+      console.error('❌ Erro no login:', error);
       setError(error.message || 'Erro ao fazer login');
       throw error;
+    } finally {
+      setLoading(false);
     }
-  }, [updateState, setUser, setError, router]);
+  }, [setLoading, setError, setUser]);
 
   /**
    * Registro
    */
   const register = useCallback(async (userData: RegisterRequest): Promise<void> => {
     try {
-      updateState({ isLoading: true, error: null });
+      setLoading(true);
+      setError(null);
       
       await authService.register(userData);
       
@@ -156,15 +142,17 @@ export const useAuth = (): UseAuthReturn => {
     } catch (error: any) {
       setError(error.message || 'Erro ao criar conta');
       throw error;
+    } finally {
+      setLoading(false);
     }
-  }, [updateState, setUser, setError, router]);
+  }, [setLoading, setError, setUser, router]);
 
   /**
    * Logout
    */
   const logout = useCallback(async (): Promise<void> => {
     try {
-      updateState({ isLoading: true });
+      setLoading(true);
       
       await authService.logout();
       setUser(null);
@@ -176,104 +164,109 @@ export const useAuth = (): UseAuthReturn => {
       // Mesmo com erro, limpar estado local
       setUser(null);
       router.push('/auth/login');
+    } finally {
+      setLoading(false);
     }
-  }, [updateState, setUser, router]);
+  }, [setLoading, setUser, router]);
 
   /**
    * Esqueci a senha
    */
   const forgotPassword = useCallback(async (request: ForgotPasswordRequest): Promise<void> => {
     try {
-      updateState({ isLoading: true, error: null });
+      setLoading(true);
+      setError(null);
       
       await authService.forgotPassword(request);
-      
-      updateState({ isLoading: false });
     } catch (error: any) {
       setError(error.message || 'Erro ao solicitar reset de senha');
       throw error;
+    } finally {
+      setLoading(false);
     }
-  }, [updateState, setError]);
+  }, [setLoading, setError]);
 
   /**
    * Resetar senha
    */
   const resetPassword = useCallback(async (request: ResetPasswordRequest): Promise<void> => {
     try {
-      updateState({ isLoading: true, error: null });
+      setLoading(true);
+      setError(null);
       
       await authService.resetPassword(request);
-      
-      updateState({ isLoading: false });
-      
-      // Redirecionar para login após reset bem-sucedido
-      router.push('/auth/login?message=password-reset-success');
     } catch (error: any) {
       setError(error.message || 'Erro ao resetar senha');
       throw error;
+    } finally {
+      setLoading(false);
     }
-  }, [updateState, setError, router]);
-
-  /**
-   * Alterar senha
-   */
-  const changePassword = useCallback(async (request: ChangePasswordRequest): Promise<void> => {
-    try {
-      updateState({ isLoading: true, error: null });
-      
-      await authService.changePassword(request);
-      
-      updateState({ isLoading: false });
-    } catch (error: any) {
-      setError(error.message || 'Erro ao alterar senha');
-      throw error;
-    }
-  }, [updateState, setError]);
+  }, [setLoading, setError]);
 
   /**
    * Verificar email
    */
   const verifyEmail = useCallback(async (request: VerifyEmailRequest): Promise<void> => {
     try {
-      updateState({ isLoading: true, error: null });
+      setLoading(true);
+      setError(null);
       
       await authService.verifyEmail(request);
       
-      // Atualizar usuário após verificação
-      await refreshUser();
-      
-      // Redirecionar para dashboard após verificação
-      router.push('/dashboard');
+      // Atualizar usuário atual se necessário
+      if (user) {
+        const updatedUser = { ...user, isEmailVerified: true };
+        setUser(updatedUser);
+      }
     } catch (error: any) {
       setError(error.message || 'Erro ao verificar email');
       throw error;
+    } finally {
+      setLoading(false);
     }
-  }, [updateState, setError, router]);
+  }, [setLoading, setError, user, setUser]);
+
+  /**
+   * Alterar senha (usuário logado)
+   */
+  const changePassword = useCallback(async (request: ChangePasswordRequest): Promise<void> => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      await authService.changePassword(request);
+    } catch (error: any) {
+      setError(error.message || 'Erro ao alterar senha');
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  }, [setLoading, setError]);
 
   /**
    * Atualizar dados do usuário
    */
   const refreshUser = useCallback(async (): Promise<void> => {
     try {
-      updateState({ isLoading: true, error: null });
-      
-      const user = await authService.getCurrentUserProfile();
-      setUser(user);
+      const profile = await authService.getCurrentUserProfile();
+      setUser(profile);
     } catch (error: any) {
       console.error('Erro ao atualizar usuário:', error);
-      setError(error.message || 'Erro ao atualizar dados do usuário');
+      if (error.response?.status === 401) {
+        await logout();
+      }
     }
-  }, [updateState, setUser, setError]);
+  }, [setUser, logout]);
 
   /**
-   * Atualizar usuário manualmente
+   * Atualizar usuário no estado
    */
-  const updateUser = useCallback((user: UserSafeResponse) => {
-    setUser(user);
+  const updateUser = useCallback((newUser: UserSafeResponse): void => {
+    setUser(newUser);
   }, [setUser]);
 
   /**
-   * Validar sessão
+   * Validar sessão atual
    */
   const validateSession = useCallback(async (): Promise<boolean> => {
     try {
@@ -297,7 +290,7 @@ export const useAuth = (): UseAuthReturn => {
   }, []);
 
   /**
-   * Verificar permissão
+   * Verificar permissões
    */
   const hasPermission = useCallback((permission: string): boolean => {
     return authService.hasPermission(permission);
@@ -310,51 +303,13 @@ export const useAuth = (): UseAuthReturn => {
     return authService.hasRole(role);
   }, []);
 
-  /**
-   * Inicializar autenticação
-   */
-  useEffect(() => {
-    const initializeAuth = async () => {
-      try {
-        updateState({ isLoading: true });
-        
-        const user = await authService.initializeAuth();
-        setUser(user);
-      } catch (error) {
-        console.error('Erro ao inicializar autenticação:', error);
-        setUser(null);
-      } finally {
-        updateState({ isInitialized: true });
-      }
-    };
-
-    initializeAuth();
-  }, [updateState, setUser]);
-
-  /**
-   * Auto-refresh de tokens
-   */
-  useEffect(() => {
-    if (!state.isAuthenticated) return;
-
-    const interval = setInterval(async () => {
-      // Verificar se o token expira em breve (próximos 5 minutos)
-      if (tokenService.willExpireSoon(5)) {
-        try {
-          await refreshTokens();
-        } catch (error) {
-          console.error('Erro no auto-refresh:', error);
-          await logout();
-        }
-      }
-    }, 60000); // Verificar a cada minuto
-
-    return () => clearInterval(interval);
-  }, [state.isAuthenticated, refreshTokens, logout]);
-
   return {
     // State
-    ...state,
+    user,
+    isAuthenticated,
+    isLoading,
+    isInitialized,
+    error,
     
     // Methods
     login,

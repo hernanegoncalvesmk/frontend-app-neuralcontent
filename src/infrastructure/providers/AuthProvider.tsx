@@ -11,6 +11,7 @@
 'use client';
 
 import { createContext, useContext, ReactNode } from 'react';
+import { AuthProvider as AuthDomainProvider } from '@/domains/auth/providers/AuthProvider';
 import { useAuth as useAuthHook } from '@/domains/auth/hooks/useAuth';
 import type { UserSafeResponse } from '@/domains/auth/types/auth.types';
 
@@ -57,7 +58,8 @@ interface RegisterData {
   email: string;
   password: string;
   confirmPassword: string;
-  acceptTerms: boolean;
+  agreeToTerms: boolean;
+  agreeToPrivacy: boolean;  // Adicionado agreeToPrivacy
   language?: string;
 }
 
@@ -67,13 +69,13 @@ interface RegisterData {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // ================================
-// Provider Component
+// Internal Provider Component (wraps the domain provider)
 // ================================
-interface AuthProviderProps {
+interface InternalAuthProviderProps {
   children: ReactNode;
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+function InternalAuthProvider({ children }: InternalAuthProviderProps) {
   const auth = useAuthHook();
 
   // Adapt the useAuth hook to match the expected interface
@@ -96,7 +98,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         email: userData.email,
         password: userData.password,
         confirmPassword: userData.confirmPassword,
-        acceptTerms: userData.acceptTerms,
+        agreeToTerms: userData.agreeToTerms,
+        agreeToPrivacy: userData.agreeToPrivacy,  // Adicionado agreeToPrivacy
         language: userData.language,
       });
     },
@@ -143,6 +146,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
     <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
+  );
+}
+
+// ================================
+// Main Provider Component (combines both providers)
+// ================================
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export function AuthProvider({ children }: AuthProviderProps) {
+  return (
+    <AuthDomainProvider>
+      <InternalAuthProvider>
+        {children}
+      </InternalAuthProvider>
+    </AuthDomainProvider>
   );
 }
 

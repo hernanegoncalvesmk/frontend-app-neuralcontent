@@ -110,7 +110,7 @@ export const authApi = {
    * Obter perfil do usuário logado
    */
   getProfile: async (): Promise<UserSafeResponse> => {
-    const response = await api.get('/auth/profile');
+    const response = await api.get('/users/profile');
     return response.data;
   },
 
@@ -128,7 +128,7 @@ export const authApi = {
    * Validar token atual
    */
   validateToken: async (): Promise<UserSafeResponse> => {
-    const response = await api.get('/auth/profile');
+    const response = await api.get('/users/profile');
     return response.data;
   },
 };

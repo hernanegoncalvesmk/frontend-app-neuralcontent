@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function RegisterPage() {
-  return <RegisterForm />;
+  return (
+    <div className="auth-main-content">
+      <RegisterForm />
+    </div>
+  );
 }
