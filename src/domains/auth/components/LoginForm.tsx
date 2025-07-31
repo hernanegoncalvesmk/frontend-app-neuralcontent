@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/domains/translations';
+import { TranslationNamespace } from '@/domains/translations/types/translation.types';
 import { Input } from '@/domains/shared/components/ui/Input';
 import { Button } from '@/domains/shared/components/ui/Button';
 import { useAuth } from '@/infrastructure/providers/AuthProvider';
@@ -25,7 +26,7 @@ interface LoginErrors {
 const LoginForm: React.FC = () => {
   const router = useRouter();
   const { login, isLoading, error } = useAuth();
-  const { t } = useTranslation('auth');
+  const { tns } = useTranslation();
   
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
@@ -40,15 +41,15 @@ const LoginForm: React.FC = () => {
     const newErrors: LoginErrors = {};
 
     if (!formData.email) {
-      newErrors.email = t('login.validation.emailRequired');
+      newErrors.email = tns(TranslationNamespace.VALIDATION, 'form.email.required');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = t('login.validation.emailInvalid');
+      newErrors.email = tns(TranslationNamespace.VALIDATION, 'form.email.invalid');
     }
 
     if (!formData.password) {
-      newErrors.password = t('login.validation.passwordRequired');
+      newErrors.password = tns(TranslationNamespace.VALIDATION, 'form.password.required');
     } else if (formData.password.length < 6) {
-      newErrors.password = t('login.validation.passwordMinLength');
+      newErrors.password = tns(TranslationNamespace.VALIDATION, 'form.password.minLength', { min: 6 });
     }
 
     setErrors(newErrors);
@@ -70,7 +71,7 @@ const LoginForm: React.FC = () => {
       // Não precisa redirecionar aqui pois o hook já faz isso
     } catch (err: unknown) {
       console.error('❌ LoginForm: Erro no login:', err);
-      const errorMessage = err instanceof Error ? err.message : t('login.validation.invalidCredentials');
+      const errorMessage = err instanceof Error ? err.message : tns(TranslationNamespace.ERRORS, 'auth.invalidCredentials');
       setErrors({ general: errorMessage });
     }
   };
@@ -126,10 +127,10 @@ const LoginForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[17px] md:mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                {t('login.title')}
+                {tns(TranslationNamespace.AUTH, 'login.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400">
-                {t('login.subtitle')}
+                {tns(TranslationNamespace.AUTH, 'login.subtitle')}
               </p>
             </div>
 
@@ -185,7 +186,7 @@ const LoginForm: React.FC = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white dark:bg-[#0a0e19] text-gray-500 dark:text-gray-400">
-                  {t('login.divider')}
+                  {tns(TranslationNamespace.AUTH, 'login.divider')}
                 </span>
               </div>
             </div>
@@ -194,9 +195,9 @@ const LoginForm: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {/* Campo de email */}
               <Input
-                label={t('login.fields.email')}
+                label={tns(TranslationNamespace.AUTH, 'login.email')}
                 type="email"
-                placeholder={t('login.placeholders.email')}
+                placeholder={tns(TranslationNamespace.AUTH, 'login.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleInputChange('email')}
                 error={errors.email}
@@ -204,9 +205,9 @@ const LoginForm: React.FC = () => {
 
               {/* Campo de senha */}
               <Input
-                label={t('login.fields.password')}
+                label={tns(TranslationNamespace.AUTH, 'login.password')}
                 type="password"
-                placeholder={t('login.placeholders.password')}
+                placeholder={tns(TranslationNamespace.AUTH, 'login.passwordPlaceholder')}
                 value={formData.password}
                 onChange={handleInputChange('password')}
                 error={errors.password}
@@ -223,7 +224,7 @@ const LoginForm: React.FC = () => {
                     className="mr-2 h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-300 rounded"
                   />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {t('login.rememberMe')}
+                    {tns(TranslationNamespace.AUTH, 'login.rememberMe')}
                   </span>
                 </label>
 
@@ -231,7 +232,7 @@ const LoginForm: React.FC = () => {
                   href="/auth/forgot-password"
                   className="text-sm text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                 >
-                  {t('login.forgotPassword')}
+                  {tns(TranslationNamespace.AUTH, 'login.forgotPasswordLink')}
                 </Link>
               </div>
 
@@ -254,18 +255,18 @@ const LoginForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">login</i>
-                  {isLoading ? t('login.loginButtonLoading') : t('login.loginButton')}
+                  {isLoading ? tns(TranslationNamespace.COMMON, 'status.loading') : tns(TranslationNamespace.AUTH, 'login.signInButton')}
                 </span>
               </Button>
 
               {/* Link para cadastro */}
               <p className="mt-[15px] md:mt-[20px] text-center text-gray-600 dark:text-gray-400">
-                {t('login.noAccount')}{" "}
+                {tns(TranslationNamespace.AUTH, 'login.noAccount')}{" "}
                 <Link
                   href="/auth/register"
                   className="text-primary-500 transition-all font-semibold hover:underline"
                 >
-                  {t('login.signUpLink')}
+                  {tns(TranslationNamespace.AUTH, 'login.signUpLink')}
                 </Link>
               </p>
             </form>

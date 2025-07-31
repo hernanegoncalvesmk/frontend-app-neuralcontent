@@ -6,9 +6,10 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/domains/shared/components/ui/Button';
+import { authApi } from '@/domains/auth/api/auth.api';
 
 const VerifyEmailForm: React.FC = () => {
-  const { t } = useTranslation('auth');
+  const { t } = useTranslation();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState<string>('');
   const [isResending, setIsResending] = useState(false);
@@ -26,13 +27,24 @@ const VerifyEmailForm: React.FC = () => {
     setResendMessage('');
 
     try {
-      // Aqui você implementará a chamada para reenviar o email
-      // await authService.resendVerificationEmail(email);
+      console.log('🔄 Reenviando email para:', email);
       
-      setResendMessage(t('verifyEmail.resend.success'));
-    } catch (err) {
-      console.error('Erro ao reenviar email:', err);
-      setResendMessage(t('verifyEmail.resend.error'));
+      const response = await authApi.resendVerificationEmail(email);
+      
+      console.log('✅ Resposta do reenvio:', response);
+      
+      if (response.success) {
+        setResendMessage('Email de verificação reenviado com sucesso! Verifique sua caixa de entrada.');
+      } else {
+        setResendMessage(response.message || 'Erro ao reenviar email.');
+      }
+    } catch (err: any) {
+      console.error('❌ Erro ao reenviar email:', err);
+      setResendMessage(
+        err?.response?.data?.message || 
+        err?.message || 
+        'Erro ao reenviar email. Tente novamente.'
+      );
     } finally {
       setIsResending(false);
     }
@@ -83,10 +95,10 @@ const VerifyEmailForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                {t('verifyEmail.title')}
+                {t('auth.verifyEmail.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400 mb-4">
-                {t('verifyEmail.subtitle')}
+                {t('auth.verifyEmail.description')}
               </p>
               {email && (
                 <p className="font-semibold text-primary-500 mb-4">
@@ -94,20 +106,20 @@ const VerifyEmailForm: React.FC = () => {
                 </p>
               )}
               <p className="text-sm text-[#445164] dark:text-gray-400">
-                {t('verifyEmail.description')}
+                {t('auth.verifyEmail.instructions')}
               </p>
             </div>
 
             {/* Instruções */}
             <div className="mb-[25px] p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
               <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-2">
-                {t('verifyEmail.steps.title')}
+                {t('auth.verifyEmail.nextSteps')}
               </h3>
               <ol className="list-decimal list-inside text-sm text-blue-700 dark:text-blue-400 space-y-1">
-                <li>{t('verifyEmail.steps.step1')}</li>
-                <li>{t('verifyEmail.steps.step2')}</li>
-                <li>{t('verifyEmail.steps.step3')}</li>
-                <li>{t('verifyEmail.steps.step4')}</li>
+                <li>{t('auth.verifyEmail.step1')}</li>
+                <li>{t('auth.verifyEmail.step2')}</li>
+                <li>{t('auth.verifyEmail.step3')}</li>
+                <li>{t('auth.verifyEmail.step4')}</li>
               </ol>
             </div>
 
@@ -125,7 +137,7 @@ const VerifyEmailForm: React.FC = () => {
             {/* Botão para reenviar email */}
             <div className="mb-[20px]">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                {t('verifyEmail.resend.question')}
+                {t('auth.verifyEmail.resend.question')}
               </p>
               <Button
                 variant="outline"
@@ -136,7 +148,7 @@ const VerifyEmailForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">refresh</i>
-                  {isResending ? t('verifyEmail.resend.sending') : t('verifyEmail.resend.button')}
+                  {isResending ? t('auth.verifyEmail.resend.sending') : t('auth.verifyEmail.resend.button')}
                 </span>
               </Button>
             </div>
@@ -144,25 +156,25 @@ const VerifyEmailForm: React.FC = () => {
             {/* Link para login */}
             <div className="text-center">
               <p className="text-gray-600 dark:text-gray-400 mb-2">
-                {t('verifyEmail.login.question')}
+                {t('auth.verifyEmail.alreadyVerified')}
               </p>
               <Link
                 href="/auth/login"
                 className="text-primary-500 transition-all font-semibold hover:underline"
               >
-                {t('verifyEmail.login.link')}
+                {t('auth.verifyEmail.loginLink')}
               </Link>
             </div>
 
             {/* Link para suporte */}
             <div className="mt-[20px] text-center">
               <p className="text-sm text-gray-500 dark:text-gray-500">
-                {t('verifyEmail.support.question')}{" "}
+                {t('auth.verifyEmail.needHelp')}{" "}
                 <Link
                   href="/support"
                   className="text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                 >
-                  {t('verifyEmail.support.link')}
+                  {t('auth.verifyEmail.contactSupport')}
                 </Link>
               </p>
             </div>

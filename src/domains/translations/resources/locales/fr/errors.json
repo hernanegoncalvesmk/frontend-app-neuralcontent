@@ -1,0 +1,99 @@
+{
+  "http": {
+    "400": "Requête invalide",
+    "401": "Non autorisé",
+    "403": "Accès refusé",
+    "404": "Non trouvé",
+    "409": "Conflit",
+    "422": "Données non traitables",
+    "429": "Trop de requêtes",
+    "500": "Erreur interne du serveur",
+    "502": "Passerelle invalide",
+    "503": "Service indisponible",
+    "504": "Délai d'attente de la passerelle"
+  },
+  
+  "auth": {
+    "invalidCredentials": "Identifiants invalides",
+    "sessionExpired": "Votre session a expiré",
+    "accessDenied": "Accès refusé",
+    "tokenInvalid": "Token invalide",
+    "tokenExpired": "Token expiré",
+    "accountLocked": "Compte verrouillé",
+    "accountDisabled": "Compte désactivé",
+    "emailNotVerified": "Adresse e-mail non vérifiée",
+    "passwordIncorrect": "Mot de passe incorrect",
+    "userNotFound": "Utilisateur non trouvé",
+    "invalidResetToken": "Token de réinitialisation invalide",
+    "resetTokenExpired": "Token de réinitialisation expiré",
+    "registrationFailed": "Échec de la création du compte"
+  },
+  
+  "validation": {
+    "required": "Champ obligatoire",
+    "invalid": "Données invalides",
+    "formatError": "Format incorrect",
+    "lengthError": "Longueur invalide",
+    "rangeError": "Valeur hors limites",
+    "duplicateError": "Valeur dupliquée",
+    "uniqueError": "La valeur doit être unique"
+  },
+  
+  "network": {
+    "offline": "Vous êtes hors ligne",
+    "connectionError": "Erreur de connexion",
+    "timeout": "Délai d'attente de la requête",
+    "serverError": "Erreur du serveur",
+    "networkError": "Erreur réseau",
+    "unreachable": "Serveur inaccessible"
+  },
+  
+  "file": {
+    "uploadFailed": "Échec du téléversement",
+    "fileTooLarge": "Fichier trop volumineux",
+    "invalidType": "Type de fichier invalide",
+    "notFound": "Fichier non trouvé",
+    "corrupted": "Fichier corrompu",
+    "accessDenied": "Accès au fichier refusé"
+  },
+  
+  "payment": {
+    "failed": "Paiement échoué",
+    "declined": "Paiement refusé",
+    "insufficientFunds": "Fonds insuffisants",
+    "invalidCard": "Carte invalide",
+    "cardExpired": "Carte expirée",
+    "processingError": "Erreur de traitement"
+  },
+  
+  "subscription": {
+    "expired": "Abonnement expiré",
+    "cancelled": "Abonnement annulé",
+    "suspended": "Abonnement suspendu",
+    "limitReached": "Limite d'abonnement atteinte",
+    "upgradeRequired": "Mise à niveau requise"
+  },
+  
+  "general": {
+    "somethingWentWrong": "Quelque chose s'est mal passé",
+    "tryAgainLater": "Veuillez réessayer plus tard",
+    "contactSupport": "Contactez le support",
+    "unexpected": "Erreur inattendue",
+    "maintenance": "Système en maintenance",
+    "unavailable": "Service indisponible",
+    "accessRestricted": "Accès restreint",
+    "featureDisabled": "Fonctionnalité désactivée",
+    "operationFailed": "Opération échouée",
+    "processingError": "Erreur de traitement"
+  },
+  
+  "form": {
+    "submissionFailed": "Échec de l'envoi du formulaire",
+    "validationFailed": "Échec de la validation",
+    "missingFields": "Champs obligatoires manquants",
+    "invalidData": "Données invalides",
+    "saveError": "Erreur lors de l'enregistrement",
+    "updateError": "Erreur lors de la mise à jour",
+    "deleteError": "Erreur lors de la suppression"
+  }
+}

@@ -3,6 +3,36 @@ import { API_CONFIG } from '@/constants/config';
 import { isTokenExpired, getStoredTokens, clearStoredTokens } from './cookies';
 import type { ApiResponse, ApiError } from '@/domains/shared/types/api.types';
 
+// ============================================================================
+// HELPERS
+// ============================================================================
+
+/**
+ * Obtém o idioma atual do usuário do localStorage
+ */
+function getCurrentUserLocale(): string {
+  try {
+    if (typeof window !== 'undefined') {
+      // 1. Verifica localStorage
+      const savedLanguage = localStorage.getItem('app-language');
+      if (savedLanguage && ['pt', 'en', 'es', 'fr'].includes(savedLanguage)) {
+        return savedLanguage;
+      }
+      
+      // 2. Fallback para idioma do navegador
+      const browserLanguage = navigator.language.split('-')[0];
+      if (['pt', 'en', 'es', 'fr'].includes(browserLanguage)) {
+        return browserLanguage;
+      }
+    }
+    
+    // 3. Default
+    return 'pt';
+  } catch {
+    return 'pt';
+  }
+}
+
 // Configuração base do axios
 const axiosConfig = {
   baseURL: API_CONFIG.baseUrl,
@@ -27,11 +57,16 @@ api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const customConfig = config as CustomRequestConfig;
     
+    // Adicionar header de locale do usuário
+    const userLocale = getCurrentUserLocale();
+    config.headers = config.headers || {};
+    config.headers['x-user-locale'] = userLocale;
+    config.headers['Accept-Language'] = userLocale;
+    
     // Adicionar token de autorização se não for explicitamente ignorado
     if (!customConfig.skipAuth) {
       const tokens = getStoredTokens();
       if (tokens?.accessToken && !isTokenExpired(tokens.accessToken)) {
-        config.headers = config.headers || {};
         config.headers['Authorization'] = `Bearer ${tokens.accessToken}`;
       }
     }
@@ -43,6 +78,7 @@ api.interceptors.request.use(
         url: config.url,
         data: config.data,
         params: config.params,
+        locale: userLocale, // Incluir locale no log
       });
     }
 

@@ -1,0 +1,68 @@
+{
+  "network": {
+    "offline": "You are offline. Please check your internet connection.",
+    "timeout": "Request timeout. Please try again.",
+    "serverError": "Server error. Please try again later.",
+    "notFound": "The requested resource was not found.",
+    "unauthorized": "You are not authorized to access this resource.",
+    "forbidden": "Access denied.",
+    "rateLimited": "Too many requests. Please try again later.",
+    "badRequest": "Invalid request. Please check your input.",
+    "conflict": "The request conflicts with the current state.",
+    "gone": "The requested resource is no longer available.",
+    "payloadTooLarge": "The request is too large.",
+    "unsupportedMediaType": "Unsupported file type.",
+    "serviceUnavailable": "Service is temporarily unavailable."
+  },
+  "auth": {
+    "sessionExpired": "Your session has expired. Please sign in again.",
+    "invalidCredentials": "Invalid email or password.",
+    "accountLocked": "Your account has been locked. Please contact support.",
+    "accountSuspended": "Your account has been suspended.",
+    "emailNotVerified": "Please verify your email address before signing in.",
+    "twoFactorRequired": "Two-factor authentication is required.",
+    "passwordResetRequired": "You must reset your password before continuing.",
+    "registrationFailed": "Registration failed. Please try again."
+  },
+  "validation": {
+    "invalidData": "The provided data is invalid.",
+    "missingRequired": "Required field is missing: {{field}}",
+    "formatError": "Invalid format for field: {{field}}",
+    "outOfRange": "Value out of allowed range for field: {{field}}"
+  },
+  "file": {
+    "uploadFailed": "File upload failed. Please try again.",
+    "fileTooLarge": "File is too large. Maximum size: {{maxSize}}",
+    "invalidFileType": "Invalid file type. Allowed types: {{allowedTypes}}",
+    "fileCorrupted": "The file appears to be corrupted.",
+    "scanFailed": "File security scan failed.",
+    "quotaExceeded": "Storage quota exceeded.",
+    "processingFailed": "File processing failed."
+  },
+  "database": {
+    "connectionError": "Database connection error.",
+    "queryTimeout": "Database query timeout.",
+    "duplicateEntry": "This entry already exists.",
+    "constraintViolation": "Data constraint violation.",
+    "recordNotFound": "Record not found.",
+    "updateConflict": "Update conflict. The record may have been modified by another user."
+  },
+  "payment": {
+    "cardDeclined": "Your card was declined.",
+    "insufficientFunds": "Insufficient funds.",
+    "expiredCard": "Your card has expired.",
+    "invalidCard": "Invalid card information.",
+    "processingError": "Payment processing error.",
+    "subscriptionFailed": "Subscription creation failed.",
+    "refundFailed": "Refund processing failed."
+  },
+  "generic": {
+    "unknownError": "An unknown error occurred.",
+    "maintenance": "System is under maintenance. Please try again later.",
+    "featureUnavailable": "This feature is currently unavailable.",
+    "operationFailed": "Operation failed. Please try again.",
+    "invalidOperation": "Invalid operation.",
+    "resourceLimitExceeded": "Resource limit exceeded.",
+    "temporaryFailure": "Temporary failure. Please try again."
+  }
+}

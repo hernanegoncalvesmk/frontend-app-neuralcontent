@@ -1,0 +1,99 @@
+{
+  "http": {
+    "400": "Solicitud inválida",
+    "401": "No autorizado",
+    "403": "Acceso denegado",
+    "404": "No encontrado",
+    "409": "Conflicto",
+    "422": "Datos no procesables",
+    "429": "Demasiadas solicitudes",
+    "500": "Error interno del servidor",
+    "502": "Puerta de enlace inválida",
+    "503": "Servicio no disponible",
+    "504": "Tiempo de espera de la puerta de enlace"
+  },
+  
+  "auth": {
+    "invalidCredentials": "Credenciales inválidas",
+    "sessionExpired": "Su sesión ha expirado",
+    "accessDenied": "Acceso denegado",
+    "tokenInvalid": "Token inválido",
+    "tokenExpired": "Token expirado",
+    "accountLocked": "Cuenta bloqueada",
+    "accountDisabled": "Cuenta deshabilitada",
+    "emailNotVerified": "Correo electrónico no verificado",
+    "passwordIncorrect": "Contraseña incorrecta",
+    "userNotFound": "Usuario no encontrado",
+    "invalidResetToken": "Token de restablecimiento inválido",
+    "resetTokenExpired": "Token de restablecimiento expirado",
+    "registrationFailed": "Error al crear la cuenta"
+  },
+  
+  "validation": {
+    "required": "Campo obligatorio",
+    "invalid": "Datos inválidos",
+    "formatError": "Formato incorrecto",
+    "lengthError": "Longitud inválida",
+    "rangeError": "Valor fuera del rango",
+    "duplicateError": "Valor duplicado",
+    "uniqueError": "El valor debe ser único"
+  },
+  
+  "network": {
+    "offline": "Está sin conexión",
+    "connectionError": "Error de conexión",
+    "timeout": "Tiempo de espera de la solicitud",
+    "serverError": "Error del servidor",
+    "networkError": "Error de red",
+    "unreachable": "Servidor inaccesible"
+  },
+  
+  "file": {
+    "uploadFailed": "Fallo en la subida",
+    "fileTooLarge": "Archivo muy grande",
+    "invalidType": "Tipo de archivo inválido",
+    "notFound": "Archivo no encontrado",
+    "corrupted": "Archivo corrupto",
+    "accessDenied": "Acceso al archivo denegado"
+  },
+  
+  "payment": {
+    "failed": "Pago falló",
+    "declined": "Pago rechazado",
+    "insufficientFunds": "Fondos insuficientes",
+    "invalidCard": "Tarjeta inválida",
+    "cardExpired": "Tarjeta expirada",
+    "processingError": "Error en el procesamiento"
+  },
+  
+  "subscription": {
+    "expired": "Suscripción expirada",
+    "cancelled": "Suscripción cancelada",
+    "suspended": "Suscripción suspendida",
+    "limitReached": "Límite de suscripción alcanzado",
+    "upgradeRequired": "Actualización requerida"
+  },
+  
+  "general": {
+    "somethingWentWrong": "Algo salió mal",
+    "tryAgainLater": "Inténtelo nuevamente más tarde",
+    "contactSupport": "Contacte al soporte",
+    "unexpected": "Error inesperado",
+    "maintenance": "Sistema en mantenimiento",
+    "unavailable": "Servicio no disponible",
+    "accessRestricted": "Acceso restringido",
+    "featureDisabled": "Función deshabilitada",
+    "operationFailed": "Operación falló",
+    "processingError": "Error de procesamiento"
+  },
+  
+  "form": {
+    "submissionFailed": "Fallo en el envío del formulario",
+    "validationFailed": "Fallo en la validación",
+    "missingFields": "Campos obligatorios faltantes",
+    "invalidData": "Datos inválidos",
+    "saveError": "Error al guardar",
+    "updateError": "Error al actualizar",
+    "deleteError": "Error al eliminar"
+  }
+}

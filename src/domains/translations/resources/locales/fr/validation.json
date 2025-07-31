@@ -1,0 +1,119 @@
+{
+  "form": {
+    "required": "Ce champ est obligatoire",
+    "email": {
+      "invalid": "Veuillez entrer une adresse e-mail valide",
+      "required": "L'adresse e-mail est obligatoire",
+      "exists": "Cette adresse e-mail est déjà utilisée",
+      "notFound": "Adresse e-mail non trouvée"
+    },
+    "password": {
+      "required": "Le mot de passe est obligatoire",
+      "minLength": "Le mot de passe doit contenir au moins {{min}} caractères",
+      "maxLength": "Le mot de passe doit contenir au maximum {{max}} caractères",
+      "weak": "Mot de passe trop faible",
+      "mustContain": "Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre",
+      "mismatch": "Les mots de passe ne correspondent pas",
+      "current": "Le mot de passe actuel est obligatoire",
+      "incorrect": "Mot de passe actuel incorrect",
+      "tooShort": "Le mot de passe doit contenir au moins 4 caractères",
+      "confirmRequired": "La confirmation du mot de passe est obligatoire"
+    },
+    "name": {
+      "required": "Le nom est obligatoire",
+      "minLength": "Le nom doit contenir au moins {{min}} caractères",
+      "maxLength": "Le nom doit contenir au maximum {{max}} caractères",
+      "invalidFormat": "Le nom contient des caractères invalides"
+    },
+    "fullName": {
+      "required": "Le nom complet est obligatoire",
+      "minLength": "Le nom complet doit contenir au moins {{min}} caractères",
+      "maxLength": "Le nom complet doit contenir au maximum {{max}} caractères",
+      "invalidFormat": "Le nom complet contient des caractères invalides"
+    },
+    "phone": {
+      "required": "Le numéro de téléphone est obligatoire",
+      "invalid": "Format de téléphone invalide",
+      "tooShort": "Numéro de téléphone trop court",
+      "tooLong": "Numéro de téléphone trop long"
+    },
+    "birthDate": {
+      "required": "La date de naissance est obligatoire",
+      "invalid": "Date de naissance invalide",
+      "tooYoung": "Vous devez avoir au moins 13 ans",
+      "futureDate": "La date de naissance ne peut pas être dans le futur"
+    },
+    "country": {
+      "required": "Le pays est obligatoire",
+      "invalid": "Le pays sélectionné est invalide"
+    },
+    "terms": {
+      "required": "Vous devez accepter les termes et conditions"
+    },
+    "username": {
+      "required": "Le nom d'utilisateur est obligatoire",
+      "minLength": "Le nom d'utilisateur doit contenir au moins {{min}} caractères",
+      "maxLength": "Le nom d'utilisateur doit contenir au maximum {{max}} caractères",
+      "exists": "Ce nom d'utilisateur est déjà utilisé",
+      "invalid": "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des underscores"
+    },
+    "age": {
+      "required": "L'âge est obligatoire",
+      "minimum": "Vous devez avoir au moins {{min}} ans",
+      "maximum": "L'âge doit être inférieur à {{max}} ans"
+    },
+    "date": {
+      "required": "La date est obligatoire",
+      "invalid": "Date invalide",
+      "future": "La date ne peut pas être dans le futur",
+      "past": "La date ne peut pas être dans le passé"
+    },
+    "file": {
+      "required": "Le fichier est obligatoire",
+      "tooLarge": "Fichier trop volumineux. Taille maximale : {{size}}",
+      "invalidType": "Type de fichier non supporté",
+      "uploadFailed": "Échec du téléversement du fichier"
+    },
+    "url": {
+      "required": "L'URL est obligatoire",
+      "invalid": "URL invalide"
+    },
+    "number": {
+      "required": "Le numéro est obligatoire",
+      "invalid": "Numéro invalide",
+      "minimum": "Valeur minimale : {{min}}",
+      "maximum": "Valeur maximale : {{max}}"
+    },
+    "agreement": {
+      "required": "Vous devez accepter les conditions",
+      "termsRequired": "L'acceptation des conditions est obligatoire",
+      "privacyRequired": "L'acceptation de la politique de confidentialité est obligatoire"
+    },
+    "selection": {
+      "required": "La sélection est obligatoire",
+      "minimum": "Sélectionnez au moins {{min}} options",
+      "maximum": "Sélectionnez au maximum {{max}} options"
+    },
+    "text": {
+      "minLength": "Le texte doit contenir au moins {{min}} caractères",
+      "maxLength": "Le texte doit contenir au maximum {{max}} caractères",
+      "pattern": "Format de texte invalide"
+    }
+  },
+  
+  "field": {
+    "empty": "Champ vide",
+    "invalid": "Champ invalide",
+    "tooShort": "Trop court",
+    "tooLong": "Trop long",
+    "badFormat": "Format incorrect"
+  },
+  
+  "messages": {
+    "pleaseCheck": "Veuillez vérifier les champs surlignés en rouge",
+    "formIncomplete": "Formulaire incomplet",
+    "invalidData": "Données invalides fournies",
+    "submissionFailed": "Échec de l'envoi du formulaire",
+    "tryAgain": "Veuillez réessayer plus tard"
+  }
+}

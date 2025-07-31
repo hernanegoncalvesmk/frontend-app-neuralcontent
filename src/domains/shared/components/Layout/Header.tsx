@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { useAuth } from "@/domains/auth/hooks/useAuth";
 import { useRouter } from "next/navigation";
+import { CompactLanguageSelector } from "@/domains/translations/components/LanguageSelector";
 
 interface HeaderProps {
   toggleActive: () => void;
@@ -105,6 +106,10 @@ const Header: React.FC<HeaderProps> = ({ toggleActive }) => {
                 </i>
                 <span className="top-[3px] ltr:right-[4px] rtl:left-[4px] w-[6px] h-[6px] rounded-full absolute bg-orange-500"></span>
               </button>
+            </div>
+
+            <div className="relative mx-[8px] md:mx-[10px] lg:mx-[12px] ltr:first:ml-0 ltr:last:mr-0 rtl:first:mr-0 rtl:last:ml-0">
+              <CompactLanguageSelector />
             </div>
 
             <div className="relative profile-menu mx-[8px] md:mx-[10px] lg:mx-[12px] ltr:first:ml-0 ltr:last:mr-0 rtl:first:mr-0 rtl:last:ml-0">

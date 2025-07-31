@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/domains/translations';
+import { TranslationNamespace } from '@/domains/translations/types/translation.types';
 import { Input } from '@/domains/shared/components/ui/Input';
 import { Button } from '@/domains/shared/components/ui/Button';
 import { useAuth } from '@/infrastructure/providers/AuthProvider';
+import { authService } from '@/domains/auth/services/auth.service';
 
 interface ResetPasswordFormData {
   password: string;
@@ -22,7 +24,7 @@ interface ResetPasswordErrors {
 }
 
 const ResetPasswordForm: React.FC = () => {
-  const { t } = useTranslation('auth');
+  const { tns } = useTranslation();
   const searchParams = useSearchParams();
   const { isLoading } = useAuth();
   
@@ -44,7 +46,7 @@ const ResetPasswordForm: React.FC = () => {
       setResetToken(tokenParam);
       validateToken(tokenParam);
     } else {
-      setErrors({ token: 'Token de recuperação não encontrado' });
+      setErrors({ token: tns(TranslationNamespace.ERRORS, 'auth.invalidResetToken') });
       setIsValidatingToken(false);
     }
   }, [searchParams]);
@@ -53,12 +55,9 @@ const ResetPasswordForm: React.FC = () => {
   const validateToken = async (tokenToValidate: string) => {
     try {
       setIsValidatingToken(true);
-      // Aqui você validará o token com o backend
-      // await authService.validateResetToken(tokenToValidate);
       
-      // Simular validação por agora - usar tokenToValidate para evitar warning
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Validando token:', tokenToValidate);
+      // Validar o token com o backend
+      await authService.validateResetToken(tokenToValidate);
       
       setIsValidatingToken(false);
     } catch (err: unknown) {
@@ -100,14 +99,10 @@ const ResetPasswordForm: React.FC = () => {
       setErrors({});
       
       // Integração com o serviço de redefinição de senha
-      // await authService.resetPassword({
-      //   token: resetToken,
-      //   password: formData.password,
-      //   confirmPassword: formData.confirmPassword
-      // });
-      
-      // Log do token para uso futuro (evita warning lint)
-      console.log('Reset password with token:', resetToken);
+      await authService.resetPassword({
+        token: resetToken,
+        newPassword: formData.password
+      });
       
       setIsSuccess(true);
     } catch (err: unknown) {
@@ -389,7 +384,7 @@ const ResetPasswordForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">security</i>
-                  {isSubmitting ? t('resetPassword.form.submitting') : t('resetPassword.form.submitButton')}
+                  {isSubmitting ? tns(TranslationNamespace.COMMON, 'status.loading') : tns(TranslationNamespace.AUTH, 'resetPassword.submitButton')}
                 </span>
               </Button>
 

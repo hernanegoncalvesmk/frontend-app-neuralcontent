@@ -111,7 +111,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     },
 
     resetPassword: async (token: string, password: string) => {
-      return auth.resetPassword({ token, password, confirmPassword: password });
+      return auth.resetPassword({ 
+        token, 
+        newPassword: password
+      });
     },
 
     changePassword: async (currentPassword: string, newPassword: string) => {

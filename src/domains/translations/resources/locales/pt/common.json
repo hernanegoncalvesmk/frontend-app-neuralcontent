@@ -1,0 +1,172 @@
+{
+  "loading": "Carregando...",
+  "error": "Erro",
+  "success": "Sucesso",
+  "warning": "Aviso",
+  "info": "Informação",
+  
+  "actions": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "update": "Atualizar",
+    "submit": "Enviar",
+    "confirm": "Confirmar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "continue": "Continuar",
+    "finish": "Finalizar",
+    "reset": "Resetar",
+    "clear": "Limpar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "refresh": "Atualizar",
+    "export": "Exportar",
+    "import": "Importar",
+    "download": "Baixar",
+    "upload": "Enviar",
+    "copy": "Copiar",
+    "paste": "Colar",
+    "cut": "Recortar",
+    "undo": "Desfazer",
+    "redo": "Refazer"
+  },
+  
+  "navigation": {
+    "home": "Início",
+    "dashboard": "Painel",
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "help": "Ajuda",
+    "contact": "Contato",
+    "about": "Sobre",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "logout": "Sair",
+    "back": "Voltar",
+    "next": "Próximo"
+  },
+  
+  "status": {
+    "loading": "Carregando...",
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "pending": "Pendente",
+    "approved": "Aprovado",
+    "rejected": "Rejeitado",
+    "suspended": "Suspenso",
+    "banned": "Banido",
+    "draft": "Rascunho",
+    "published": "Publicado",
+    "archived": "Arquivado",
+    "deleted": "Excluído"
+  },
+  
+  "time": {
+    "now": "Agora",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "tomorrow": "Amanhã",
+    "thisWeek": "Esta semana",
+    "lastWeek": "Semana passada",
+    "nextWeek": "Próxima semana",
+    "thisMonth": "Este mês",
+    "lastMonth": "Mês passado",
+    "nextMonth": "Próximo mês",
+    "thisYear": "Este ano",
+    "lastYear": "Ano passado",
+    "nextYear": "Próximo ano",
+    "minute": "minuto",
+    "minutes": "minutos",
+    "hour": "hora",
+    "hours": "horas",
+    "day": "dia",
+    "days": "dias",
+    "week": "semana",
+    "weeks": "semanas",
+    "month": "mês",
+    "months": "meses",
+    "year": "ano",
+    "years": "anos",
+    "ago": "atrás",
+    "in": "em"
+  },
+  
+  "forms": {
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "placeholder": "Digite {{field}}",
+    "choose": "Escolha {{field}}",
+    "select": "Selecione {{field}}",
+    "uploadFile": "Enviar arquivo",
+    "dragAndDrop": "Arraste e solte arquivos aqui",
+    "chooseFile": "Escolher arquivo",
+    "noFileSelected": "Nenhum arquivo selecionado",
+    "fileSize": "Tamanho do arquivo",
+    "maxFileSize": "Tamanho máximo: {{size}}",
+    "allowedFormats": "Formatos permitidos: {{formats}}"
+  },
+  
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Próximo",
+    "first": "Primeiro",
+    "last": "Último",
+    "page": "Página",
+    "of": "de",
+    "showing": "Mostrando",
+    "to": "a",
+    "results": "resultados",
+    "noResults": "Nenhum resultado encontrado",
+    "totalResults": "{{count}} resultados",
+    "itemsPerPage": "Itens por página"
+  },
+  
+  "confirmations": {
+    "areYouSure": "Tem certeza?",
+    "deleteConfirm": "Tem certeza que deseja excluir este {{item}}?",
+    "deleteMultipleConfirm": "Tem certeza que deseja excluir estes {{count}} itens?",
+    "unsavedChanges": "Você tem alterações não salvas. Tem certeza que deseja sair?",
+    "permanentAction": "Esta ação não pode ser desfeita.",
+    "proceedAnyway": "Prosseguir mesmo assim"
+  },
+  
+  "notifications": {
+    "success": "Operação concluída com sucesso",
+    "error": "Ocorreu um erro",
+    "warning": "Aviso",
+    "info": "Informação",
+    "saved": "{{item}} salvo com sucesso",
+    "deleted": "{{item}} excluído com sucesso",
+    "updated": "{{item}} atualizado com sucesso",
+    "created": "{{item}} criado com sucesso",
+    "failed": "Operação falhou",
+    "networkError": "Erro de rede. Verifique sua conexão.",
+    "serverError": "Erro do servidor. Tente novamente mais tarde.",
+    "unauthorized": "Você não tem autorização para realizar esta ação.",
+    "forbidden": "Acesso negado.",
+    "notFound": "O recurso solicitado não foi encontrado.",
+    "timeout": "Tempo limite esgotado. Tente novamente.",
+    "rateLimited": "Muitas tentativas. Tente novamente mais tarde."
+  },
+  
+  "legal": {
+    "termsOfService": "Termos de Serviço",
+    "privacyPolicy": "Política de Privacidade",
+    "cookiePolicy": "Política de Cookies"
+  },
+  
+  "words": {
+    "and": "e",
+    "or": "ou",
+    "with": "com",
+    "by": "por",
+    "from": "de",
+    "to": "para"
+  }
+}

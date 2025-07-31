@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/domains/translations';
+import { TranslationNamespace } from '@/domains/translations/types/translation.types';
 import { Input } from '@/domains/shared/components/ui/Input';
 import { Button } from '@/domains/shared/components/ui/Button';
 import { useAuth } from '@/infrastructure/providers/AuthProvider';
@@ -37,7 +38,7 @@ interface RegisterErrors {
 const RegisterForm: React.FC = () => {
   const router = useRouter();
   const { register, isLoading, error } = useAuth();
-  const { t } = useTranslation('auth');
+  const { tns } = useTranslation();
   
   const [formData, setFormData] = useState<RegisterFormData>({
     fullName: '',
@@ -58,59 +59,59 @@ const RegisterForm: React.FC = () => {
 
     // Nome completo
     if (!formData.fullName.trim()) {
-      newErrors.fullName = t('register.validation.fullNameRequired');
+      newErrors.fullName = tns(TranslationNamespace.VALIDATION, 'form.fullName.required');
     } else if (formData.fullName.trim().length < 2) {
-      newErrors.fullName = t('register.validation.fullNameMinLength');
+      newErrors.fullName = tns(TranslationNamespace.VALIDATION, 'form.fullName.minLength', { min: 2 });
     }
 
     // Email
     if (!formData.email) {
-      newErrors.email = t('register.validation.emailRequired');
+      newErrors.email = tns(TranslationNamespace.VALIDATION, 'form.email.required');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = t('register.validation.emailInvalid');
+      newErrors.email = tns(TranslationNamespace.VALIDATION, 'form.email.invalid');
     }
 
     // Senha
     if (!formData.password) {
-      newErrors.password = t('register.validation.passwordRequired');
-    } else if (formData.password.length < 4) {
-      newErrors.password = t('register.validation.passwordMinLength');
+      newErrors.password = tns(TranslationNamespace.VALIDATION, 'form.password.required');
+    } else if (formData.password.length < 8) {
+      newErrors.password = tns(TranslationNamespace.VALIDATION, 'form.password.minLength', { min: 8 });
     }
 
     // Confirmação de senha
     if (!formData.confirmPassword) {
-      newErrors.confirmPassword = t('register.validation.confirmPasswordRequired');
+      newErrors.confirmPassword = tns(TranslationNamespace.VALIDATION, 'form.password.required');
     } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = t('register.validation.passwordsMustMatch');
+      newErrors.confirmPassword = tns(TranslationNamespace.VALIDATION, 'form.password.mismatch');
     }
 
     // Telefone
     if (!formData.phone.trim()) {
-      newErrors.phone = t('register.validation.phoneRequired');
+      newErrors.phone = tns(TranslationNamespace.VALIDATION, 'form.phone.required');
     } else if (formData.phone.trim().length < 8) {
-      newErrors.phone = t('register.validation.phoneMinLength');
+      newErrors.phone = tns(TranslationNamespace.VALIDATION, 'form.phone.minLength', { min: 8 });
     }
 
     // Data de nascimento
     if (!formData.birthDate) {
-      newErrors.birthDate = t('register.validation.birthDateRequired');
+      newErrors.birthDate = tns(TranslationNamespace.VALIDATION, 'form.birthDate.required');
     } else {
       const birthDate = new Date(formData.birthDate);
       const today = new Date();
       const age = today.getFullYear() - birthDate.getFullYear();
       if (age < 13) {
-        newErrors.birthDate = t('register.validation.ageMinimum');
+        newErrors.birthDate = tns(TranslationNamespace.VALIDATION, 'form.age.minimum', { min: 13 });
       }
     }
 
     // País
     if (!formData.country) {
-      newErrors.country = t('register.validation.countryRequired');
+      newErrors.country = tns(TranslationNamespace.VALIDATION, 'form.country.required');
     }
 
     // Termos de uso
     if (!formData.acceptTerms) {
-      newErrors.acceptTerms = t('register.validation.acceptTermsRequired');
+      newErrors.acceptTerms = tns(TranslationNamespace.VALIDATION, 'form.terms.required');
     }
 
     setErrors(newErrors);
@@ -138,7 +139,7 @@ const RegisterForm: React.FC = () => {
       router.push('/auth/verify-email?email=' + encodeURIComponent(formData.email));
     } catch (err: unknown) {
       console.error('Erro no cadastro:', err);
-      const errorMessage = err instanceof Error ? err.message : t('register.validation.registrationFailed');
+      const errorMessage = err instanceof Error ? err.message : tns(TranslationNamespace.ERRORS, 'auth.registrationFailed');
       setErrors({ general: errorMessage });
     }
   };
@@ -194,10 +195,10 @@ const RegisterForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[17px] md:mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                {t('register.title')}
+                {tns(TranslationNamespace.AUTH, 'register.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400">
-                {t('register.subtitle')}
+                {tns(TranslationNamespace.AUTH, 'register.subtitle')}
               </p>
             </div>
 
@@ -253,7 +254,7 @@ const RegisterForm: React.FC = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white dark:bg-[#0a0e19] text-gray-500 dark:text-gray-400">
-                  {t('register.divider')}
+                  {tns(TranslationNamespace.AUTH, 'register.divider')}
                 </span>
               </div>
             </div>
@@ -262,9 +263,9 @@ const RegisterForm: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {/* Nome completo */}
               <Input
-                label={t('register.fields.fullName')}
+                label={tns(TranslationNamespace.AUTH, 'register.fullName')}
                 type="text"
-                placeholder={t('register.placeholders.fullName')}
+                placeholder={tns(TranslationNamespace.AUTH, 'register.fullNamePlaceholder')}
                 value={formData.fullName}
                 onChange={handleInputChange('fullName')}
                 error={errors.fullName}
@@ -272,9 +273,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Email */}
               <Input
-                label={t('register.fields.email')}
+                label={tns(TranslationNamespace.AUTH, 'register.email')}
                 type="email"
-                placeholder={t('register.placeholders.email')}
+                placeholder={tns(TranslationNamespace.AUTH, 'register.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleInputChange('email')}
                 error={errors.email}
@@ -282,9 +283,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Senha */}
               <Input
-                label={t('register.fields.password')}
+                label={tns(TranslationNamespace.AUTH, 'register.password')}
                 type="password"
-                placeholder={t('register.placeholders.password')}
+                placeholder={tns(TranslationNamespace.AUTH, 'register.passwordPlaceholder')}
                 value={formData.password}
                 onChange={handleInputChange('password')}
                 error={errors.password}
@@ -293,9 +294,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Confirmação de senha */}
               <Input
-                label={t('register.fields.confirmPassword')}
+                label={tns(TranslationNamespace.AUTH, 'register.confirmPassword')}
                 type="password"
-                placeholder={t('register.placeholders.confirmPassword')}
+                placeholder={tns(TranslationNamespace.AUTH, 'register.confirmPasswordPlaceholder')}
                 value={formData.confirmPassword}
                 onChange={handleInputChange('confirmPassword')}
                 error={errors.confirmPassword}
@@ -304,9 +305,9 @@ const RegisterForm: React.FC = () => {
 
               {/* Telefone */}
               <Input
-                label={t('register.fields.phone')}
+                label={tns(TranslationNamespace.AUTH, 'register.phone')}
                 type="tel"
-                placeholder={t('register.placeholders.phone')}
+                placeholder={tns(TranslationNamespace.AUTH, 'register.phonePlaceholder')}
                 value={formData.phone}
                 onChange={handleInputChange('phone')}
                 error={errors.phone}
@@ -314,7 +315,7 @@ const RegisterForm: React.FC = () => {
 
               {/* Data de nascimento */}
               <Input
-                label={t('register.fields.birthDate')}
+                label={tns(TranslationNamespace.AUTH, 'register.birthDate')}
                 type="date"
                 value={formData.birthDate}
                 onChange={handleInputChange('birthDate')}
@@ -324,13 +325,13 @@ const RegisterForm: React.FC = () => {
               {/* País */}
               <div className="mb-[20px]">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t('register.fields.country')}
+                  {tns(TranslationNamespace.AUTH, 'register.country')}
                 </label>
                 <CountrySelector
                   value={formData.country}
                   onChange={(value) => setFormData(prev => ({ ...prev, country: value }))}
                   error={errors.country}
-                  placeholder={t('register.placeholders.country')}
+                  placeholder={tns(TranslationNamespace.AUTH, 'register.countryPlaceholder')}
                 />
               </div>
 
@@ -344,19 +345,19 @@ const RegisterForm: React.FC = () => {
                     className="mt-1 mr-3 h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-300 rounded"
                   />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {t('register.acceptTerms.text')}{" "}
+                    {tns(TranslationNamespace.AUTH, 'register.acceptTerms')}{" "}
                     <Link
                       href="/terms"
                       className="text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                     >
-                      {t('register.acceptTerms.termsLink')}
+                      {tns(TranslationNamespace.COMMON, 'legal.termsOfService')}
                     </Link>
-                    {" "}{t('register.acceptTerms.and')}{" "}
+                    {" "}{tns(TranslationNamespace.COMMON, 'common.and')}{" "}
                     <Link
                       href="/privacy"
                       className="text-primary-500 hover:text-primary-400 transition-all font-semibold hover:underline"
                     >
-                      {t('register.acceptTerms.privacyLink')}
+                      {tns(TranslationNamespace.COMMON, 'legal.privacyPolicy')}
                     </Link>
                   </span>
                 </label>
@@ -386,18 +387,18 @@ const RegisterForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">person_add</i>
-                  {isLoading ? t('register.registerButtonLoading') : t('register.registerButton')}
+                  {isLoading ? tns(TranslationNamespace.COMMON, 'status.loading') : tns(TranslationNamespace.AUTH, 'register.submitButton')}
                 </span>
               </Button>
 
               {/* Link para login */}
               <p className="mt-[15px] md:mt-[20px] text-center text-gray-600 dark:text-gray-400">
-                {t('register.hasAccount')}{" "}
+                {tns(TranslationNamespace.AUTH, 'register.hasAccount')}{" "}
                 <Link
                   href="/auth/login"
                   className="text-primary-500 transition-all font-semibold hover:underline"
                 >
-                  {t('register.loginLink')}
+                  {tns(TranslationNamespace.AUTH, 'register.signInLink')}
                 </Link>
               </p>
             </form>

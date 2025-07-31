@@ -52,7 +52,18 @@ export const authApi = {
    * Registro de novo usuário
    */
   register: async (userData: RegisterRequest): Promise<AuthResponse> => {
-    const response = await api.post('/auth/register', userData, {
+    // Filtrar apenas os campos que o backend espera
+    const backendData = {
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
+      agreeToTerms: userData.agreeToTerms,
+      agreeToPrivacy: userData.agreeToPrivacy,
+      language: userData.language,
+      // confirmPassword não é enviado para o backend
+    };
+    
+    const response = await api.post('/auth/register', backendData, {
       skipAuth: true, // Não precisa de token para registro
     });
     return response.data;
@@ -89,10 +100,29 @@ export const authApi = {
   },
 
   /**
+   * Validar token de reset de senha
+   */
+  validateResetToken: async (request: { token: string }): Promise<void> => {
+    await api.post('/auth/validate-reset-token', request, {
+      skipAuth: true,
+    });
+  },
+
+  /**
    * Verificar email com token
    */
   verifyEmail: async (request: VerifyEmailRequest): Promise<{ message: string }> => {
     const response = await api.post('/auth/verify-email', request, {
+      skipAuth: true,
+    });
+    return response.data;
+  },
+
+  /**
+   * Reenviar email de verificação
+   */
+  resendVerificationEmail: async (email: string): Promise<{ success: boolean; message: string }> => {
+    const response = await api.post('/auth/resend-verification-email', { email }, {
       skipAuth: true,
     });
     return response.data;

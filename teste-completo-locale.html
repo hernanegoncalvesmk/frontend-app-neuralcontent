@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Teste do Header x-user-locale</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-section { 
+            margin: 20px 0; 
+            padding: 20px; 
+            border: 2px solid #e1e5e9; 
+            border-radius: 8px; 
+            background: #f8f9fa;
+        }
+        .test-section.success { border-color: #28a745; background: #d4edda; }
+        .test-section.error { border-color: #dc3545; background: #f8d7da; }
+        button { 
+            padding: 12px 20px; 
+            margin: 8px; 
+            cursor: pointer; 
+            border: none; 
+            border-radius: 6px; 
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        button:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .en { background-color: #007bff; color: white; }
+        .es { background-color: #fd7e14; color: white; }
+        .fr { background-color: #6f42c1; color: white; }
+        .pt { background-color: #28a745; color: white; }
+        .reset { background-color: #6c757d; color: white; }
+        .test { background-color: #17a2b8; color: white; }
+        #result { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background-color: #e9ecef; 
+            border-radius: 8px; 
+            border-left: 4px solid #007bff;
+        }
+        .log { 
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; 
+            margin: 8px 0; 
+            padding: 10px; 
+            border-radius: 4px; 
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .log-info { background-color: #d1ecf1; color: #0c5460; border-left: 4px solid #bee5eb; }
+        .log-success { background-color: #d4edda; color: #155724; border-left: 4px solid #c3e6cb; }
+        .log-error { background-color: #f8d7da; color: #721c24; border-left: 4px solid #f5c6cb; }
+        .log-warning { background-color: #fff3cd; color: #856404; border-left: 4px solid #ffeaa7; }
+        .step { 
+            background: #e3f2fd; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 6px; 
+            border-left: 4px solid #2196f3;
+        }
+        .current-language {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste de Header x-user-locale</h1>
+        <p><strong>Status:</strong> Testando se o frontend envia corretamente o idioma selecionado para o backend</p>
+        
+        <div class="step">
+            <h3>📋 Instruções:</h3>
+            <ol>
+                <li>Selecione um idioma clicando nos botões abaixo</li>
+                <li>Clique em "🧪 Testar Forgot Password" para simular a requisição</li>
+                <li>Verifique se o header <code>x-user-locale</code> foi enviado corretamente</li>
+                <li>Confira os logs do backend para ver se recebeu o idioma correto</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🌍 Seleção de Idioma</h3>
+            <p>Idioma atual: <span id="currentLanguage" class="current-language">pt</span></p>
+            
+            <button class="pt" onclick="setLanguage('pt')">🇧🇷 Português</button>
+            <button class="en" onclick="setLanguage('en')">🇺🇸 English</button>
+            <button class="es" onclick="setLanguage('es')">🇪🇸 Español</button>
+            <button class="fr" onclick="setLanguage('fr')">🇫🇷 Français</button>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 Testes de API</h3>
+            <p><strong>Email para teste:</strong> <input type="email" id="testEmail" value="hernane@example.com" style="padding: 8px; margin: 0 10px; border: 1px solid #ccc; border-radius: 4px; width: 250px;"></p>
+            
+            <button class="test" onclick="testForgotPassword()">🧪 Testar Forgot Password</button>
+            <button class="test" onclick="testRegister()">🧪 Testar Register</button>
+            <button class="reset" onclick="clearLogs()">🗑️ Limpar Logs</button>
+        </div>
+
+        <div id="result">
+            <h3>📊 Resultados dos Testes:</h3>
+            <div id="logs"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000'; // Ajuste para sua URL do backend
+        
+        // Simular o sistema de idiomas do frontend
+        let currentLanguage = localStorage.getItem('app-language') || 'pt';
+        updateLanguageDisplay();
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('app-language', lang);
+            updateLanguageDisplay();
+            log(`🌍 Idioma alterado para: ${lang}`, 'info');
+        }
+
+        function updateLanguageDisplay() {
+            const element = document.getElementById('currentLanguage');
+            element.textContent = currentLanguage;
+            
+            // Atualizar cor baseada no idioma
+            element.className = 'current-language';
+            if (currentLanguage === 'en') element.style.background = '#007bff';
+            else if (currentLanguage === 'es') element.style.background = '#fd7e14';
+            else if (currentLanguage === 'fr') element.style.background = '#6f42c1';
+            else element.style.background = '#28a745';
+        }
+
+        function getCurrentUserLocale() {
+            // Simular a mesma lógica do frontend
+            try {
+                const savedLanguage = localStorage.getItem('app-language');
+                if (savedLanguage && ['pt', 'en', 'es', 'fr'].includes(savedLanguage)) {
+                    return savedLanguage;
+                }
+                
+                const browserLanguage = navigator.language.split('-')[0];
+                if (['pt', 'en', 'es', 'fr'].includes(browserLanguage)) {
+                    return browserLanguage;
+                }
+                
+                return 'pt';
+            } catch {
+                return 'pt';
+            }
+        }
+
+        function log(message, type = 'info') {
+            const logsDiv = document.getElementById('logs');
+            const timestamp = new Date().toLocaleTimeString();
+            logsDiv.innerHTML += `<div class="log log-${type}">[${timestamp}] ${message}</div>`;
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+            console.log(`[${timestamp}] ${message}`);
+        }
+
+        async function testForgotPassword() {
+            const email = document.getElementById('testEmail').value;
+            const locale = getCurrentUserLocale();
+            
+            log(`🚀 Iniciando teste de forgot-password`, 'info');
+            log(`📧 Email: ${email}`, 'info');
+            log(`🌍 Locale detectado: ${locale}`, 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/forgot-password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-user-locale': locale,
+                        'Accept-Language': locale
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                log(`📤 Headers enviados:`, 'info');
+                log(`   • x-user-locale: ${locale}`, 'info');
+                log(`   • Accept-Language: ${locale}`, 'info');
+                
+                if (response.ok) {
+                    log(`✅ Requisição bem-sucedida! Status: ${response.status}`, 'success');
+                    log(`🎯 Agora verifique os logs do backend para confirmar se recebeu o locale correto`, 'success');
+                } else {
+                    const errorText = await response.text();
+                    log(`❌ Erro na requisição: ${response.status} ${response.statusText}`, 'error');
+                    log(`📄 Resposta: ${errorText}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Erro de rede: ${error.message}`, 'error');
+                log(`🔍 Verifique se o backend está rodando em ${API_BASE}`, 'warning');
+            }
+        }
+
+        async function testRegister() {
+            const email = document.getElementById('testEmail').value;
+            const locale = getCurrentUserLocale();
+            
+            log(`🚀 Iniciando teste de register`, 'info');
+            log(`🌍 Locale detectado: ${locale}`, 'info');
+            
+            try {
+                const testData = {
+                    name: 'Test User',
+                    email: email,
+                    password: 'password123',
+                    agreeToTerms: true,
+                    agreeToPrivacy: true,
+                    language: locale
+                };
+
+                const response = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-user-locale': locale,
+                        'Accept-Language': locale
+                    },
+                    body: JSON.stringify(testData)
+                });
+
+                log(`📤 Headers enviados:`, 'info');
+                log(`   • x-user-locale: ${locale}`, 'info');
+                log(`   • Accept-Language: ${locale}`, 'info');
+                
+                if (response.ok || response.status === 400) { // 400 pode ser email já existe
+                    log(`✅ Requisição processada! Status: ${response.status}`, 'success');
+                    log(`🎯 Verifique os logs do backend para o locale`, 'success');
+                } else {
+                    const errorText = await response.text();
+                    log(`❌ Erro na requisição: ${response.status} ${response.statusText}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Erro de rede: ${error.message}`, 'error');
+            }
+        }
+
+        function clearLogs() {
+            document.getElementById('logs').innerHTML = '';
+            log('🆕 Logs limpos - Pronto para novos testes', 'info');
+        }
+
+        // Inicialização
+        log('🚀 Página carregada e pronta para testes', 'info');
+        log(`📍 API Base: ${API_BASE}`, 'info');
+        log(`🌍 Idioma atual: ${currentLanguage}`, 'info');
+        log(`⚠️ Certifique-se de que o backend está rodando`, 'warning');
+    </script>
+</body>
+</html>

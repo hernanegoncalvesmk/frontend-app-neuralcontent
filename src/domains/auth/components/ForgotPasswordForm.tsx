@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/domains/translations';
+import { TranslationNamespace } from '@/domains/translations/types/translation.types';
 import { Input } from '@/domains/shared/components/ui/Input';
 import { Button } from '@/domains/shared/components/ui/Button';
 import { useAuth } from '@/infrastructure/providers/AuthProvider';
+import { authService } from '@/domains/auth/services/auth.service';
 import { isValidEmail } from '@/lib/utils';
 
 interface ForgotPasswordFormData {
@@ -20,7 +22,7 @@ interface ForgotPasswordErrors {
 
 const ForgotPasswordForm: React.FC = () => {
   const { isLoading } = useAuth();
-  const { t } = useTranslation('auth');
+  const { tns } = useTranslation();
   
   const [formData, setFormData] = useState<ForgotPasswordFormData>({
     email: ''
@@ -35,9 +37,9 @@ const ForgotPasswordForm: React.FC = () => {
     const newErrors: ForgotPasswordErrors = {};
 
     if (!formData.email) {
-      newErrors.email = t('forgotPassword.emailNotFound');
+      newErrors.email = tns(TranslationNamespace.VALIDATION, 'form.email.required');
     } else if (!isValidEmail(formData.email)) {
-      newErrors.email = t('errors.invalidEmail');
+      newErrors.email = tns(TranslationNamespace.VALIDATION, 'form.email.invalid');
     }
 
     setErrors(newErrors);
@@ -55,12 +57,12 @@ const ForgotPasswordForm: React.FC = () => {
       setErrors({});
       
       // Integração com o serviço de recuperação de senha
-      // await authService.forgotPassword({ email: formData.email });
+      await authService.forgotPassword({ email: formData.email });
       
       setIsSuccess(true);
     } catch (err: unknown) {
       console.error('Erro ao solicitar recuperação:', err);
-      const errorMessage = err instanceof Error ? err.message : t('errors.serverError');
+      const errorMessage = err instanceof Error ? err.message : tns(TranslationNamespace.ERRORS, 'general.somethingWentWrong');
       setErrors({ general: errorMessage });
     } finally {
       setIsSubmitting(false);
@@ -126,29 +128,31 @@ const ForgotPasswordForm: React.FC = () => {
               {/* Título e descrição */}
               <div className="mb-[25px]">
                 <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                  {t('forgotPassword.emailSent')}
+                  {tns(TranslationNamespace.AUTH, 'forgotPassword.success.title')}
                 </h1>
                 <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400 mb-4">
-                  {t('forgotPassword.emailSentSubtitle')}
+                  {tns(TranslationNamespace.AUTH, 'forgotPassword.success.subtitle')}
                 </p>
                 <p className="font-semibold text-primary-500 mb-4">
                   {formData.email}
                 </p>
                 <p className="text-sm text-[#445164] dark:text-gray-400">
-                  {t('forgotPassword.emailSentDescription')}
+                  {tns(TranslationNamespace.AUTH, 'forgotPassword.success.linkExpires')}
                 </p>
               </div>
 
               {/* Instruções */}
               <div className="mb-[25px] p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
-                <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-2">
-                  {t('forgotPassword.nextSteps')}
+                <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-3 flex items-center gap-2">
+                  <i className="material-symbols-outlined text-lg">info</i>
+                  {tns(TranslationNamespace.AUTH, 'forgotPassword.success.nextSteps.title')}
                 </h3>
-                <ol className="list-decimal list-inside text-sm text-blue-700 dark:text-blue-400 space-y-1">
-                  <li>{t('forgotPassword.step1')}</li>
-                  <li>{t('forgotPassword.step2')}</li>
-                  <li>{t('forgotPassword.step3')}</li>
-                  <li>{t('forgotPassword.step4')}</li>
+                <ol className="list-decimal list-inside text-sm text-blue-700 dark:text-blue-400 space-y-2">
+                  <li className="leading-relaxed">{tns(TranslationNamespace.AUTH, 'forgotPassword.success.nextSteps.step1')}</li>
+                  <li className="leading-relaxed">{tns(TranslationNamespace.AUTH, 'forgotPassword.success.nextSteps.step2')}</li>
+                  <li className="leading-relaxed">{tns(TranslationNamespace.AUTH, 'forgotPassword.success.nextSteps.step3')}</li>
+                  <li className="leading-relaxed">{tns(TranslationNamespace.AUTH, 'forgotPassword.success.nextSteps.step4')}</li>
+                  <li className="leading-relaxed">{tns(TranslationNamespace.AUTH, 'forgotPassword.success.nextSteps.step5')}</li>
                 </ol>
               </div>
 
@@ -161,7 +165,7 @@ const ForgotPasswordForm: React.FC = () => {
                 >
                   <span className="flex items-center justify-center gap-[5px]">
                     <i className="material-symbols-outlined">refresh</i>
-                    {t('forgotPassword.sendAgain')}
+                    {tns(TranslationNamespace.AUTH, 'forgotPassword.success.resendButton')}
                   </span>
                 </Button>
 
@@ -172,7 +176,7 @@ const ForgotPasswordForm: React.FC = () => {
                   <Button variant="ghost" className="w-full">
                     <span className="flex items-center justify-center gap-[5px]">
                       <i className="material-symbols-outlined">arrow_back</i>
-                      {t('forgotPassword.backToLogin')}
+                      {tns(TranslationNamespace.AUTH, 'forgotPassword.backToLogin')}
                     </span>
                   </Button>
                 </Link>
@@ -222,10 +226,10 @@ const ForgotPasswordForm: React.FC = () => {
             {/* Título e descrição */}
             <div className="mb-[17px] md:mb-[25px]">
               <h1 className="!font-semibold !text-[22px] md:!text-xl lg:!text-2xl !mb-[5px] md:!mb-[7px]">
-                {t('forgotPassword.title')}
+                {tns(TranslationNamespace.AUTH, 'forgotPassword.title')}
               </h1>
               <p className="font-medium lg:text-md text-[#445164] dark:text-gray-400">
-                {t('forgotPassword.subtitle')}
+                {tns(TranslationNamespace.AUTH, 'forgotPassword.subtitle')}
               </p>
             </div>
 
@@ -233,9 +237,9 @@ const ForgotPasswordForm: React.FC = () => {
             <form onSubmit={handleSubmit}>
               {/* Campo de email */}
               <Input
-                label={t('forgotPassword.email')}
+                label={tns(TranslationNamespace.AUTH, 'forgotPassword.email')}
                 type="email"
-                placeholder={t('forgotPassword.emailPlaceholder')}
+                placeholder={tns(TranslationNamespace.AUTH, 'forgotPassword.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleInputChange('email')}
                 error={errors.email}
@@ -260,20 +264,20 @@ const ForgotPasswordForm: React.FC = () => {
               >
                 <span className="flex items-center justify-center gap-[5px]">
                   <i className="material-symbols-outlined">send</i>
-                  {isSubmitting ? t('forgotPassword.sendButtonLoading') : t('forgotPassword.sendButton')}
+                  {isSubmitting ? tns(TranslationNamespace.AUTH, 'forgotPassword.submitting') : tns(TranslationNamespace.AUTH, 'forgotPassword.submitButton')}
                 </span>
               </Button>
 
               {/* Link para voltar ao login */}
               <div className="text-center">
                 <p className="text-gray-600 dark:text-gray-400 mb-2">
-                  {t('forgotPassword.rememberedPassword')}
+                  {tns(TranslationNamespace.COMMON, 'navigation.back')}
                 </p>
                 <Link
                   href="/auth/login"
                   className="text-primary-500 transition-all font-semibold hover:underline"
                 >
-                  {t('forgotPassword.backToLogin')}
+                  {tns(TranslationNamespace.AUTH, 'forgotPassword.backToLogin')}
                 </Link>
               </div>
             </form>

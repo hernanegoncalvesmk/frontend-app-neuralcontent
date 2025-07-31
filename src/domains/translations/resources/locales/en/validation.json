@@ -1,0 +1,99 @@
+{
+  "required": "This field is required",
+  "invalid": "Invalid value",
+  "form": {
+    "email": {
+      "required": "Email is required",
+      "invalid": "Please enter a valid email address"
+    },
+    "password": {
+      "required": "Password is required",
+      "minLength": "Password must be at least {{min}} characters",
+      "mismatch": "Passwords do not match",
+      "tooShort": "Password must be at least 4 characters",
+      "confirmRequired": "Password confirmation is required"
+    },
+    "fullName": {
+      "required": "Full name is required",
+      "minLength": "Full name must be at least {{min}} characters"
+    },
+    "phone": {
+      "required": "Phone number is required",
+      "minLength": "Phone number must be at least {{min}} characters"
+    },
+    "birthDate": {
+      "required": "Date of birth is required"
+    },
+    "age": {
+      "minimum": "You must be at least {{min}} years old"
+    },
+    "country": {
+      "required": "Country is required"
+    },
+    "terms": {
+      "required": "You must agree to the terms and conditions"
+    }
+  },
+  "email": {
+    "invalid": "Please enter a valid email address",
+    "required": "Email is required"
+  },
+  "password": {
+    "required": "Password is required",
+    "minLength": "Password must be at least {{min}} characters",
+    "maxLength": "Password must be at most {{max}} characters",
+    "mustContain": "Password must contain:",
+    "uppercase": "At least one uppercase letter",
+    "lowercase": "At least one lowercase letter", 
+    "number": "At least one number",
+    "special": "At least one special character",
+    "noSpaces": "Password cannot contain spaces",
+    "weak": "Password is too weak",
+    "common": "Password is too common"
+  },
+  "string": {
+    "minLength": "Must be at least {{min}} characters",
+    "maxLength": "Must be at most {{max}} characters",
+    "exactLength": "Must be exactly {{length}} characters",
+    "pattern": "Invalid format",
+    "alphanumeric": "Only letters and numbers allowed",
+    "alpha": "Only letters allowed",
+    "numeric": "Only numbers allowed"
+  },
+  "number": {
+    "required": "Number is required",
+    "invalid": "Must be a valid number",
+    "min": "Must be at least {{min}}",
+    "max": "Must be at most {{max}}",
+    "positive": "Must be a positive number",
+    "negative": "Must be a negative number",
+    "integer": "Must be a whole number"
+  },
+  "date": {
+    "required": "Date is required",
+    "invalid": "Invalid date format",
+    "future": "Date must be in the future",
+    "past": "Date must be in the past",
+    "minDate": "Date must be after {{date}}",
+    "maxDate": "Date must be before {{date}}"
+  },
+  "file": {
+    "required": "File is required",
+    "tooLarge": "File size must be less than {{size}}",
+    "invalidType": "Invalid file type. Allowed: {{types}}",
+    "uploadFailed": "File upload failed"
+  },
+  "confirmation": {
+    "passwordMismatch": "Passwords do not match",
+    "emailMismatch": "Email addresses do not match"
+  },
+  "unique": {
+    "email": "This email is already in use",
+    "username": "This username is already taken",
+    "value": "This value already exists"
+  },
+  "terms": {
+    "required": "You must accept the terms and conditions",
+    "privacy": "You must accept the privacy policy"
+  }
+}

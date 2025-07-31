@@ -155,6 +155,18 @@ export class AuthService {
   }
 
   /**
+   * Validar token de reset de senha
+   */
+  async validateResetToken(token: string): Promise<void> {
+    try {
+      await authApi.validateResetToken({ token });
+    } catch (error: any) {
+      console.error('Erro ao validar token:', error);
+      throw new Error(error.response?.data?.message || 'Token inválido ou expirado');
+    }
+  }
+
+  /**
    * Verificar email
    */
   async verifyEmail(request: VerifyEmailRequest): Promise<{ message: string }> {

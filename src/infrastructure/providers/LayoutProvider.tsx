@@ -25,6 +25,7 @@ const LayoutProvider: React.FC<LayoutProviderProps> = ({ children }) => {
     "/auth/forgot-password",
     "/auth/reset-password",
     "/auth/confirm-email",
+    "/auth/verify-email",
     "/auth/logout",
     "/",
   ].includes(pathname);

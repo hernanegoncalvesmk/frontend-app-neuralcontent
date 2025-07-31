@@ -1,0 +1,119 @@
+{
+  "form": {
+    "required": "Este campo é obrigatório",
+    "email": {
+      "invalid": "Por favor, digite um e-mail válido",
+      "required": "E-mail é obrigatório",
+      "exists": "Este e-mail já está sendo usado",
+      "notFound": "E-mail não encontrado"
+    },
+    "password": {
+      "required": "Senha é obrigatória",
+      "minLength": "Senha deve ter pelo menos {{min}} caracteres",
+      "maxLength": "Senha deve ter no máximo {{max}} caracteres",
+      "weak": "Senha muito fraca",
+      "mustContain": "Senha deve conter ao menos uma letra maiúscula, uma minúscula e um número",
+      "mismatch": "Senhas não coincidem",
+      "current": "Senha atual é obrigatória",
+      "incorrect": "Senha atual incorreta",
+      "tooShort": "Senha deve ter pelo menos 4 caracteres",
+      "confirmRequired": "Confirmação de senha é obrigatória"
+    },
+    "name": {
+      "required": "Nome é obrigatório",
+      "minLength": "Nome deve ter pelo menos {{min}} caracteres",
+      "maxLength": "Nome deve ter no máximo {{max}} caracteres",
+      "invalidFormat": "Nome contém caracteres inválidos"
+    },
+    "fullName": {
+      "required": "Nome completo é obrigatório",
+      "minLength": "Nome completo deve ter pelo menos {{min}} caracteres",
+      "maxLength": "Nome completo deve ter no máximo {{max}} caracteres",
+      "invalidFormat": "Nome completo contém caracteres inválidos"
+    },
+    "phone": {
+      "required": "Telefone é obrigatório",
+      "invalid": "Formato de telefone inválido",
+      "tooShort": "Telefone muito curto",
+      "tooLong": "Telefone muito longo"
+    },
+    "birthDate": {
+      "required": "Data de nascimento é obrigatória",
+      "invalid": "Data de nascimento inválida",
+      "tooYoung": "Você deve ter pelo menos 13 anos de idade",
+      "futureDate": "Data de nascimento não pode ser no futuro"
+    },
+    "country": {
+      "required": "País é obrigatório",
+      "invalid": "País selecionado é inválido"
+    },
+    "terms": {
+      "required": "Você deve aceitar os termos e condições"
+    },
+    "username": {
+      "required": "Nome de usuário é obrigatório",
+      "minLength": "Nome de usuário deve ter pelo menos {{min}} caracteres",
+      "maxLength": "Nome de usuário deve ter no máximo {{max}} caracteres",
+      "exists": "Nome de usuário já está em uso",
+      "invalid": "Nome de usuário só pode conter letras, números e underscore"
+    },
+    "age": {
+      "required": "Idade é obrigatória",
+      "minimum": "Você deve ter pelo menos {{min}} anos",
+      "maximum": "Idade deve ser menor que {{max}} anos"
+    },
+    "date": {
+      "required": "Data é obrigatória",
+      "invalid": "Data inválida",
+      "future": "Data não pode ser no futuro",
+      "past": "Data não pode ser no passado"
+    },
+    "file": {
+      "required": "Arquivo é obrigatório",
+      "tooLarge": "Arquivo muito grande. Tamanho máximo: {{size}}",
+      "invalidType": "Tipo de arquivo não suportado",
+      "uploadFailed": "Falha no upload do arquivo"
+    },
+    "url": {
+      "required": "URL é obrigatória",
+      "invalid": "URL inválida"
+    },
+    "number": {
+      "required": "Número é obrigatório",
+      "invalid": "Número inválido",
+      "minimum": "Valor mínimo: {{min}}",
+      "maximum": "Valor máximo: {{max}}"
+    },
+    "agreement": {
+      "required": "Você deve concordar com os termos",
+      "termsRequired": "Aceitação dos termos é obrigatória",
+      "privacyRequired": "Aceitação da política de privacidade é obrigatória"
+    },
+    "selection": {
+      "required": "Seleção é obrigatória",
+      "minimum": "Selecione pelo menos {{min}} opções",
+      "maximum": "Selecione no máximo {{max}} opções"
+    },
+    "text": {
+      "minLength": "Texto deve ter pelo menos {{min}} caracteres",
+      "maxLength": "Texto deve ter no máximo {{max}} caracteres",
+      "pattern": "Formato de texto inválido"
+    }
+  },
+  
+  "field": {
+    "empty": "Campo vazio",
+    "invalid": "Campo inválido",
+    "tooShort": "Muito curto",
+    "tooLong": "Muito longo",
+    "badFormat": "Formato incorreto"
+  },
+  
+  "messages": {
+    "pleaseCheck": "Por favor, verifique os campos destacados em vermelho",
+    "formIncomplete": "Formulário incompleto",
+    "invalidData": "Dados inválidos fornecidos",
+    "submissionFailed": "Falha no envio do formulário",
+    "tryAgain": "Tente novamente mais tarde"
+  }
+}

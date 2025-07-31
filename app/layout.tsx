@@ -8,7 +8,7 @@ import "swiper/css/bundle";
 import "./globals.css";
 
 import LayoutProvider from "@/infrastructure/providers/LayoutProvider";
-import { TranslationProvider } from "@/infrastructure/providers/TranslationProvider";
+import { TranslationProvider } from "@/domains/translations/providers/TranslationProvider";
 import { AuthProvider } from "@/infrastructure/providers/AuthProvider";
 import QueryProvider from "@/infrastructure/providers/QueryProvider";
 import type { Metadata } from "next";
